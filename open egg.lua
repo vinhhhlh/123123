@@ -1,4 +1,3 @@
-
 repeat
     wait()
 until game:IsLoaded()
@@ -27,9 +26,9 @@ spawn(
 
 local vu = game:GetService("VirtualUser")
 game:GetService("Players").LocalPlayer.Idled:connect(function()
-vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-wait(1)
-vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wait(1)
+    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
 local StarterGui = game:GetService("StarterGui")
 StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
@@ -211,7 +210,7 @@ while _G.Toggle do
             wait(.1)
             ClickButton(_G.PosClick[summonamount][1], _G.PosClick[summonamount][2])
             UUIDSummon = Summon()
-            wait(1)
+            wait(5)  -- Thời gian chờ trước khi kiểm tra lại UUIDSummon (đã được điều chỉnh thành 5 giây)
         else  
             game.Players.LocalPlayer.PlayerGui.Lobby.SummonShopFrame.Visible = true
         end
