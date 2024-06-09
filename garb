@@ -1,0 +1,25 @@
+getgenv().Key = "k5600d06c4ea48ce4366f65e"
+getgenv().EquipMacroTroop = true
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1145998285681725510/1247558773665566902/message.json?ex=66670ea6&is=6665bd26&hm=861961ecb3108ec79f9ed74cb78c8d917aa3238d4d702c49a1f7be045fab2393&"
+getgenv().Config = {
+    ["SelectChapter"] = "Infinite",
+    ["AutoSell"] = false,
+    ["AutoReplay"] = false,
+    ["WH_MatchComplete"] = true,
+    ["AutoSkip"] = true,
+    ["SelectWorld"] = "Windmill Village",
+    ["TPLobbyIfPlayer"] = true,
+    ["AutoJoinWorld"] = true,
+    ["IgnoreMacroTiming"] = true,
+    ["SelectMacro"] = "message",
+    ["LeaveSellWave"] = 31,
+    ["AutoRejoin"] = true,
+    ["PlayMacro"] = true,
+    ["WebhookURL"] = "https://discord.com/api/webhooks/1223621817999167498/F5qKr4ij8q-s6_gjUAxBJpw2FahUothJ3qRz5iXKStVfuCvur7wkzyPg6YBG3zNTg_Gk",
+    ["HardMode"] = false,
+    ["AutoSave"] = true,
+    ["BoostFPS"] = true,
+    ["BlackScreen"] = false,
+    ["AutoLeave"] = true
+}
+loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
