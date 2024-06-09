@@ -131,5 +131,5 @@ getgenv().Config = {
 		["Underwater Temple"] = 2
 	}
 }
-getgenv().Key = "k645540e15dc101452bcb461"
+getgenv().Key = "k3d5cc04abcc9f3116173d57"
 repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(20)until Joebiden
