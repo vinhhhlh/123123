@@ -8,6 +8,7 @@ getgenv().Config = {
 	["TPLobbyIfPlayer"] = true,
 	["AutoJoinHoster"] = false,
 	["WaitForJoiner"] = false,
+        ["LeaveSellWave"] = 31,
 	["SelectRaidMacro"] = {
 
 	},
