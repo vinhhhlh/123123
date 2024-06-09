@@ -10,8 +10,8 @@ getgenv().Config = {
 	["SelectRaidMacro"] = {
 
 	},
-	["TeleportLobbyNewBanner"] = false,
-	["AutoSummonStandard"] = false,
+	["TeleportLobbyNewBanner"] = true,
+	["AutoSummonStandard"] = true,
 	["SelectReward"] = {
 		["Trait Crystal"] = false,
 		["Risky Dice"] = false,
@@ -63,7 +63,7 @@ getgenv().Config = {
 		["Shinobi Form 3"] = false,
 		["The Gamer"] = false,
 		["Carp"] = false,
-		["Admiral Of Lava"] = false,
+		["Admiral Of Lava"] = true,
 		["Dragon Slayer"] = false,
 		["Chance Taker"] = false,
 		["Strongest Swordsman"] = false,
@@ -111,7 +111,7 @@ getgenv().Config = {
 		["Underwater Temple"] = 3.25
 	},
 	["DeleteMap"] = false,
-	["WebhookURL"] = "https://discord.com/api/webhooks/1248935477948448830/xR9mrHnYt_8nuxTdVsQOSVbsv3i-avgeT3u8QZp_KfXYHRE327PYgHxKPhOp_0j3dGzw",
+	["WebhookURL"] = "https://discord.com/api/webhooks/1248460475797082172/lM0X5TL0EnVojyBYYovvREz1amx-bHHJVFUn76E-myONB3Dcs5HeBBeRAhA3woubrraX",
 	["SelectWorld"] = "Windmill Village",
 	["SelectChallengeMacro"] = {
 
