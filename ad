@@ -3,6 +3,7 @@ getgenv().Config = {
 	["AutoSave"] = true,
 	["WH_MatchComplete"] = true,
 	["AutoPlay"] = true,
+        ["SelectWorld"] = "Windmill Village",
 	["AutoClaimQuest"] = false,
 	["TPLobbyIfPlayer"] = true,
 	["AutoJoinHoster"] = false,
