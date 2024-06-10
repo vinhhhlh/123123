@@ -10,6 +10,7 @@ getgenv().Config = {
     ["SelectWorld"] = "Windmill Village",
     ["TPLobbyIfPlayer"] = true,
     ["AutoJoinWorld"] = true,
+	["AutoClaimQuest"] = true,
     ["IgnoreMacroTiming"] = true,
     ["SelectMacro"] = "onlylava",
     ["LeaveSellWave"] = 31,
