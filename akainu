@@ -14,12 +14,13 @@ getgenv().Config = {
     ["SelectMacro"] = "onlylava",
     ["LeaveSellWave"] = 31,
     ["AutoRejoin"] = true,
+    ["DeleteMap"] = true,
     ["PlayMacro"] = true,
     ["WebhookURL"] = "https://discord.com/api/webhooks/1223621817999167498/F5qKr4ij8q-s6_gjUAxBJpw2FahUothJ3qRz5iXKStVfuCvur7wkzyPg6YBG3zNTg_Gk",
     ["HardMode"] = false,
     ["AutoSave"] = true,
     ["BoostFPS"] = true,
-    ["BlackScreen"] = false,
-    ["AutoLeave"] = false
+    ["BlackScreen"] = true,
+    ["AutoLeave"] = true
 }
 loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
