@@ -1,0 +1,41 @@
+getgenv().Key = "k3d5cc04abcc9f3116173d57"
+getgenv().EquipMacroTroop = true
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1212805063400231014/1248497539725135882/onlylava.json?ex=66672d31&is=6665dbb1&hm=9ac4c8946e45d2f12e851c15e7ac912009dc60c0054481fedda6f2311f218c4c&"
+getgenv().Config = {
+	["AutoSummonStandard"] = true,
+	["UnselectIfSummoned"] = true,
+	["StandardSummonUnit"] = {
+		["Dragon Slayer"] = false,
+		["Shinobi Form 3"] = false,
+		["The Gamer"] = false,
+		["Carp"] = false,
+	        ["AutoClaimQuest"] = true,
+		["Admiral Of Lava"] = true,
+		["Bloomer"] = false,
+		["The Beast"] = false,
+		["Admiral Of Light"] = false,
+		["Pink Rockstar"] = false,
+		["Clay"] = false,
+		["Cursed Fighter"] = false,
+		["Ascended Qi Master"] = false,
+		["Fire Leg Master"] = false,
+		["Esper"] = false,
+		["Maxed Qi Master"] = false,
+		["Flame Dragon King"] = false,
+		["Thunder Shinobi"] = false,
+		["Curse Prince"] = false,
+		["Spirit Hybrid"] = false,
+		["Soulforce Reaper"] = false,
+		["Admiral Of Ice"] = false,
+		["Inferno Commander"] = false,
+		["Elf Wizardess"] = false,
+		["Ant King"] = false,
+		["Sharpshooter"] = false,
+		["Skull Warrior"] = false,
+		["Vengeful Shinobi"] = false,
+		["Strongest Swordsman"] = false,
+		["Chance Taker"] = false,
+		["Master Swordsman"] = false
+	}
+}
+repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(20)until Joebiden
