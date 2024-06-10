@@ -1,6 +1,6 @@
 getgenv().Config = {
 	["SelectChapter"] = "Chapter 1",
-	["AutoSave"] = true,
+	["AutoSave"] = false,
 	["WH_MatchComplete"] = true,
 	["AutoPlay"] = true,
 	["AutoClaimQuest"] = false,
