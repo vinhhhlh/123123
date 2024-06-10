@@ -20,6 +20,6 @@ getgenv().Config = {
     ["AutoSave"] = true,
     ["BoostFPS"] = true,
     ["BlackScreen"] = false,
-    ["AutoLeave"] = true
+    ["AutoLeave"] = false
 }
 loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
