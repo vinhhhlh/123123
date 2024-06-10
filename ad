@@ -31,7 +31,7 @@ getgenv().Config = {
 		["All enemies 2x health"] = false,
 		["All enemies 2x speed"] = false
 	},
-	["JoinerCooldown"] = 0,
+	["JoinerCooldown"] = 30,
 	["AutoSell"] = true,
 	["JoinerList"] = {
 		[1] = "No joiner in the list"
