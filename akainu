@@ -1,10 +1,10 @@
-getgenv().Key = "k3d5cc04abcc9f3116173d57"
+getgenv().Key = "ke76f7406dd050242aeaa6c7"
 getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1212805063400231014/1248497539725135882/onlylava.json?ex=66672d31&is=6665dbb1&hm=9ac4c8946e45d2f12e851c15e7ac912009dc60c0054481fedda6f2311f218c4c&"
 getgenv().Config = {
 	["SelectChapter"] = "Infinite",
 	["AutoSave"] = false,
-	["DelayReplay"] = 5,
+	["DelayReplay"] = 15,
 	["WH_MatchComplete"] = true,
 	["AutoPlay"] = false,
 	["AutoClaimQuest"] = true,
@@ -114,7 +114,7 @@ getgenv().Config = {
 	["WH_BannerSummoned"] = true,
 	["DeleteMap"] = true,
 	["WebhookURL"] = "https://discord.com/api/webhooks/1223621817999167498/F5qKr4ij8q-s6_gjUAxBJpw2FahUothJ3qRz5iXKStVfuCvur7wkzyPg6YBG3zNTg_Gk",
-	["DelayJoin"] = 5,
+	["DelayJoin"] = 15,
 	["AutoSkip"] = true,
 	["DeleteRarity"] = {
 		["Epic"] = false,
@@ -136,4 +136,3 @@ getgenv().Config = {
 	}
 }
 repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(20)until Joebiden
-
