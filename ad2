@@ -14,60 +14,23 @@ getgenv().Config = {
 		["Mob City"] = false,
 		["Underwater Temple"] = false
 	},
-	["IgnoreMacroTiming"] = true,
-	["SelectMacro"] = "onlylava",
+	["IgnoreMacroTiming"] = false,
 	["JoinerList"] = {
 		[1] = "No joiner in the list"
 	},
 	["TeleportLobbyNewBanner"] = false,
-	["AutoSummonStandard"] = false,
-	["PlayMacro"] = false,
-	["SelectWorld"] = "Windmill Village",
 	["AutoJoinRaid"] = false,
+	["PlayMacro"] = false,
+	["UpgradeMethod"] = "Nearest from Middle Position (until Max)",
 	["BoostFPS"] = true,
-	["BlackScreen"] = true,
-	["AutoLeave"] = true,
-	["JoinerCooldown"] = 70,
-	["UnselectIfSummoned"] = false,
-	["AutoSell"] = false,
-	["AutoReplay"] = true,
-	["AutoReturnLobby"] = true,
-	["AutoJoinHoster"] = false,
-	["WaitForJoiner"] = false,
-	["SelectReward"] = {
-		["Trait Crystal"] = false,
-		["Risky Dice"] = false,
-		["Star Rift (Rainbow)"] = false,
-		["Gems"] = false,
-		["Star Rift "] = false,
-		["Gold"] = false
+	["HillHeight"] = {
+		["Cursed Academy"] = 2,
+		["Blue Planet"] = 2,
+		["Windmill Village"] = 2,
+		["Mob City"] = 2,
+		["Underwater Temple"] = 2
 	},
-	["OFARecord"] = false,
-	["AutoRejoin"] = true,
-	["HardMode"] = false,
-	["JoinHighest"] = false,
-	["PlaceGap"] = {
-		["Cursed Academy"] = 3.25,
-		["Blue Planet"] = 3.25,
-		["Windmill Village"] = 3.25,
-		["Mob City"] = 3.25,
-		["Underwater Temple"] = 3.25
-	},
-	["AutoJoinWorld"] = true,
-	["AutoUpgrade"] = false,
-	["SelectChallengeMacro"] = {
-
-	},
-	["AutoSummonLimited"] = false,
-	["AutoJoinChallenge"] = false,
-	["UpgradeAndPlace"] = false,
-	["LimitedSummonUnit"] = {
-		["Donut Warrior"] = false,
-		["The Cursed Knight"] = false,
-		["Ocean Guardian"] = false,
-		["Warrior Princess"] = false,
-		["Electric Cyborg"] = false
-	},
+	["AutoLeave"] = false,
 	["SelectDifficulty"] = {
 		["All units lowered range"] = false,
 		["All enemies regen health"] = false,
@@ -76,63 +39,99 @@ getgenv().Config = {
 		["All enemies 2x health"] = false,
 		["All enemies 2x speed"] = false
 	},
+	["JoinerCooldown"] = 0,
+	["UnselectIfSummoned"] = false,
+	["AutoSummonStandard"] = false,
+	["BlackScreen"] = false,
+	["AutoReturnLobby"] = true,
+	["WaitForJoiner"] = false,
+	["AutoJoinHoster"] = false,
+	["SelectChallengeMacro"] = {
+
+	},
+	["OFARecord"] = false,
+	["HardMode"] = false,
+	["DeleteMap"] = false,
+	["PlaceGap"] = {
+		["Cursed Academy"] = 3.25,
+		["Blue Planet"] = 3.25,
+		["Windmill Village"] = 3.25,
+		["Mob City"] = 3.25,
+		["Underwater Temple"] = 3.25
+	},
+	["JoinHighest"] = true,
+	["AutoJoinWorld"] = true,
+	["AutoUpgrade"] = true,
 	["StandardSummonUnit"] = {
-		["Dragon Slayer"] = false,
+		["Maxed Qi Master"] = false,
 		["Shinobi Form 3"] = false,
 		["The Gamer"] = false,
 		["Carp"] = false,
 		["Admiral Of Lava"] = false,
-		["Bloomer"] = false,
-		["The Beast"] = false,
-		["Admiral Of Light"] = false,
-		["Pink Rockstar"] = false,
-		["Clay"] = false,
+		["Dragon Slayer"] = false,
+		["Chance Taker"] = false,
+		["Strongest Swordsman"] = false,
+		["Vengeful Shinobi"] = false,
+		["Skull Warrior"] = false,
 		["Cursed Fighter"] = false,
-		["Ascended Qi Master"] = false,
-		["Fire Leg Master"] = false,
 		["Esper"] = false,
-		["Maxed Qi Master"] = false,
+		["Ant King"] = false,
+		["Pink Rockstar"] = false,
+		["Curse Prince"] = false,
+		["Ascended Qi Master"] = false,
 		["Flame Dragon King"] = false,
 		["Thunder Shinobi"] = false,
-		["Curse Prince"] = false,
 		["Spirit Hybrid"] = false,
 		["Soulforce Reaper"] = false,
 		["Admiral Of Ice"] = false,
 		["Inferno Commander"] = false,
 		["Elf Wizardess"] = false,
-		["Ant King"] = false,
+		["Fire Leg Master"] = false,
 		["Sharpshooter"] = false,
-		["Skull Warrior"] = false,
-		["Vengeful Shinobi"] = false,
-		["Strongest Swordsman"] = false,
-		["Chance Taker"] = false,
+		["Clay"] = false,
+		["Bloomer"] = false,
+		["The Beast"] = false,
+		["Admiral Of Light"] = false,
 		["Master Swordsman"] = false
 	},
-	["LeaveSellWave"] = 31,
+	["AutoReplay"] = false,
+	["UpgradeAndPlace"] = false,
+	["AutoSummonLimited"] = false,
+	["LimitedSummonUnit"] = {
+		["Ocean Guardian"] = false,
+		["The Cursed Knight"] = false,
+		["Donut Warrior"] = false,
+		["Warrior Princess"] = false,
+		["Electric Cyborg"] = false
+	},
+	["AutoJoinChallenge"] = true,
 	["WH_BannerSummoned"] = true,
-	["DeleteMap"] = true,
-	["WebhookURL"] = "https://discord.com/api/webhooks/1223621817999167498/F5qKr4ij8q-s6_gjUAxBJpw2FahUothJ3qRz5iXKStVfuCvur7wkzyPg6YBG3zNTg_Gk",
-	["DelayJoin"] = 15,
-	["AutoSkip"] = true,
+	["LeaveSellWave"] = 1,
+	["AutoSell"] = true,
+	["AutoRejoin"] = true,
+	["WebhookURL"] = "https://discord.com/api/webhooks/1249348918987325502/MMnASkjwznWI7OPfJ-QYFh1pjB02F0U_FeYN_X5m-Bo1772XBT-BX5nDzgR3i4Mbk-WR",
+	["SelectWorld"] = "Windmill Village",
+	["AutoPlay"] = true,
 	["DeleteRarity"] = {
 		["Epic"] = false,
 		["Legendary"] = false,
 		["Rare"] = false
+	},
+	["SelectRaidMacro"] = {
+
 	},
 	["MiddlePos"] = {
 		["Mob City"] = "101.34827423095703, 297.7572326660156, 166.8565216064453",
 		["Cursed Academy"] = "-1216.4488525390625, 532.3055419921875, -318.90496826171875",
 		["Windmill Village"] = "-1674.530029296875, 24.114013671875, -529.6103515625"
 	},
-	["SelectRaidMacro"] = {
-
-	},
-	["HillHeight"] = {
-		["Cursed Academy"] = 2,
-		["Blue Planet"] = 2,
-		["Windmill Village"] = 2,
-		["Mob City"] = 2,
-		["Underwater Temple"] = 2
+	["SelectReward"] = {
+		["Trait Crystal"] = false,
+		["Risky Dice"] = false,
+		["Gems"] = false,
+		["Star Rift (Rainbow)"] = false,
+		["Star Rift "] = false,
+		["Gold"] = false
 	}
 }
 repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(20)until Joebiden
