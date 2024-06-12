@@ -9,7 +9,7 @@ getgenv().autoPlay = {
     autoReplay = true,        -- play again when you die
     skipMethod = "gui",       -- guiToggle (clicks on the auto skip button), remote (fires remote every so often), gui is more stable
     autoSkip = true,
-    showScreen = false,
+    showScreen = true,
 }
 
 getgenv().clockGift = { -- randomly selected from list
