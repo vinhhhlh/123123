@@ -9,18 +9,26 @@ getgenv().autoPlay = {
     autoReplay = true,        -- play again when you die
     skipMethod = "gui",       -- guiToggle (clicks on the auto skip button), remote (fires remote every so often), gui is more stable
     autoSkip = true,
-    showScreen = true,
+    showScreen = false,
 }
 
-getgenv().clockGift = {
-    user = ""
+getgenv().clockGift = { -- randomly selected from list
+    users = {
+        "HYM2ySHa",
+		"bkZpPT1M",
+		"kVLJiBbW",
+		"p3tg9go4",
+		"cGAnOI1S",
+
+    }
 }
 
 -- updated for clock event
 getgenv().autoEasterPass = {
     enabled = true,
     goToLobbyAfterReachedEggs = 3000, -- go back to lobby once you get this amt of eggs
-    convertEggsToGems = true
+    convertEggsToGems = true,
+    claimClockQuests = true,
 }
 
 getgenv().autoBoost = { -- this will use boosts when it runs out
@@ -34,27 +42,32 @@ getgenv().autoBoost = { -- this will use boosts when it runs out
 getgenv().autoMail = {
     enabled = true,          -- for gems
     sendTroopsEnabled = true,
-    idToSendTo = 5456141384, -- for gems
-    idToSendTo2 = 5456141595,         -- this is for troops
-    sendGemsAfterReached = 50,
+    idToSendTo = 5456141384,  -- for gems
+    idToSendTo2 = 5456141595, -- this is for troops
+    sendGemsAfterReached = 100,
     sendOfRarity = {
         ["Legendary"] = true,
         ["Basic"] = false,
         ["Epic"] = false,
         ["Mythic"] = true,
-        ["Uncommon"] = true,
+        ["Uncommon"] = false,
         ["Rare"] = false,
         ["Exclusive"] = true,
         ["Godly"] = true
+    },
+    customSendTroops = {
+        ["ClockSpider"] = 5456141595, -- troop nameid, userid to send to
+		["LuckySpeakerman"] = 5456141595,
+		["SantaTVMan"] = 5456141595,
     }
 }
 
 getgenv().autoSummon = {
     enabled = false,
-    crateType = "BasicCrate",             -- "JesterCrate", "BasicCrate"
-    summonAt = 10,                        -- summon all once you can do a certain amt
-    goToLobbyAfterReachedCoins = 1000000, -- go back and summon once you get certain amt of coins
-    useLuckBoost = true,                  -- use boost before summoning
+    crateType = "BasicCrate",                -- "JesterCrate", "BasicCrate"
+    summonAt = 10,                           -- summon all once you can do a certain amt
+    goToLobbyAfterReachedCoins = 1000000000, -- go back and summon once you get certain amt of coins
+    useLuckBoost = true,                     -- use boost before summoning
     deleteOfRarity = {
         ["Legendary"] = false,
         ["Basic"] = true,
@@ -78,7 +91,8 @@ function convertPosToInstance(pos)
     local vector = Vector3.new(tonumber(split[1]), tonumber(split[2]), tonumber(split[3]))
     warn(vector)
     for i, v in pairs(workspace.Troops:GetChildren()) do
-        local mag = (vector - v.HumanoidRootPart.CFrame.p).Magnitude
+        local prt = (v.Name == "ClockSpider" and v.CenterPart) or v.PrimaryPart or v.Hitbox
+        local mag = (vector - prt.CFrame.p).Magnitude
         if mag < closestDistance then
             closestTroop = v
             closestDistance = mag
@@ -263,11 +277,13 @@ function getInventoryTroops()
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
     for name, v in pairs(save._data.Inventory.Troops) do
         for i, v in pairs(v) do
-            invTroops[name] = i
+            invTroops[i] = name
         end
     end
     return invTroops
 end
+
+local troops = {}
 
 function webhook(url, data)
     pcall(function()
@@ -284,10 +300,9 @@ function webhook(url, data)
     end)
 end
 
-local troops = {}
-
 function findTroopIdByName(name)
-    return troops[name] or nil
+    for i, v in troops do if v == name then return i end end
+    return nil
 end
 
 local eggs
@@ -409,8 +424,7 @@ function tryClaimEasterPass()
         end
 
 
-        writefile(game.Players.LocalPlayer.Name.."level.txt",tostring(getMaxLevel()))
-
+        writefile(game.Players.LocalPlayer.Name .. "level.txt", tostring(getMaxLevel()))
     end
 end
 
@@ -440,25 +454,25 @@ end
 
 function trySendAllGems()
     if getGemAmt() >= getgenv().autoMail.sendGemsAfterReached and getgenv().autoMail.enabled and getCoinAmt() >= 100 then
-
         local oldGem = getGemAmt()
 
         Network.Invoke("PostOffice_SendGift", getgenv().autoMail.idToSendTo, nil, nil, getGemAmt(),
             tostring(math.random(1, 10000)))
-            webhook(
-                sendDiamondsWebhook,
-                {
-                    ["content"] = "",
-                    ["username"] = "ttd",
-                    ["embeds"] = {
-                        {
-                            ["title"] = game.Players.LocalPlayer.Name .. " sent mail\n\nSent" .. tostring(oldGem) .. " gems to " .. tostring(getgenv().autoMail.idToSendTo) ,
-                            ["type"] = "rich",
-                            ["color"] = 8388736,
-                        }
+        webhook(
+            sendDiamondsWebhook,
+            {
+                ["content"] = "",
+                ["username"] = "ttd",
+                ["embeds"] = {
+                    {
+                        ["title"] = game.Players.LocalPlayer.Name ..
+                            " sent mail\n\nSent" ..
+                            tostring(oldGem) .. " gems to " .. tostring(getgenv().autoMail.idToSendTo),
+                        ["type"] = "rich",
+                        ["color"] = 8388736,
                     }
-                })
-
+                }
+            })
     end
 end
 
@@ -469,6 +483,19 @@ local function ClickButton(btn)
             evnt:Fire()
         end
     end
+end
+
+local Gui = game:GetService("GuiService"); local Vim = game:GetService("VirtualInputManager")
+
+function clickGui(guiName)
+    Gui.SelectedObject = guiName
+    task.wait(.1)
+    Vim:SendKeyEvent(true, 13, false, game)
+    task.wait(.1)
+    Vim:SendKeyEvent(false, 13, false, game)
+    task.wait(.1)
+    Gui.SelectedObject = nil
+    task.wait(.1)
 end
 
 function trySummon()
@@ -525,10 +552,107 @@ function trySummon()
     end)
 end
 
+if not isfile("clockIndex.txt") then
+    writefile("clockIndex.txt", "1")
+end
+
 function gift10Clocks()
     local clocks = getEggAmt()
     if clocks >= 3000 then
-       Network.Fire("Gift10Crates","ClockCrate",clockGift.user) 
+        game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible = false
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(461, -60, -924)
+        task.wait(1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(449, -59, -916)
+        task.wait(1)
+        game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible = false
+
+        if clockGift.users[tonumber(readfile("clockIndex.txt"))] == nil then
+            writefile("clockIndex.txt", "1")
+        end
+        user = clockGift.users[tonumber(readfile("clockIndex.txt"))]
+
+        repeat
+            clocks = getEggAmt()
+
+
+            Network.Fire("Gift10Crates", "ClockCrate", user)
+
+            local st = tick()
+
+            repeat task.wait(1) until game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible or tick() - st >= 5
+
+            if tick() - st >= 5 then
+                print("Canceled")
+                return
+            end
+
+            task.wait(1)
+
+            ClickButton(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification
+                .Buttons.YesButton.Btn)
+        until clocks < 3000
+    end
+end
+
+function gift1Clock()
+    local clocks = getEggAmt()
+    if clocks >= 300 then
+        game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible = false
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(461, -60, -924)
+        task.wait(1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(449, -59, -916)
+        task.wait(1)
+        game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible = false
+
+        if clockGift.users[tonumber(readfile("clockIndex.txt"))] == nil then
+            writefile("clockIndex.txt", "1")
+        end
+        user = clockGift.users[tonumber(readfile("clockIndex.txt"))]
+
+        repeat
+            clocks = getEggAmt()
+
+
+            Network.Fire("Gift1Crate", "ClockCrate", user)
+
+            local st = tick()
+
+            repeat task.wait(1) until game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible or tick() - st >= 5
+
+            if tick() - st >= 5 then
+                print("Canceled")
+                return
+            end
+
+            task.wait(1)
+
+            ClickButton(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification
+                .Buttons.YesButton.Btn)
+        until clocks < 300
+    end
+end
+
+function claimQuests()
+    if not autoEasterPass.claimClockQuests then return end
+    local questHolder
+    for i, v in game:GetService("ReplicatedStorage").FrameworkDependencies:GetChildren() do
+        if v:FindFirstChild("ClockQuests") then
+            questHolder = v.ClockQuests
+        end
+    end
+
+    for i, quest in questHolder:GetChildren() do
+        Network.Fire("ClockEvent_ClaimEventQuestReward", quest.Name)
+    end
+end
+
+function tryClaimMail()
+    if #Invoke("PostOffice_GetInbox") > 0 then
+        local tab = {}
+        for i, v in pairs(Invoke("PostOffice_GetInbox")) do
+            table.insert(tab, v._id)
+        end
+        Invoke("PostOffice_BulkClaimPackages", tab)
     end
 end
 
@@ -556,15 +680,30 @@ function trySendAllTroopsAndCrates()
 
 
     local user = autoMail.idToSendTo2
-    for i, v in pairs(save:GetData().Inventory.Troops) do
-        if autoMail.sendOfRarity[troopDatas[i]] then
+    for troopName, v in pairs(save:GetData().Inventory.Troops) do
+        if autoMail.sendOfRarity[troopDatas[troopName]] then
             for i, v in pairs(v) do
                 if getCoinAmt() >= 100 then
                     print("Sending troop")
-                    task.spawn(function()
-                        Invoke("PostOffice_SendGift", user, "Troops", i, 0,
-                            tostring(math.random(1, 10000)))
-                    end)
+
+                    if autoMail.customSendTroops[troopName] then
+                        for i = 1, 2 do
+                            task.spawn(function()
+                                Invoke("PostOffice_SendGift", autoMail.customSendTroops[troopName], "Troops", i, 0,
+                                    tostring(math.random(1, 10000)))
+                            end)
+                            task.wait(2)
+                        end
+                    else
+                        for i = 1, 2 do
+                            task.spawn(function()
+                                Invoke("PostOffice_SendGift", user, "Troops", i, 0,
+                                    tostring(math.random(1, 10000)))
+                            end)
+                            task.wait(2)
+                        end
+                    end
+
                     task.wait(3)
                 else
                     return
@@ -573,16 +712,31 @@ function trySendAllTroopsAndCrates()
         end
     end
 
-    for i, v in pairs(save:GetData().Inventory.Crates) do
-        if autoMail.sendOfRarity[crateDatas[i]] then
+    for troopName, v in pairs(save:GetData().Inventory.Crates) do
+        if autoMail.sendOfRarity[crateDatas[troopName]] then
             for i, v in pairs(v) do
                 if getCoinAmt() >= 100 then
                     print("Sending crate")
-                    task.spawn(function()
-                        Invoke("PostOffice_SendGift", user, "Crates", i, 0,
-                            tostring(math.random(1, 10000)))
-                    end)
-                    task.wait(3)
+                    for i = 1, 2 do
+                        task.spawn(function()
+                            Invoke("PostOffice_SendGift", clockGift.users[math.random(1, #clockGift.users)], "Crates",
+                                i,
+                                0,
+                                tostring(math.random(1, 10000)))
+                        end)
+                        task.wait(2)
+                    end
+
+                    for i = 1, 2 do
+                        task.spawn(function()
+                            Invoke("PostOffice_SendGift", user, "Crates", i,
+                                0,
+                                tostring(math.random(1, 10000)))
+                        end)
+                    end
+                    task.wait(2)
+
+                    task.wait(4)
                 else
                     return
                 end
@@ -631,8 +785,9 @@ if game.PlaceId == 13775256536 then
 
     repeat
         pcall(function()
-    handler = game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.EventPassFrame.EventPassHandler
-    end)
+            handler = game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.EventPassFrame
+                .EventPassHandler
+        end)
         task.wait()
     until handler ~= nil
 
@@ -648,9 +803,12 @@ if game.PlaceId == 13775256536 then
         Fire("UnequipAllTroops")
     end)
 
-    for i, v in pairs(macroTroops) do
-        Fire("ToggleEquipTroop", findTroopIdByName(v))
-    end
+    task.wait(1)
+    task.spawn(function()
+        for i, v in pairs(macroTroops) do
+            Fire("ToggleEquipTroop", findTroopIdByName(v))
+        end
+    end)
 
     G2L["4"]["Text"] = [[Status: Using boosts (if found)]];
     importEvent("UseTimedBoost")
@@ -671,22 +829,41 @@ if game.PlaceId == 13775256536 then
 
     G2L["4"]["Text"] = [[Status: Claiming easter pass and converting gems]];
 
-    tryClaimEasterPass()
+    task.spawn(function()
+        tryClaimEasterPass()
+    end)
     task.wait(1)
     buyMaxGemsWithEggs()
     task.wait(1)
-    --gift10Clocks()
+
+    --[[task.spawn(function()
+        gift10Clocks()
+        gift1Clock()
+        writefile("clockIndex.txt", tostring(tonumber(readfile("clockIndex.txt") + 1)))
+    end)]]
+
     task.spawn(function()
+        claimQuests()
+    end)
+
+    task.spawn(function()
+        tryClaimMail()
+    end)
+
+    if readfile(game.Players.LocalPlayer.Name .. "level.txt") == "40" then
+        task.spawn(function()
             trySendAllGems()
         end)
-
-    if readfile(game.Players.LocalPlayer.Name.."level.txt") == "40" then
         task.wait(1)
         task.spawn(function()
             trySendAllTroopsAndCrates()
         end)
 
         task.wait(4)
+        writefile(game.Players.LocalPlayer.Name .. ".txt", "Yummytool")
+
+        --kill script
+        coroutine.yield()
     end
 
     G2L["4"]["Text"] = [[Status: trying to send mail]];
@@ -710,11 +887,12 @@ if game.PlaceId == 13775256536 then
 
     function startGame(areaName, maxPlayers)
         local QueueFrame = game.Players.LocalPlayer.PlayerGui.Lobby.QueueFrame
-        for _,Area in(workspace.Lifts:GetChildren()) do
+        for _, Area in (workspace.Lifts:GetChildren()) do
             if Area.Name == areaName then
                 local PlayersCount = string.split(Area.BasePart.StatusGui.PlayersCount.Text, "/")
                 if tonumber(PlayersCount[1]) <= maxPlayers then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Area.BasePart.CFrame + Vector3.new(0,5,0)
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Area.BasePart.CFrame +
+                        Vector3.new(0, 5, 0)
                     repeat task.wait() until QueueFrame.Visible
                     local PlayersAmount = string.split(QueueFrame.PlayerAmount.PlayerAmount.Text, "/")
                     repeat task.wait() until tonumber(PlayersAmount[1]) >= maxPlayers
@@ -728,7 +906,7 @@ if game.PlaceId == 13775256536 then
             end
             task.wait(.1)
         end
-    
+
         if not QueueFrame.Visible then
             startGame(areaName, maxPlayers)
         end
@@ -736,7 +914,9 @@ if game.PlaceId == 13775256536 then
 
     G2L["4"]["Text"] = [[Status: Joining map: ]] .. getgenv().autoPlay.map;
     print("Lobby | Joining map: " .. getgenv().autoPlay.map)
-    startGame(getgenv().autoPlay.map,1)
+    if readfile(game.Players.LocalPlayer.Name .. "level.txt") ~= "80" then
+        startGame(getgenv().autoPlay.map, 1)
+    end
 elseif game.PlaceId == 14082129854 then
     local startTick = tick()
     print "in game"
@@ -761,6 +941,9 @@ elseif game.PlaceId == 14082129854 then
         print("FARMING | Difficulty selected: " .. getgenv().autoPlay.difficulty)
     end)
 
+    if #game.Players:GetPlayers() > 1 then
+        game:GetService("TeleportService"):Teleport(13775256536, game:GetService("Players").LocalPlayer)
+    end
 
     -- turn on auto skip
     task.spawn(function()
@@ -799,6 +982,9 @@ elseif game.PlaceId == 14082129854 then
                     if v.Type == "PlaceTroop" then
                         G2L["4"]["Text"] = [[Status: Placing troop]];
                         local split = v.Pos:split(", ")
+
+                        local oldTroops = workspace.Troops:GetChildren()
+                        local troopName = v.Troop
                         print(tonumber(split[1]),
                             tonumber(split[2]),
                             tonumber(split[3]), v.Rotation)
@@ -812,6 +998,52 @@ elseif game.PlaceId == 14082129854 then
                             },
                             [2] = placeTroopId
                         })
+
+                        local placed = false
+                        local newTab = workspace.Troops:GetChildren()
+                        for i, v in newTab do
+                            if table.find(v, oldTroops) then
+                                newTab[i] = nil
+                            end
+                        end
+                        for i, v in newTab do
+                            if v.Name == troopName then
+                                placed = true
+                            end
+                        end
+
+                        task.spawn(function()
+                            if not placed then
+                                repeat
+                                    local oldTroops = workspace.Troops:GetChildren()
+
+                                    game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer({
+                                        [1] = {
+                                            [1] = v.Troop,
+                                            [2] = Vector3.new(tonumber(split[1]),
+                                                tonumber(split[2]),
+                                                tonumber(split[3])),
+                                            [3] = tonumber(v.Rotation)
+                                        },
+                                        [2] = placeTroopId
+                                    })
+
+                                    local newTab = workspace.Troops:GetChildren()
+                                    for i, v in newTab do
+                                        if table.find(v, oldTroops) then
+                                            newTab[i] = nil
+                                        end
+                                    end
+                                    for i, v in newTab do
+                                        if v.Name == troopName then
+                                            placed = true
+                                        end
+                                    end
+
+                                    task.wait(4)
+                                until placed
+                            end
+                        end)
                     elseif v.Type == "SellTroop" and v.Pos then
                         G2L["4"]["Text"] = [[Status: Selling troop]];
 
@@ -825,12 +1057,31 @@ elseif game.PlaceId == 14082129854 then
                     elseif v.Type == "UpgradeTroop" and v.Pos then
                         G2L["4"]["Text"] = [[Status: Upgrading troop]];
                         print("upgrade")
+                        local inst = convertPosToInstance(v.Pos)
+                        local oldLvl
+                        pcall(function()
+                            oldLvl = inst.TroopLevel.Value
+                        end)
                         game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer({
                             [1] = {
-                                [1] = convertPosToInstance(v.Pos)
+                                [1] = inst
                             },
                             [2] = upgradeId
                         })
+                        task.spawn(function()
+                            task.wait(0.5)
+                            if oldLvl and inst.TroopLevel.Value == oldLvl then
+                                repeat
+                                    game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer({
+                                        [1] = {
+                                            [1] = inst
+                                        },
+                                        [2] = upgradeId
+                                    })
+                                    task.wait(5)
+                                until inst.TroopLevel.Value > oldLvl
+                            end
+                        end)
                     elseif v.Type == "VoteSkipWave" then
                         G2L["4"]["Text"] = [[Status: Skipping wave with macro]];
                         if game:GetService("Players").LocalPlayer.PlayerGui.Match.WaveInfo.AutoSkip.OnAndOff.BackgroundColor3 == Color3.fromRGB(255, 0, 0) then
@@ -859,7 +1110,7 @@ elseif game.PlaceId == 14082129854 then
 
     function roundToOneDecimal(num)
         return math.floor(num * 10 + 0.5) / 10
-    end    
+    end
 
     game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish:GetPropertyChangedSignal("Visible"):Connect(function()
         webhook(
@@ -869,7 +1120,12 @@ elseif game.PlaceId == 14082129854 then
                 ["username"] = "ttd",
                 ["embeds"] = {
                     {
-                        ["title"] = game.Players.LocalPlayer.Name .." finished match\n\nCurrent event coins: " .. tostring(getEggAmt()) .. "\nCurrent gems: " .. tostring(getGemAmt()).."\nTime taken: " .. tostring(roundToOneDecimal(tick() - startTick)) .. " seconds",
+                        ["title"] = game.Players.LocalPlayer.Name ..
+                            " finished match\n\nCurrent event coins: " ..
+                            tostring(getEggAmt()) ..
+                            "\nCurrent gems: " ..
+                            tostring(getGemAmt()) ..
+                            "\nTime taken: " .. tostring(roundToOneDecimal(tick() - startTick)) .. " seconds",
                         ["type"] = "rich",
                         ["color"] = 8388736,
                     }
