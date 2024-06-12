@@ -1,7 +1,7 @@
 getgenv().fps = 10
 
-getgenv().completedWebhook = "https://discord.com/api/webhooks/1250104979675545711/nkCrXiyZ-C18XBOUJhpdpe29wfsuOdELatLsTUqVnq8xfm99dCxDpHEyxBohduopJJZQ"
-getgenv().sendDiamondsWebhook = "https://discord.com/api/webhooks/1250104979675545711/nkCrXiyZ-C18XBOUJhpdpe29wfsuOdELatLsTUqVnq8xfm99dCxDpHEyxBohduopJJZQ"
+getgenv().completedWebhook = ""
+getgenv().sendDiamondsWebhook = ""
 
 getgenv().autoPlay = {
     difficulty = "Nightmare", -- difficulty it will vote for
@@ -12,23 +12,15 @@ getgenv().autoPlay = {
     showScreen = true,
 }
 
-getgenv().clockGift = { -- randomly selected from list
-    users = {
-        "HYM2ySHa",
-		"bkZpPT1M",
-		"kVLJiBbW",
-		"p3tg9go4",
-		"cGAnOI1S",
-
-    }
+getgenv().clockGift = {
+    user = ""
 }
 
 -- updated for clock event
 getgenv().autoEasterPass = {
     enabled = true,
     goToLobbyAfterReachedEggs = 3000, -- go back to lobby once you get this amt of eggs
-    convertEggsToGems = true,
-    claimClockQuests = true,
+    convertEggsToGems = true
 }
 
 getgenv().autoBoost = { -- this will use boosts when it runs out
@@ -41,33 +33,28 @@ getgenv().autoBoost = { -- this will use boosts when it runs out
 
 getgenv().autoMail = {
     enabled = true,          -- for gems
-    sendTroopsEnabled = false,
-    idToSendTo = 5456141384,  -- VusangnwoOf gems
-    idToSendTo2 = 5456141595, -- HobinhrOrPf troops
-    sendGemsAfterReached = 100,
+    sendTroopsEnabled = true,
+    idToSendTo = 5456141384, -- for gems
+    idToSendTo2 = 5456141595,         -- this is for troops
+    sendGemsAfterReached = 50,
     sendOfRarity = {
         ["Legendary"] = true,
         ["Basic"] = false,
         ["Epic"] = false,
         ["Mythic"] = true,
-        ["Uncommon"] = false,
+        ["Uncommon"] = true,
         ["Rare"] = false,
         ["Exclusive"] = true,
         ["Godly"] = true
-    },
-    customSendTroops = {
-        ["ClockSpider"] = 0, -- troop nameid, userid to send to
-		--["LuckySpeakerman"] = 5456141595,
-		--["SantaTVMan"] = 5456141595,
     }
 }
 
 getgenv().autoSummon = {
     enabled = false,
-    crateType = "BasicCrate",                -- "JesterCrate", "BasicCrate"
-    summonAt = 10,                           -- summon all once you can do a certain amt
-    goToLobbyAfterReachedCoins = 1000000000, -- go back and summon once you get certain amt of coins
-    useLuckBoost = true,                     -- use boost before summoning
+    crateType = "BasicCrate",             -- "JesterCrate", "BasicCrate"
+    summonAt = 10,                        -- summon all once you can do a certain amt
+    goToLobbyAfterReachedCoins = 1000000, -- go back and summon once you get certain amt of coins
+    useLuckBoost = true,                  -- use boost before summoning
     deleteOfRarity = {
         ["Legendary"] = false,
         ["Basic"] = true,
@@ -78,8 +65,10 @@ getgenv().autoSummon = {
     },
 }
 
-getgenv().macroTroops = {"SantaTVMan","LuckySpeakerman","ClockSpider"}
-local macro = '{"53":{"Type":"UpgradeTroop","Time":352,"Pos":"152.92137145996094, 232.5080108642578, -4155.41943359375"},"43":{"Type":"UpgradeTroop","Time":297,"Pos":"96.01366424560547, 234.4342498779297, -4116.96337890625"},"73":{"Time":502,"Type":"VoteSkipWave"},"63":{"Rotation":"1","Type":"PlaceTroop","Time":424,"Troop":"ClockSpider","Pos":"137.1478271484375, 232.5080108642578, -4181.689453125"},"93":{"Type":"UpgradeTroop","Time":642,"Pos":"138.73367309570312, 232.5080108642578, -4166.763671875"},"83":{"Type":"UpgradeTroop","Time":567,"Pos":"124.01432800292969, 232.50799560546875, -4152.423828125"},"13":{"Type":"UpgradeTroop","Time":123,"Pos":"96.49683380126953, 234.4342498779297, -4117.38330078125"},"130":{"Type":"UpgradeTroop","Time":837,"Pos":"112.02632904052734, 232.50799560546875, -4163.54150390625"},"23":{"Type":"UpgradeTroop","Time":207,"Pos":"96.49683380126953, 234.4342498779297, -4117.38330078125"},"42":{"Type":"UpgradeTroop","Time":296,"Pos":"96.01366424560547, 234.4342498779297, -4116.96337890625"},"52":{"Type":"UpgradeTroop","Time":350,"Pos":"152.92137145996094, 232.5080108642578, -4155.41943359375"},"62":{"Rotation":"1","Type":"PlaceTroop","Time":421,"Troop":"ClockSpider","Pos":"123.75983428955078, 232.50799560546875, -4181.814453125"},"72":{"Type":"UpgradeTroop","Time":486,"Pos":"135.59625244140625, 232.5080108642578, -4151.64306640625"},"82":{"Type":"UpgradeTroop","Time":566,"Pos":"124.01432800292969, 232.50799560546875, -4152.423828125"},"92":{"Time":641,"Type":"VoteSkipWave"},"122":{"Rotation":"1","Type":"PlaceTroop","Time":814,"Troop":"ClockSpider","Pos":"111.5032958984375, 232.50799560546875, -4148.50732421875"},"129":{"Type":"UpgradeTroop","Time":837,"Pos":"112.02632904052734, 232.50799560546875, -4163.54150390625"},"121":{"Type":"SellTroop","Time":808,"Pos":"96.01366424560547, 234.4342498779297, -4116.96337890625"},"12":{"Type":"UpgradeTroop","Time":119,"Pos":"98.33464050292969, 234.4342498779297, -4108.53759765625"},"22":{"Time":188,"Type":"VoteSkipWave"},"32":{"Type":"UpgradeTroop","Time":253,"Pos":"98.33464050292969, 234.4342498779297, -4108.53759765625"},"95":{"Type":"UpgradeTroop","Time":646,"Pos":"124.5190200805664, 232.50799560546875, -4166.4921875"},"85":{"Type":"UpgradeTroop","Time":583,"Pos":"124.01432800292969, 232.50799560546875, -4152.423828125"},"75":{"Time":522,"Type":"VoteSkipWave"},"65":{"Type":"UpgradeTroop","Time":432,"Pos":"142.1531982421875, 232.5080108642578, -4137.97802734375"},"55":{"Type":"UpgradeTroop","Time":388,"Pos":"152.92137145996094, 232.5080108642578, -4155.41943359375"},"45":{"Type":"SellTroop","Time":306,"Pos":"112.76683807373047, 230.82901000976562, -4170.93505859375"},"35":{"Type":"UpgradeTroop","Time":269,"Pos":"105.28638458251953, 234.43426513671875, -4116.89501953125"},"116":{"Rotation":"1","Type":"PlaceTroop","Time":789,"Troop":"ClockSpider","Pos":"126.78584289550781, 232.50799560546875, -4124.73193359375"},"132":{"Type":"UpgradeTroop","Time":839,"Pos":"112.02632904052734, 232.50799560546875, -4163.54150390625"},"1":{"Rotation":"1","Type":"PlaceTroop","Time":29,"Troop":"LuckySpeakerman","Pos":"112.75066375732422, 230.8290252685547, -4170.93505859375"},"3":{"Time":57,"Type":"VoteSkipWave"},"2":{"Time":37,"Type":"VoteSkipWave"},"5":{"Rotation":"1","Type":"PlaceTroop","Time":73,"Troop":"SantaTVMan","Pos":"96.49683380126953, 234.4342498779297, -4117.38330078125"},"4":{"Rotation":"1","Type":"PlaceTroop","Time":63,"Troop":"SantaTVMan","Pos":"98.33464050292969, 234.4342498779297, -4108.53759765625"},"7":{"Rotation":"1","Type":"PlaceTroop","Time":79,"Troop":"SantaTVMan","Pos":"105.28638458251953, 234.43426513671875, -4116.89501953125"},"6":{"Time":77,"Type":"VoteSkipWave"},"25":{"Type":"UpgradeTroop","Time":209,"Pos":"98.33464050292969, 234.4342498779297, -4108.53759765625"},"8":{"Time":97,"Type":"VoteSkipWave"},"110":{"Type":"UpgradeTroop","Time":744,"Pos":"110.24790954589844, 232.50799560546875, -4185.17724609375"},"94":{"Type":"UpgradeTroop","Time":645,"Pos":"124.5190200805664, 232.50799560546875, -4166.4921875"},"74":{"Type":"UpgradeTroop","Time":503,"Pos":"135.59625244140625, 232.5080108642578, -4151.64306640625"},"84":{"Time":582,"Type":"VoteSkipWave"},"54":{"Time":368,"Type":"VoteSkipWave"},"64":{"Type":"UpgradeTroop","Time":431,"Pos":"142.1531982421875, 232.5080108642578, -4137.97802734375"},"34":{"Time":268,"Type":"VoteSkipWave"},"44":{"Type":"UpgradeTroop","Time":298,"Pos":"96.01366424560547, 234.4342498779297, -4116.96337890625"},"126":{"Type":"UpgradeTroop","Time":818,"Pos":"111.5032958984375, 232.50799560546875, -4148.50732421875"},"102":{"Type":"UpgradeTroop","Time":688,"Pos":"137.1478271484375, 232.5080108642578, -4181.689453125"},"101":{"Type":"UpgradeTroop","Time":682,"Pos":"124.5190200805664, 232.50799560546875, -4166.4921875"},"14":{"Time":137,"Type":"VoteSkipWave"},"24":{"Time":209,"Type":"VoteSkipWave"},"128":{"Rotation":"1","Type":"PlaceTroop","Time":834,"Troop":"ClockSpider","Pos":"112.02632904052734, 232.50799560546875, -4163.54150390625"},"120":{"Type":"UpgradeTroop","Time":805,"Pos":"126.78584289550781, 232.50799560546875, -4124.73193359375"},"87":{"Type":"UpgradeTroop","Time":587,"Pos":"155.32882690429688, 232.5080108642578, -4150.9501953125"},"77":{"Type":"UpgradeTroop","Time":531,"Pos":"153.53744506835938, 232.5080108642578, -4138.2978515625"},"97":{"Type":"UpgradeTroop","Time":664,"Pos":"152.2965850830078, 232.50802612304688, -4167.92138671875"},"47":{"Type":"UpgradeTroop","Time":315,"Pos":"105.28638458251953, 234.43426513671875, -4116.89501953125"},"37":{"Time":288,"Type":"VoteSkipWave"},"67":{"Time":443,"Type":"VoteSkipWave"},"57":{"Rotation":"1","Type":"PlaceTroop","Time":397,"Troop":"ClockSpider","Pos":"124.01432800292969, 232.50799560546875, -4152.423828125"},"112":{"Time":757,"Type":"VoteSkipWave"},"115":{"Type":"SellTroop","Time":786,"Pos":"105.28638458251953, 234.43426513671875, -4116.89501953125"},"111":{"Type":"UpgradeTroop","Time":755,"Pos":"110.24790954589844, 232.50799560546875, -4185.17724609375"},"114":{"Time":777,"Type":"VoteSkipWave"},"119":{"Type":"UpgradeTroop","Time":802,"Pos":"126.78584289550781, 232.50799560546875, -4124.73193359375"},"27":{"Type":"UpgradeTroop","Time":213,"Pos":"105.28638458251953, 234.43426513671875, -4116.89501953125"},"17":{"Rotation":"1","Type":"PlaceTroop","Time":160,"Troop":"ClockSpider","Pos":"142.1531982421875, 232.5080108642578, -4137.97802734375"},"107":{"Type":"UpgradeTroop","Time":722,"Pos":"123.75983428955078, 232.50799560546875, -4181.814453125"},"86":{"Type":"UpgradeTroop","Time":586,"Pos":"155.32882690429688, 232.5080108642578, -4150.9501953125"},"96":{"Time":661,"Type":"VoteSkipWave"},"36":{"Type":"UpgradeTroop","Time":276,"Pos":"96.49683380126953, 234.4342498779297, -4117.38330078125"},"46":{"Time":308,"Type":"VoteSkipWave"},"103":{"Time":701,"Type":"VoteSkipWave"},"66":{"Type":"UpgradeTroop","Time":433,"Pos":"142.1531982421875, 232.5080108642578, -4137.97802734375"},"106":{"Type":"UpgradeTroop","Time":720,"Pos":"123.75983428955078, 232.50799560546875, -4181.814453125"},"125":{"Time":818,"Type":"VoteSkipWave"},"108":{"Time":737,"Type":"VoteSkipWave"},"124":{"Type":"UpgradeTroop","Time":816,"Pos":"111.5032958984375, 232.50799560546875, -4148.50732421875"},"16":{"Time":157,"Type":"VoteSkipWave"},"26":{"Type":"UpgradeTroop","Time":211,"Pos":"98.33464050292969, 234.4342498779297, -4108.53759765625"},"100":{"Time":681,"Type":"VoteSkipWave"},"71":{"Type":"UpgradeTroop","Time":483,"Pos":"98.33464050292969, 234.4342498779297, -4108.53759765625"},"61":{"Rotation":"1","Type":"PlaceTroop","Time":417,"Troop":"ClockSpider","Pos":"110.24790954589844, 232.50799560546875, -4185.17724609375"},"51":{"Time":348,"Type":"VoteSkipWave"},"41":{"Type":"UpgradeTroop","Time":296,"Pos":"96.01366424560547, 234.4342498779297, -4116.96337890625"},"91":{"Type":"UpgradeTroop","Time":622,"Pos":"138.73367309570312, 232.5080108642578, -4166.763671875"},"81":{"Time":562,"Type":"VoteSkipWave"},"59":{"Time":407,"Type":"VoteSkipWave"},"49":{"Type":"UpgradeTroop","Time":329,"Pos":"96.01366424560547, 234.4342498779297, -4116.96337890625"},"39":{"Rotation":"1","Type":"PlaceTroop","Time":294,"Troop":"SantaTVMan","Pos":"96.01366424560547, 234.4342498779297, -4116.96337890625"},"29":{"Time":229,"Type":"VoteSkipWave"},"99":{"Type":"UpgradeTroop","Time":668,"Pos":"152.2965850830078, 232.50802612304688, -4167.92138671875"},"89":{"Type":"UpgradeTroop","Time":608,"Pos":"138.73367309570312, 232.5080108642578, -4166.763671875"},"79":{"Time":542,"Type":"VoteSkipWave"},"69":{"Type":"UpgradeTroop","Time":464,"Pos":"96.01366424560547, 234.4342498779297, -4116.96337890625"},"19":{"Rotation":"1","Type":"PlaceTroop","Time":170,"Troop":"ClockSpider","Pos":"152.92137145996094, 232.5080108642578, -4155.41943359375"},"31":{"Type":"UpgradeTroop","Time":243,"Pos":"96.49683380126953, 234.4342498779297, -4117.38330078125"},"21":{"Type":"UpgradeTroop","Time":186,"Pos":"105.28638458251953, 234.43426513671875, -4116.89501953125"},"11":{"Time":117,"Type":"VoteSkipWave"},"60":{"Rotation":"1","Type":"PlaceTroop","Time":410,"Troop":"ClockSpider","Pos":"155.32882690429688, 232.5080108642578, -4150.9501953125"},"70":{"Time":482,"Type":"VoteSkipWave"},"40":{"Type":"UpgradeTroop","Time":295,"Pos":"96.01366424560547, 234.4342498779297, -4116.96337890625"},"50":{"Type":"UpgradeTroop","Time":334,"Pos":"98.33464050292969, 234.4342498779297, -4108.53759765625"},"131":{"Time":838,"Type":"VoteSkipWave"},"15":{"Rotation":"1","Type":"PlaceTroop","Time":140,"Troop":"ClockSpider","Pos":"153.53744506835938, 232.5080108642578, -4138.2978515625"},"80":{"Type":"UpgradeTroop","Time":543,"Pos":"153.53744506835938, 232.5080108642578, -4138.2978515625"},"90":{"Time":621,"Type":"VoteSkipWave"},"48":{"Time":328,"Type":"VoteSkipWave"},"58":{"Rotation":"1","Type":"PlaceTroop","Time":399,"Troop":"ClockSpider","Pos":"135.59625244140625, 232.5080108642578, -4151.64306640625"},"28":{"Type":"UpgradeTroop","Time":228,"Pos":"96.49683380126953, 234.4342498779297, -4117.38330078125"},"38":{"Type":"SellTroop","Time":289,"Pos":"96.49683380126953, 234.4342498779297, -4117.38330078125"},"88":{"Type":"UpgradeTroop","Time":602,"Pos":"155.32882690429688, 232.5080108642578, -4150.9501953125"},"98":{"Type":"UpgradeTroop","Time":664,"Pos":"152.2965850830078, 232.50802612304688, -4167.92138671875"},"68":{"Type":"UpgradeTroop","Time":444,"Pos":"105.28638458251953, 234.43426513671875, -4116.89501953125"},"78":{"Type":"UpgradeTroop","Time":531,"Pos":"153.53744506835938, 232.5080108642578, -4138.2978515625"},"127":{"Type":"SellTroop","Time":820,"Pos":"98.33464050292969, 234.4342498779297, -4108.53759765625"},"76":{"Type":"UpgradeTroop","Time":523,"Pos":"135.59625244140625, 232.5080108642578, -4151.64306640625"},"105":{"Type":"UpgradeTroop","Time":711,"Pos":"137.1478271484375, 232.5080108642578, -4181.689453125"},"109":{"Type":"UpgradeTroop","Time":739,"Pos":"123.75983428955078, 232.50799560546875, -4181.814453125"},"56":{"Rotation":"1","Type":"PlaceTroop","Time":396,"Troop":"ClockSpider","Pos":"124.5190200805664, 232.50799560546875, -4166.4921875"},"18":{"Rotation":"1","Type":"PlaceTroop","Time":168,"Troop":"ClockSpider","Pos":"152.2965850830078, 232.50802612304688, -4167.92138671875"},"117":{"Time":798,"Type":"VoteSkipWave"},"118":{"Type":"UpgradeTroop","Time":800,"Pos":"126.78584289550781, 232.50799560546875, -4124.73193359375"},"113":{"Type":"UpgradeTroop","Time":763,"Pos":"110.24790954589844, 232.50799560546875, -4185.17724609375"},"9":{"Type":"UpgradeTroop","Time":98,"Pos":"112.75501251220703, 230.8290252685547, -4170.93505859375"},"123":{"Type":"UpgradeTroop","Time":815,"Pos":"111.5032958984375, 232.50799560546875, -4148.50732421875"},"104":{"Type":"UpgradeTroop","Time":703,"Pos":"137.1478271484375, 232.5080108642578, -4181.689453125"},"20":{"Rotation":"1","Type":"PlaceTroop","Time":173,"Troop":"ClockSpider","Pos":"138.73367309570312, 232.5080108642578, -4166.763671875"},"30":{"Type":"UpgradeTroop","Time":242,"Pos":"105.28638458251953, 234.43426513671875, -4116.89501953125"},"33":{"Type":"UpgradeTroop","Time":254,"Pos":"98.33464050292969, 234.4342498779297, -4108.53759765625"},"10":{"Type":"UpgradeTroop","Time":103,"Pos":"105.28638458251953, 234.43426513671875, -4116.89501953125"}}'
+getgenv().macroTroops = { -- will equip these for your macro
+    -- "MicrowaveMan",
+}
+local macro = '{}'
 local HttpService = game:GetService("HttpService")
 local decrpytMacro = HttpService:JSONDecode(macro)
 
@@ -91,8 +80,7 @@ function convertPosToInstance(pos)
     local vector = Vector3.new(tonumber(split[1]), tonumber(split[2]), tonumber(split[3]))
     warn(vector)
     for i, v in pairs(workspace.Troops:GetChildren()) do
-        local prt = (v.Name == "ClockSpider" and v.CenterPart) or v.PrimaryPart or v.Hitbox
-        local mag = (vector - prt.CFrame.p).Magnitude
+        local mag = (vector - v.HumanoidRootPart.CFrame.p).Magnitude
         if mag < closestDistance then
             closestTroop = v
             closestDistance = mag
@@ -277,13 +265,11 @@ function getInventoryTroops()
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
     for name, v in pairs(save._data.Inventory.Troops) do
         for i, v in pairs(v) do
-            invTroops[i] = name
+            invTroops[name] = i
         end
     end
     return invTroops
 end
-
-local troops = {}
 
 function webhook(url, data)
     pcall(function()
@@ -300,9 +286,10 @@ function webhook(url, data)
     end)
 end
 
+local troops = {}
+
 function findTroopIdByName(name)
-    for i, v in troops do if v == name then return i end end
-    return nil
+    return troops[name] or nil
 end
 
 local eggs
@@ -424,7 +411,8 @@ function tryClaimEasterPass()
         end
 
 
-        writefile(game.Players.LocalPlayer.Name .. "level.txt", tostring(getMaxLevel()))
+        writefile(game.Players.LocalPlayer.Name.."level.txt",tostring(getMaxLevel()))
+
     end
 end
 
@@ -454,25 +442,25 @@ end
 
 function trySendAllGems()
     if getGemAmt() >= getgenv().autoMail.sendGemsAfterReached and getgenv().autoMail.enabled and getCoinAmt() >= 100 then
+
         local oldGem = getGemAmt()
 
         Network.Invoke("PostOffice_SendGift", getgenv().autoMail.idToSendTo, nil, nil, getGemAmt(),
             tostring(math.random(1, 10000)))
-        webhook(
-            sendDiamondsWebhook,
-            {
-                ["content"] = "",
-                ["username"] = "ttd",
-                ["embeds"] = {
-                    {
-                        ["title"] = game.Players.LocalPlayer.Name ..
-                            " sent mail\n\nSent" ..
-                            tostring(oldGem) .. " gems to " .. tostring(getgenv().autoMail.idToSendTo),
-                        ["type"] = "rich",
-                        ["color"] = 8388736,
+            webhook(
+                sendDiamondsWebhook,
+                {
+                    ["content"] = "",
+                    ["username"] = "ttd",
+                    ["embeds"] = {
+                        {
+                            ["title"] = game.Players.LocalPlayer.Name .. " sent mail\n\nSent" .. tostring(oldGem) .. " gems to " .. tostring(getgenv().autoMail.idToSendTo) ,
+                            ["type"] = "rich",
+                            ["color"] = 8388736,
+                        }
                     }
-                }
-            })
+                })
+
     end
 end
 
@@ -483,19 +471,6 @@ local function ClickButton(btn)
             evnt:Fire()
         end
     end
-end
-
-local Gui = game:GetService("GuiService"); local Vim = game:GetService("VirtualInputManager")
-
-function clickGui(guiName)
-    Gui.SelectedObject = guiName
-    task.wait(.1)
-    Vim:SendKeyEvent(true, 13, false, game)
-    task.wait(.1)
-    Vim:SendKeyEvent(false, 13, false, game)
-    task.wait(.1)
-    Gui.SelectedObject = nil
-    task.wait(.1)
 end
 
 function trySummon()
@@ -552,107 +527,10 @@ function trySummon()
     end)
 end
 
-if not isfile("clockIndex.txt") then
-    writefile("clockIndex.txt", "1")
-end
-
 function gift10Clocks()
     local clocks = getEggAmt()
     if clocks >= 3000 then
-        game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible = false
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(461, -60, -924)
-        task.wait(1)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(449, -59, -916)
-        task.wait(1)
-        game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible = false
-
-        if clockGift.users[tonumber(readfile("clockIndex.txt"))] == nil then
-            writefile("clockIndex.txt", "1")
-        end
-        user = clockGift.users[tonumber(readfile("clockIndex.txt"))]
-
-        repeat
-            clocks = getEggAmt()
-
-
-            Network.Fire("Gift10Crates", "ClockCrate", user)
-
-            local st = tick()
-
-            repeat task.wait(1) until game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible or tick() - st >= 5
-
-            if tick() - st >= 5 then
-                print("Canceled")
-                return
-            end
-
-            task.wait(1)
-
-            ClickButton(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification
-                .Buttons.YesButton.Btn)
-        until clocks < 3000
-    end
-end
-
-function gift1Clock()
-    local clocks = getEggAmt()
-    if clocks >= 300 then
-        game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible = false
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(461, -60, -924)
-        task.wait(1)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(449, -59, -916)
-        task.wait(1)
-        game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible = false
-
-        if clockGift.users[tonumber(readfile("clockIndex.txt"))] == nil then
-            writefile("clockIndex.txt", "1")
-        end
-        user = clockGift.users[tonumber(readfile("clockIndex.txt"))]
-
-        repeat
-            clocks = getEggAmt()
-
-
-            Network.Fire("Gift1Crate", "ClockCrate", user)
-
-            local st = tick()
-
-            repeat task.wait(1) until game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible or tick() - st >= 5
-
-            if tick() - st >= 5 then
-                print("Canceled")
-                return
-            end
-
-            task.wait(1)
-
-            ClickButton(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification
-                .Buttons.YesButton.Btn)
-        until clocks < 300
-    end
-end
-
-function claimQuests()
-    if not autoEasterPass.claimClockQuests then return end
-    local questHolder
-    for i, v in game:GetService("ReplicatedStorage").FrameworkDependencies:GetChildren() do
-        if v:FindFirstChild("ClockQuests") then
-            questHolder = v.ClockQuests
-        end
-    end
-
-    for i, quest in questHolder:GetChildren() do
-        Network.Fire("ClockEvent_ClaimEventQuestReward", quest.Name)
-    end
-end
-
-function tryClaimMail()
-    if #Invoke("PostOffice_GetInbox") > 0 then
-        local tab = {}
-        for i, v in pairs(Invoke("PostOffice_GetInbox")) do
-            table.insert(tab, v._id)
-        end
-        Invoke("PostOffice_BulkClaimPackages", tab)
+       Network.Fire("Gift10Crates","ClockCrate",clockGift.user) 
     end
 end
 
@@ -680,30 +558,15 @@ function trySendAllTroopsAndCrates()
 
 
     local user = autoMail.idToSendTo2
-    for troopName, v in pairs(save:GetData().Inventory.Troops) do
-        if autoMail.sendOfRarity[troopDatas[troopName]] then
+    for i, v in pairs(save:GetData().Inventory.Troops) do
+        if autoMail.sendOfRarity[troopDatas[i]] then
             for i, v in pairs(v) do
                 if getCoinAmt() >= 100 then
                     print("Sending troop")
-
-                    if autoMail.customSendTroops[troopName] then
-                        for i = 1, 2 do
-                            task.spawn(function()
-                                Invoke("PostOffice_SendGift", autoMail.customSendTroops[troopName], "Troops", i, 0,
-                                    tostring(math.random(1, 10000)))
-                            end)
-                            task.wait(2)
-                        end
-                    else
-                        for i = 1, 2 do
-                            task.spawn(function()
-                                Invoke("PostOffice_SendGift", user, "Troops", i, 0,
-                                    tostring(math.random(1, 10000)))
-                            end)
-                            task.wait(2)
-                        end
-                    end
-
+                    task.spawn(function()
+                        Invoke("PostOffice_SendGift", user, "Troops", i, 0,
+                            tostring(math.random(1, 10000)))
+                    end)
                     task.wait(3)
                 else
                     return
@@ -712,31 +575,16 @@ function trySendAllTroopsAndCrates()
         end
     end
 
-    for troopName, v in pairs(save:GetData().Inventory.Crates) do
-        if autoMail.sendOfRarity[crateDatas[troopName]] then
+    for i, v in pairs(save:GetData().Inventory.Crates) do
+        if autoMail.sendOfRarity[crateDatas[i]] then
             for i, v in pairs(v) do
                 if getCoinAmt() >= 100 then
                     print("Sending crate")
-                    for i = 1, 2 do
-                        task.spawn(function()
-                            Invoke("PostOffice_SendGift", clockGift.users[math.random(1, #clockGift.users)], "Crates",
-                                i,
-                                0,
-                                tostring(math.random(1, 10000)))
-                        end)
-                        task.wait(2)
-                    end
-
-                    for i = 1, 2 do
-                        task.spawn(function()
-                            Invoke("PostOffice_SendGift", user, "Crates", i,
-                                0,
-                                tostring(math.random(1, 10000)))
-                        end)
-                    end
-                    task.wait(2)
-
-                    task.wait(4)
+                    task.spawn(function()
+                        Invoke("PostOffice_SendGift", user, "Crates", i, 0,
+                            tostring(math.random(1, 10000)))
+                    end)
+                    task.wait(3)
                 else
                     return
                 end
@@ -785,9 +633,8 @@ if game.PlaceId == 13775256536 then
 
     repeat
         pcall(function()
-            handler = game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.EventPassFrame
-                .EventPassHandler
-        end)
+    handler = game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.EventPassFrame.EventPassHandler
+    end)
         task.wait()
     until handler ~= nil
 
@@ -803,12 +650,9 @@ if game.PlaceId == 13775256536 then
         Fire("UnequipAllTroops")
     end)
 
-    task.wait(1)
-    task.spawn(function()
-        for i, v in pairs(macroTroops) do
-            Fire("ToggleEquipTroop", findTroopIdByName(v))
-        end
-    end)
+    for i, v in pairs(macroTroops) do
+        Fire("ToggleEquipTroop", findTroopIdByName(v))
+    end
 
     G2L["4"]["Text"] = [[Status: Using boosts (if found)]];
     importEvent("UseTimedBoost")
@@ -829,41 +673,22 @@ if game.PlaceId == 13775256536 then
 
     G2L["4"]["Text"] = [[Status: Claiming easter pass and converting gems]];
 
-    task.spawn(function()
-        tryClaimEasterPass()
-    end)
+    tryClaimEasterPass()
     task.wait(1)
     buyMaxGemsWithEggs()
     task.wait(1)
-
-    --[[task.spawn(function()
-        gift10Clocks()
-        gift1Clock()
-        writefile("clockIndex.txt", tostring(tonumber(readfile("clockIndex.txt") + 1)))
-    end)]]
-
+    --gift10Clocks()
     task.spawn(function()
-        claimQuests()
-    end)
-
-    task.spawn(function()
-        tryClaimMail()
-    end)
-
-    if readfile(game.Players.LocalPlayer.Name .. "level.txt") == "80" then
-        task.spawn(function()
             trySendAllGems()
         end)
+
+    if readfile(game.Players.LocalPlayer.Name.."level.txt") == "40" then
         task.wait(1)
         task.spawn(function()
             trySendAllTroopsAndCrates()
         end)
 
         task.wait(4)
-        writefile(game.Players.LocalPlayer.Name .. ".txt", "Yummytool")
-
-        --kill script
-        coroutine.yield()
     end
 
     G2L["4"]["Text"] = [[Status: trying to send mail]];
@@ -887,12 +712,11 @@ if game.PlaceId == 13775256536 then
 
     function startGame(areaName, maxPlayers)
         local QueueFrame = game.Players.LocalPlayer.PlayerGui.Lobby.QueueFrame
-        for _, Area in (workspace.Lifts:GetChildren()) do
+        for _,Area in(workspace.Lifts:GetChildren()) do
             if Area.Name == areaName then
                 local PlayersCount = string.split(Area.BasePart.StatusGui.PlayersCount.Text, "/")
                 if tonumber(PlayersCount[1]) <= maxPlayers then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Area.BasePart.CFrame +
-                        Vector3.new(0, 5, 0)
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Area.BasePart.CFrame + Vector3.new(0,5,0)
                     repeat task.wait() until QueueFrame.Visible
                     local PlayersAmount = string.split(QueueFrame.PlayerAmount.PlayerAmount.Text, "/")
                     repeat task.wait() until tonumber(PlayersAmount[1]) >= maxPlayers
@@ -906,7 +730,7 @@ if game.PlaceId == 13775256536 then
             end
             task.wait(.1)
         end
-
+    
         if not QueueFrame.Visible then
             startGame(areaName, maxPlayers)
         end
@@ -914,9 +738,7 @@ if game.PlaceId == 13775256536 then
 
     G2L["4"]["Text"] = [[Status: Joining map: ]] .. getgenv().autoPlay.map;
     print("Lobby | Joining map: " .. getgenv().autoPlay.map)
-    if readfile(game.Players.LocalPlayer.Name .. "level.txt") ~= "80" then
-        startGame(getgenv().autoPlay.map, 1)
-    end
+    startGame(getgenv().autoPlay.map,1)
 elseif game.PlaceId == 14082129854 then
     local startTick = tick()
     print "in game"
@@ -941,9 +763,6 @@ elseif game.PlaceId == 14082129854 then
         print("FARMING | Difficulty selected: " .. getgenv().autoPlay.difficulty)
     end)
 
-    if #game.Players:GetPlayers() > 1 then
-        game:GetService("TeleportService"):Teleport(13775256536, game:GetService("Players").LocalPlayer)
-    end
 
     -- turn on auto skip
     task.spawn(function()
@@ -982,9 +801,6 @@ elseif game.PlaceId == 14082129854 then
                     if v.Type == "PlaceTroop" then
                         G2L["4"]["Text"] = [[Status: Placing troop]];
                         local split = v.Pos:split(", ")
-
-                        local oldTroops = workspace.Troops:GetChildren()
-                        local troopName = v.Troop
                         print(tonumber(split[1]),
                             tonumber(split[2]),
                             tonumber(split[3]), v.Rotation)
@@ -998,52 +814,6 @@ elseif game.PlaceId == 14082129854 then
                             },
                             [2] = placeTroopId
                         })
-
-                        local placed = false
-                        local newTab = workspace.Troops:GetChildren()
-                        for i, v in newTab do
-                            if table.find(v, oldTroops) then
-                                newTab[i] = nil
-                            end
-                        end
-                        for i, v in newTab do
-                            if v.Name == troopName then
-                                placed = true
-                            end
-                        end
-
-                        task.spawn(function()
-                            if not placed then
-                                repeat
-                                    local oldTroops = workspace.Troops:GetChildren()
-
-                                    game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer({
-                                        [1] = {
-                                            [1] = v.Troop,
-                                            [2] = Vector3.new(tonumber(split[1]),
-                                                tonumber(split[2]),
-                                                tonumber(split[3])),
-                                            [3] = tonumber(v.Rotation)
-                                        },
-                                        [2] = placeTroopId
-                                    })
-
-                                    local newTab = workspace.Troops:GetChildren()
-                                    for i, v in newTab do
-                                        if table.find(v, oldTroops) then
-                                            newTab[i] = nil
-                                        end
-                                    end
-                                    for i, v in newTab do
-                                        if v.Name == troopName then
-                                            placed = true
-                                        end
-                                    end
-
-                                    task.wait(4)
-                                until placed
-                            end
-                        end)
                     elseif v.Type == "SellTroop" and v.Pos then
                         G2L["4"]["Text"] = [[Status: Selling troop]];
 
@@ -1057,31 +827,12 @@ elseif game.PlaceId == 14082129854 then
                     elseif v.Type == "UpgradeTroop" and v.Pos then
                         G2L["4"]["Text"] = [[Status: Upgrading troop]];
                         print("upgrade")
-                        local inst = convertPosToInstance(v.Pos)
-                        local oldLvl
-                        pcall(function()
-                            oldLvl = inst.TroopLevel.Value
-                        end)
                         game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer({
                             [1] = {
-                                [1] = inst
+                                [1] = convertPosToInstance(v.Pos)
                             },
                             [2] = upgradeId
                         })
-                        task.spawn(function()
-                            task.wait(0.5)
-                            if oldLvl and inst.TroopLevel.Value == oldLvl then
-                                repeat
-                                    game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer({
-                                        [1] = {
-                                            [1] = inst
-                                        },
-                                        [2] = upgradeId
-                                    })
-                                    task.wait(5)
-                                until inst.TroopLevel.Value > oldLvl
-                            end
-                        end)
                     elseif v.Type == "VoteSkipWave" then
                         G2L["4"]["Text"] = [[Status: Skipping wave with macro]];
                         if game:GetService("Players").LocalPlayer.PlayerGui.Match.WaveInfo.AutoSkip.OnAndOff.BackgroundColor3 == Color3.fromRGB(255, 0, 0) then
@@ -1110,7 +861,7 @@ elseif game.PlaceId == 14082129854 then
 
     function roundToOneDecimal(num)
         return math.floor(num * 10 + 0.5) / 10
-    end
+    end    
 
     game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish:GetPropertyChangedSignal("Visible"):Connect(function()
         webhook(
@@ -1120,12 +871,7 @@ elseif game.PlaceId == 14082129854 then
                 ["username"] = "ttd",
                 ["embeds"] = {
                     {
-                        ["title"] = game.Players.LocalPlayer.Name ..
-                            " finished match\n\nCurrent event coins: " ..
-                            tostring(getEggAmt()) ..
-                            "\nCurrent gems: " ..
-                            tostring(getGemAmt()) ..
-                            "\nTime taken: " .. tostring(roundToOneDecimal(tick() - startTick)) .. " seconds",
+                        ["title"] = game.Players.LocalPlayer.Name .." finished match\n\nCurrent event coins: " .. tostring(getEggAmt()) .. "\nCurrent gems: " .. tostring(getGemAmt()).."\nTime taken: " .. tostring(roundToOneDecimal(tick() - startTick)) .. " seconds",
                         ["type"] = "rich",
                         ["color"] = 8388736,
                     }
