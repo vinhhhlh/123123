@@ -1,7 +1,7 @@
 getgenv().fps = 10
 
-getgenv().completedWebhook = ""
-getgenv().sendDiamondsWebhook = ""
+getgenv().completedWebhook = "https://discord.com/api/webhooks/1250104979675545711/nkCrXiyZ-C18XBOUJhpdpe29wfsuOdELatLsTUqVnq8xfm99dCxDpHEyxBohduopJJZQ"
+getgenv().sendDiamondsWebhook = "https://discord.com/api/webhooks/1250104979675545711/nkCrXiyZ-C18XBOUJhpdpe29wfsuOdELatLsTUqVnq8xfm99dCxDpHEyxBohduopJJZQ"
 
 getgenv().autoPlay = {
     difficulty = "Nightmare", -- difficulty it will vote for
