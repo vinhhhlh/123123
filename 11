@@ -1,121 +1,69 @@
-local webhooks = {
-    ["Rare"] = "",
-    --["Epic"] = "https://discord.com/api/webhooks/1250431885356830753/zH9MW0OQ7x53wDTMBMYNWiRCxIdpDO6qnnDj7NsYcWVxc8Nk5aAkldtjOv0Qopd1zvuQ",
-    ["Legendary"] = "https://discord.com/api/webhooks/1250431799247638618/GDivguXyIuJdhAKwe1VJFufSC6dG_YGwfjpOaoduET2O80bgPPoxkkYRFw9fUnPIgL3P",
-    ["Mythic"] = "https://discord.com/api/webhooks/1250431736744247316/Tk03GcRDNkYnA3IbnfdY91J8bp7TYAj4MCTWXN_MgakmUhR_L_0Ku6mSxr1sJTr5IDr1",
-    ["Secret"] = "https://discord.com/api/webhooks/1250431664404959242/mQmn_5148vGYYGcT8v1RXWxz8lMBeex0QFKcComigDPcbZQTlNMtLO5szbHd-779AskH",
+getgenv().Key = "k3d5cc04abcc9f3116173d57"
+getgenv().EquipMacroTroop = true
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1214549135915745290/1250502467096150178/tvindaide.txt?ex=666b2cad&is=6669db2d&hm=6f6d9adb7a5e0e8225d0e3eb3fff59c05f13381cb798dbd5bc503a2a3dc37025&"
+getgenv().Config = {
+    ["JoinFailsafe"] = true,
+    ["RequiredGem"] = 1000,
+    ["SellRarities"] = {
+        ["Legendary"] = false,
+        ["Basic"] = false,
+        ["Epic"] = false,
+        ["Uncommon"] = false,
+        ["Rare"] = false
+    },
+    ["DelayReplay"] = 5,
+    ["ExchangeTier"] = 4,
+    ["WH_MatchComplete"] = false,
+    ["AutoSkip"] = true,
+    ["AutoClaimQuest"] = true,
+    ["AutoExchangeEvent"] = false,
+    ["WH_MailSent"] = false,
+    ["IgnoreMacroTiming"] = true,
+    ["SelectMacro"] = "tvindaide",
+    ["ALFS_DelayHop"] = 30,
+    ["PlaceFailsafe"] = true,
+    ["AutoJoinEndless"] = false,
+    ["PlayMacro"] = true,
+    ["AutoMail"] = false,
+    ["SelectDifficulty"] = "Nightmare",
+    ["AutoUseBoost"] = true,
+    ["AutoSummonTroop"] = false,
+    ["AutoReplay"] = true,
+    ["SellWave"] = 1,
+    ["AutoClaimEventPass"] = true,
+    ["BuyEventName"] = "KRoD9pJJH",
+    ["RequireRoll"] = 0,
+    ["AutoJoinMatch"] = true,
+    ["ALFS_HopServer"] = false,
+    ["BoostFPS"] = true,
+    ["UseAll"] = true,
+    ["AutoSellOW"] = false,
+    ["Summon10"] = true,
+    ["SelectCase"] = "BasicCrate",
+    ["AutoVoteDifficulty"] = true,
+    ["AutoClaimVIP"] = false,
+    ["SelectMap"] = "TimeFactory (Rewind)",
+    ["AutoListForSale"] = false,
+    ["BlackScreen"] = true,
+    ["AutoClaimEventQuest"] = true,
+    ["AutoBuyEvent"] = true,
+    ["AutoRejoin"] = true,
+    ["DeleteMap"] = true,
+    ["ABE_Gift"] = true,
+    ["AutoSave"] = true,
+    ["TPLobbyIfPlayer"] = true,
+    ["UseBoosts"] = {
+        ["2xEggsBoost"] = true,
+        ["2xXPBoost_Easter2024"] = true,
+        ["2xCloversBoost"] = true,
+        ["2xEventXPBoost"] = true,
+        ["Weekend_2xEndlessXPBoost"] = true,
+        ["2xLuckBoost"] = true,
+        ["2xXPBoost"] = true,
+        ["2xClocksBoost"] = true,
+        ["Weekend_2xCoinsBoost"] = true,
+        ["2xCoinsBoost"] = true
+    },
+    ["DelayJoin"] = 60
 }
-
-local notifyIfRarity = {
-    ["Rare"] = false,
-    ["Epic"] = true,
-    ["Legendary"] = true,
-    ["Mythic"] = true,
-    ["Secret"] = true,
-}
-
-local codes = {
-'raidsarecool',
-'sorry4delay',
-'thanks400k',
-'dayum100m',
-'wsindach4ht',
-'200kholymoly',
-'adontop',
-'subcool',
-'sub2toadboigaming',
-'sub2mozking',
-'sub2karizmaqt',
-'sub2jonaslyz',
-'sub2riktime',
-'sub2nagblox',
-}
-
--- wait for game load
-repeat task.wait(5) until game:IsLoaded()
-
-task.wait(5)
-
--- redeem code
---for i, v in codes do
-    --game:GetService("ReplicatedStorage").Remotes.UseCode:InvokeServer(v)
-    --task.wait(0.1)
---end
-
--- get gem using UI 
-local gems = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Toolbar.CurrencyList.Gems.TextLabel
-
-function getGems()
-    return tonumber(gems.Text)
-end
-
--- summon till you cant afford
-repeat
-game:GetService("ReplicatedStorage").Remotes.Summon:InvokeServer("Update1", 1) --Standard. Update1
-task.wait(1)
-until getGems() < 50
-
-function webhook(url, data)
-    pcall(function()
-        local newdata = game:GetService("HttpService"):JSONEncode(data)
-
-        local headers = {
-            ["content-type"] = "application/json"
-        }
-
-        request = http_request or request or HttpPost or syn.request
-        local a = { Url = url, Body = newdata, Method = "POST", Headers = headers }
-
-        request(a)
-    end)
-end
-
-local rarityConvert = {
-    [2] = "Rare",
-	[3] = "Epic",
-    [4] = "Legendary",
-    [5] = "Mythic",
-    [6] = "Secret"
-}
-
-function save()
-    return game:GetService("ReplicatedStorage").Remotes.GetInventory:InvokeServer()
-end
-
--- check inventory for troops of rarity
-local UnitData = require(game:GetService("ReplicatedStorage").Modules.Bins.UnitData)
-local unitDataV2 = {}
-
-for i, v in UnitData do
-    unitDataV2[i] = v.Rarity
-end
-
-for i, v in save().Units do
-    local rarity = rarityConvert[unitDataV2[v.Type]]
-
-    -- send webhook if got troop
-    if notifyIfRarity[rarity] then
-        webhook(
-            webhooks[rarity],
-            {
-                ["content"] = game.Players.LocalPlayer.Name .. " rolled a rare troop",
-                ["username"] = "Anime defender",
-                ["embeds"] = {
-                    {
-                        ["title"] = game.Players.LocalPlayer.Name ..
-                        " got a: " .. rarity .. " " .. v.Type,
-                        ["type"] = "rich",
-                        ["color"] = 8388736,
-                        ["author"] = {
-                            ["name"] = game.Players.LocalPlayer.Name,
-                        }
-
-                    }
-                }
-            })
-    end
-end
-
-
---write for yummytool
-writefile(game.Players.LocalPlayer.Name .. ".txt","Yummytool")
+loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
