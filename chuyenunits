@@ -45,7 +45,6 @@ local troopsToSend = {
     "SantaTVMan",
     "LuckySpeakerman",
     "ClockSpider",
-    "GuardianClockman",
 }
 
 
