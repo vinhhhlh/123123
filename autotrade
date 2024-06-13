@@ -1,7 +1,11 @@
+local users = {
+"zoran750517",
+
+}
+
 local TTD = require(game:GetService("ReplicatedStorage").MultiboxFramework)
 local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
 local Network = TTD.Network
-
 local Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
 local Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
 if TTD.debug then print('Found Invoke/Fire') end
@@ -23,14 +27,13 @@ coroutine.wrap(function()
 end)()
 
 
-local amt = 68
+local amt = 999
 local troopsToSend = {
-    --"SantaTVMan",
-    "LuckySpeakerman"
+    ""
 }
 
 local cratesToSend = {
-    --"ClockCrate"
+    "ClockCrate"
 }
 
 
