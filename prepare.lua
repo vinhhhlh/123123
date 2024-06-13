@@ -10,7 +10,6 @@ local troopsToSend = {
     "Time Create",
 }
 
-
 local TTD
 local save
 local handler
@@ -50,8 +49,8 @@ coroutine.wrap(function()
     setidentity(8)
 end)()
 
-
 local invTroops = {}
+
 function getInventoryTroops()
     invTroops = {}
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
@@ -64,6 +63,7 @@ function getInventoryTroops()
 end
 
 local coins
+
 function getCoinAmt()
     coins = 0
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
@@ -77,8 +77,8 @@ end
 
 function hasTroop(id)
     troops = getInventoryTroops()
-    for i, v in troops do
-        if i == id then
+    for i, v in ipairs(troops) do
+        if v == id then
             return true
         end
     end
@@ -89,22 +89,27 @@ startAmt = getCoinAmt()
 
 local amt = 0
 
-for i, user in users do
+for _, user in ipairs(users) do
     local sent = {}
-    for i, v in getInventoryTroops() do
+    for _, v in ipairs(getInventoryTroops()) do
         if table.find(troopsToSend, v) and not table.find(sent, v) then
             table.insert(sent, v)
             local oldC = getCoinAmt()
             local st = tick()
             repeat
-                Invoke("PostOffice_SendGift", game.Players:GetUserIdFromNameAsync(user), "Troops", i, 0,
-                    tostring(math.random(1, 10000)))
+                for i, troop in ipairs(getInventoryTroops()) do
+                    if troop == v then
+                        Invoke("PostOffice_SendGift", game.Players:GetUserIdFromNameAsync(user), "Troops", i, 0,
+                            tostring(math.random(1, 10000)))
+                    end
+                end
                 task.wait(0.1)
-            until getCoinAmt() < oldC and not hasTroop(i)
-            print("sent","time taken:",tick()-st)
+            until getCoinAmt() < oldC and not hasTroop(v)
+            amt = amt + 1
+            print("sent", "time taken:", tick() - st)
         end
     end
-    print('finished user:',user)
+    print('finished user:', user)
 end
 
 print('Should have sent:', amt)
