@@ -1,7 +1,5 @@
 local users = {
-    "jessica77173",
-    "megan42874",
-    "kerrysanchez1"
+    "viEhEd4",
 }
 
 local troopsToSend = {
