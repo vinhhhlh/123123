@@ -1,5 +1,5 @@
 local users = {
-    "viEhEd4",
+    "JThvfoqvOG",
 }
 
 local troopsToSend = {
