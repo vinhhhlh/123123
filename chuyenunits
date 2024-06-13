@@ -33,7 +33,6 @@ local troopsToSend = {
     "ClockSpider",
 }
 
-
 local TTD
 local save
 local handler
