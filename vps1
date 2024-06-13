@@ -1,6 +1,6 @@
 getgenv().Key = "k3d5cc04abcc9f3116173d57"
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1239208897177321573/1250787882474409994/tvindaide2.txt?ex=666c367d&is=666ae4fd&hm=877fc11c8338ec50317bd5f8c03ed0b630c50909dc1bcda7927cb880bd197896&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1214549135915745290/1250843529656406209/tvindaideguidi.txt?ex=666c6a51&is=666b18d1&hm=e267ee763183ec9eef84fb5f3847ef14cd5e0f90f1b85af7e8ee478fbb3e225f&"
 getgenv().Config = {
 	["AutoVoteDifficulty"] = true,
 	["AutoSave"] = true,
@@ -19,7 +19,7 @@ getgenv().Config = {
 	["AutoExchangeEvent"] = false,
 	["WH_MailSent"] = true,
 	["Summon10"] = true,
-	["SelectMacro"] = "tvindaide2",
+	["SelectMacro"] = "tvindaideguidi",
 	["ALFS_DelayHop"] = 30,
 	["AutoBuyEvent2"] = true,
 	["PlaceFailsafe"] = false,
