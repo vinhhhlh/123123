@@ -53,7 +53,7 @@ end
 repeat
 game:GetService("ReplicatedStorage").Remotes.Summon:InvokeServer("Standard", 1) --Standard. Update1
 task.wait(1)
-until getGems() < 500000
+until getGems() < 50
 
 function webhook(url, data)
     pcall(function()
