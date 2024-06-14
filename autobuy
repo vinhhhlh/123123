@@ -262,7 +262,7 @@ if game.PlaceId ~= 13775256536 then
 
     task.spawn(function()
         while game:GetService("Players").LocalPlayer.PlayerGui.Lobby.MarketplaceFrame.Visible do
-            task.wait()
+            task.wait(20)
         end
 
         RealHop()
@@ -318,7 +318,7 @@ if game.PlaceId ~= 13775256536 then
 
             print "bought"
         end
-        task.wait(1)
+        task.wait(20)
         items = 0
         for i, v in toBuy do
             items = items + 1
