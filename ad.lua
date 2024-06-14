@@ -72,7 +72,7 @@ getgenv().autoSummon = {
     },
 }
 
-script_key='k3d5cc04abcc9f3116173d57'
+script_key='CtAXUKyWuckhNYXMbrBnpiPfPIRWJSNJ'
 
 getgenv().macroTroops = { -- will equip these for your macro
     -- "MicrowaveMan",
