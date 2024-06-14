@@ -1,4 +1,4 @@
-local users = [
+local users = {
     "jessica77173",
     "megan42874",
     "kerrysanchez1",
