@@ -3,7 +3,7 @@ local webhooks = {
     ["Epic"] = "https://discord.com/api/webhooks/1250431885356830753/zH9MW0OQ7x53wDTMBMYNWiRCxIdpDO6qnnDj7NsYcWVxc8Nk5aAkldtjOv0Qopd1zvuQ",
     ["Legendary"] = "https://discord.com/api/webhooks/1250431885356830753/zH9MW0OQ7x53wDTMBMYNWiRCxIdpDO6qnnDj7NsYcWVxc8Nk5aAkldtjOv0Qopd1zvuQ",
     ["Mythic"] = "https://discord.com/api/webhooks/1250431885356830753/zH9MW0OQ7x53wDTMBMYNWiRCxIdpDO6qnnDj7NsYcWVxc8Nk5aAkldtjOv0Qopd1zvuQ",
-    ["Secret"] = "https://discord.com/api/webhooks/1250431885356830753/zH9MW0OQ7x53wDTMBMYNWiRCxIdpDO6qnnDj7NsYcWVxc8Nk5aAkldtjOv0Qopd1zvuQ",
+    ["Secret"] = "https://discord.com/api/webhooks/1250431885356830753/zH9MW0OQ7x53wDTMBMYNWiRCxIdpDO6qnnDj7NsYcWVxc8Nk5aAkldtjOv0Qopd1zvuQ"
 }
 
 local notifyIfRarity = {
@@ -11,7 +11,7 @@ local notifyIfRarity = {
 	["Epic"] = true,
     ["Legendary"] = true,
     ["Mythic"] = true,
-    ["Secret"] = true,
+    ["Secret"] = true
 }
 
 local codes = {
@@ -28,7 +28,7 @@ local codes = {
 'sub2karizmaqt',
 'sub2jonaslyz',
 'sub2riktime',
-'sub2nagblox',
+'sub2nagblox'
 }
 
 -- wait for game load
