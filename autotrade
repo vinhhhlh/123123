@@ -29,7 +29,9 @@ end)()
 
 local amt = 999
 local troopsToSend = {
-    ""
+    "Alarm Clockman",
+    "Cuckoo Clockman",
+    "Pendulum Clockman"
 }
 
 local cratesToSend = {
