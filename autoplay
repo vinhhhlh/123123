@@ -1,7 +1,7 @@
 getgenv().fps = 10
 
-getgenv().completedWebhook = "https://discord.com/api/webhooks/1248460475797082172/lM0X5TL0EnVojyBYYovvREz1amx-bHHJVFUn76E-myONB3Dcs5HeBBeRAhA3woubrraX"
-getgenv().sendDiamondsWebhook = "https://discord.com/api/webhooks/1248460475797082172/lM0X5TL0EnVojyBYYovvREz1amx-bHHJVFUn76E-myONB3Dcs5HeBBeRAhA3woubrraX"
+getgenv().completedWebhook = ""
+getgenv().sendDiamondsWebhook = ""
 
 getgenv().autoPlay = {
     difficulty = "Nightmare", -- difficulty it will vote for
@@ -12,26 +12,19 @@ getgenv().autoPlay = {
     showScreen = true,
 }
 
-getgenv().clockGift = {
-    user = "KRoD9pJJH",
-"toX4CmgJ",
-"rWihGDG",
-"FNORcnIef",
-"YxqG31J8n",
-"KLGGsob32i",
-"xmN4zoyK7Z",
-"ppzpqD63N",
-"RXlJmIGh4",
-"IK_6E59GSe",
-"iwairo0632"
+getgenv().clockGift = { -- randomly selected from list
+    users = {
+        "HYM2ySHa",
 
+    }
 }
 
 -- updated for clock event
 getgenv().autoEasterPass = {
     enabled = true,
     goToLobbyAfterReachedEggs = 3000, -- go back to lobby once you get this amt of eggs
-    convertEggsToGems = true
+    convertEggsToGems = true,
+    claimClockQuests = true,
 }
 
 getgenv().autoBoost = { -- this will use boosts when it runs out
@@ -44,10 +37,10 @@ getgenv().autoBoost = { -- this will use boosts when it runs out
 
 getgenv().autoMail = {
     enabled = true,          -- for gems
-    sendTroopsEnabled = true,
-    idToSendTo = JThvfoqvOG, -- for gems
-    idToSendTo2 = zoran750517,         -- this is for troops
-    sendGemsAfterReached = 50,
+    sendTroopsEnabled = false,
+    idToSendTo = 5456148550,  -- for gems
+    idToSendTo2 = 5456140552, -- this is for troops
+    sendGemsAfterReached = 1600,
     sendOfRarity = {
         ["Legendary"] = true,
         ["Basic"] = false,
@@ -57,15 +50,20 @@ getgenv().autoMail = {
         ["Rare"] = false,
         ["Exclusive"] = true,
         ["Godly"] = true
+    },
+    customSendTroops = {
+        ["ClockSpider"] = 0, -- troop nameid, userid to send to
+		--["LuckySpeakerman"] = 5456140552,
+		--["SantaTVMan"] = 5456140552,
     }
 }
 
 getgenv().autoSummon = {
     enabled = false,
-    crateType = "BasicCrate",             -- "JesterCrate", "BasicCrate"
-    summonAt = 10,                        -- summon all once you can do a certain amt
-    goToLobbyAfterReachedCoins = 1000000, -- go back and summon once you get certain amt of coins
-    useLuckBoost = true,                  -- use boost before summoning
+    crateType = "BasicCrate",                -- "JesterCrate", "BasicCrate"
+    summonAt = 10,                           -- summon all once you can do a certain amt
+    goToLobbyAfterReachedCoins = 1000000000, -- go back and summon once you get certain amt of coins
+    useLuckBoost = true,                     -- use boost before summoning
     deleteOfRarity = {
         ["Legendary"] = false,
         ["Basic"] = true,
@@ -76,8 +74,8 @@ getgenv().autoSummon = {
     },
 }
 
-getgenv().macroTroops = {"SantaTVMan","LuckySpeakerman","ClockSpider","GuardianClockman"}
-local macro = '{"53":{"Time":475,"Type":"VoteSkipWave"},"43":{"Type":"UpgradeTroop","Time":395,"Pos":"90.21156311035156, 234.4342498779297, -4113.65234375"},"73":{"Time":595,"Type":"VoteSkipWave"},"63":{"Time":535,"Type":"VoteSkipWave"},"93":{"Time":692,"Type":"VoteSkipWave"},"83":{"Type":"UpgradeTroop","Time":654,"Pos":"133.560302734375, 232.5080108642578, -4158.544921875"},"13":{"Type":"UpgradeTroop","Time":143,"Pos":"102.73808288574219, 234.4342498779297, -4114.5322265625"},"130":{"Time":889,"Type":"VoteSkipWave"},"23":{"Time":218,"Type":"VoteSkipWave"},"42":{"Time":394,"Type":"VoteSkipWave"},"52":{"Type":"UpgradeTroop","Time":465,"Pos":"121.67698669433594, 232.50799560546875, -4153.13623046875"},"62":{"Rotation":"1","Type":"PlaceTroop","Time":528,"Troop":"ClockSpider","Pos":"127.78238677978516, 232.5080108642578, -4147.56689453125"},"72":{"Type":"UpgradeTroop","Time":588,"Pos":"120.88764953613281, 232.50799560546875, -4142.7958984375"},"82":{"Time":652,"Type":"VoteSkipWave"},"92":{"Type":"UpgradeTroop","Time":685,"Pos":"126.75059509277344, 232.50799560546875, -4135.39892578125"},"122":{"Type":"UpgradeTroop","Time":838,"Pos":"113.56022644042969, 232.50799560546875, -4119.66943359375"},"129":{"Time":869,"Type":"VoteSkipWave"},"121":{"Type":"UpgradeTroop","Time":837,"Pos":"113.56022644042969, 232.50799560546875, -4119.66943359375"},"12":{"Rotation":"1","Type":"PlaceTroop","Time":139,"Troop":"ClockSpider","Pos":"112.09367370605469, 232.50799560546875, -4166.55078125"},"22":{"Type":"UpgradeTroop","Time":213,"Pos":"95.62960052490234, 234.4342498779297, -4105.93310546875"},"32":{"Type":"UpgradeTroop","Time":281,"Pos":"102.73808288574219, 234.4342498779297, -4114.5322265625"},"95":{"Rotation":"1","Type":"PlaceTroop","Time":700,"Troop":"ClockSpider","Pos":"115.48273468017578, 232.50799560546875, -4133.22607421875"},"85":{"Rotation":"1","Type":"PlaceTroop","Time":665,"Troop":"ClockSpider","Pos":"139.98526000976562, 232.5080108642578, -4145.44921875"},"75":{"Type":"UpgradeTroop","Time":597,"Pos":"133.5793914794922, 232.5080108642578, -4140.6171875"},"65":{"Type":"UpgradeTroop","Time":554,"Pos":"127.78238677978516, 232.5080108642578, -4147.56689453125"},"55":{"Time":495,"Type":"VoteSkipWave"},"45":{"Time":415,"Type":"VoteSkipWave"},"35":{"Time":317,"Type":"VoteSkipWave"},"116":{"Time":809,"Type":"VoteSkipWave"},"1":{"Rotation":"1","Type":"PlaceTroop","Time":28,"Troop":"LuckySpeakerman","Pos":"76.13078308105469, 230.82899475097656, -4176.22216796875"},"3":{"Time":58,"Type":"VoteSkipWave"},"2":{"Time":38,"Type":"VoteSkipWave"},"5":{"Time":78,"Type":"VoteSkipWave"},"4":{"Rotation":"1","Type":"PlaceTroop","Time":62,"Troop":"SantaTVMan","Pos":"95.62960052490234, 234.4342498779297, -4105.93310546875"},"7":{"Time":98,"Type":"VoteSkipWave"},"6":{"Rotation":"1","Type":"PlaceTroop","Time":80,"Troop":"SantaTVMan","Pos":"102.73808288574219, 234.4342498779297, -4114.5322265625"},"25":{"Time":258,"Type":"VoteSkipWave"},"8":{"Type":"UpgradeTroop","Time":101,"Pos":"76.12532806396484, 230.82899475097656, -4176.22216796875"},"110":{"Type":"UpgradeTroop","Time":789,"Pos":"114.53347778320312, 232.50799560546875, -4151.318359375"},"94":{"Type":"UpgradeTroop","Time":694,"Pos":"126.75059509277344, 232.50799560546875, -4135.39892578125"},"74":{"Rotation":"1","Type":"PlaceTroop","Time":595,"Troop":"ClockSpider","Pos":"133.5793914794922, 232.5080108642578, -4140.6171875"},"84":{"Type":"SellTroop","Time":657,"Pos":"76.10810852050781, 230.82899475097656, -4176.22216796875"},"54":{"Type":"UpgradeTroop","Time":477,"Pos":"121.67698669433594, 232.50799560546875, -4153.13623046875"},"64":{"Type":"UpgradeTroop","Time":552,"Pos":"127.78238677978516, 232.5080108642578, -4147.56689453125"},"34":{"Type":"UpgradeTroop","Time":302,"Pos":"102.73808288574219, 234.4342498779297, -4114.5322265625"},"44":{"Type":"UpgradeTroop","Time":397,"Pos":"95.62960052490234, 234.4342498779297, -4105.93310546875"},"126":{"Type":"UpgradeTroop","Time":853,"Pos":"124.21028137207031, 232.50799560546875, -4158.453125"},"102":{"Type":"UpgradeTroop","Time":739,"Pos":"118.45001983642578, 232.50799560546875, -4127.6484375"},"101":{"Type":"UpgradeTroop","Time":737,"Pos":"118.45001983642578, 232.50799560546875, -4127.6484375"},"14":{"Type":"UpgradeTroop","Time":152,"Pos":"95.62960052490234, 234.4342498779297, -4105.93310546875"},"24":{"Time":238,"Type":"VoteSkipWave"},"128":{"Type":"UpgradeTroop","Time":855,"Pos":"124.21028137207031, 232.50799560546875, -4158.453125"},"120":{"Type":"UpgradeTroop","Time":836,"Pos":"113.56022644042969, 232.50799560546875, -4119.66943359375"},"87":{"Type":"UpgradeTroop","Time":669,"Pos":"139.98526000976562, 232.5080108642578, -4145.44921875"},"77":{"Type":"UpgradeTroop","Time":617,"Pos":"133.5793914794922, 232.5080108642578, -4140.6171875"},"97":{"Type":"UpgradeTroop","Time":714,"Pos":"115.48273468017578, 232.50799560546875, -4133.22607421875"},"47":{"Time":435,"Type":"VoteSkipWave"},"37":{"Type":"UpgradeTroop","Time":320,"Pos":"90.21156311035156, 234.4342498779297, -4113.65234375"},"67":{"Time":575,"Type":"VoteSkipWave"},"57":{"Rotation":"1","Type":"PlaceTroop","Time":506,"Troop":"ClockSpider","Pos":"111.51141357421875, 232.50799560546875, -4156.9287109375"},"112":{"Rotation":"1","Type":"PlaceTroop","Time":799,"Troop":"ClockSpider","Pos":"108.7072982788086, 232.50799560546875, -4132.17236328125"},"115":{"Type":"UpgradeTroop","Time":807,"Pos":"108.7072982788086, 232.50799560546875, -4132.17236328125"},"111":{"Type":"SellTroop","Time":794,"Pos":"102.73808288574219, 234.4342498779297, -4114.5322265625"},"114":{"Type":"UpgradeTroop","Time":805,"Pos":"108.7072982788086, 232.50799560546875, -4132.17236328125"},"119":{"Rotation":"1","Type":"PlaceTroop","Time":833,"Troop":"ClockSpider","Pos":"113.56022644042969, 232.50799560546875, -4119.66943359375"},"27":{"Type":"UpgradeTroop","Time":265,"Pos":"102.73808288574219, 234.4342498779297, -4114.5322265625"},"17":{"Type":"UpgradeTroop","Time":160,"Pos":"90.21156311035156, 234.4342498779297, -4113.65234375"},"107":{"Type":"UpgradeTroop","Time":778,"Pos":"114.53347778320312, 232.50799560546875, -4151.318359375"},"86":{"Type":"UpgradeTroop","Time":666,"Pos":"139.98526000976562, 232.5080108642578, -4145.44921875"},"96":{"Time":712,"Type":"VoteSkipWave"},"36":{"Type":"UpgradeTroop","Time":318,"Pos":"95.62960052490234, 234.4342498779297, -4105.93310546875"},"46":{"Type":"UpgradeTroop","Time":417,"Pos":"102.73808288574219, 234.4342498779297, -4114.5322265625"},"103":{"Time":749,"Type":"VoteSkipWave"},"66":{"Time":555,"Type":"VoteSkipWave"},"106":{"Rotation":"1","Type":"PlaceTroop","Time":777,"Troop":"ClockSpider","Pos":"114.53347778320312, 232.50799560546875, -4151.318359375"},"125":{"Rotation":"1","Type":"PlaceTroop","Time":850,"Troop":"ClockSpider","Pos":"124.21028137207031, 232.50799560546875, -4158.453125"},"108":{"Type":"UpgradeTroop","Time":780,"Pos":"114.53347778320312, 232.50799560546875, -4151.318359375"},"124":{"Time":849,"Type":"VoteSkipWave"},"16":{"Type":"UpgradeTroop","Time":159,"Pos":"90.21156311035156, 234.4342498779297, -4113.65234375"},"26":{"Type":"UpgradeTroop","Time":260,"Pos":"112.09367370605469, 232.50799560546875, -4166.55078125"},"100":{"Rotation":"1","Type":"PlaceTroop","Time":735,"Troop":"ClockSpider","Pos":"118.45001983642578, 232.50799560546875, -4127.6484375"},"71":{"Type":"UpgradeTroop","Time":585,"Pos":"120.88764953613281, 232.50799560546875, -4142.7958984375"},"61":{"Type":"UpgradeTroop","Time":519,"Pos":"111.51141357421875, 232.50799560546875, -4156.9287109375"},"51":{"Rotation":"1","Type":"PlaceTroop","Time":463,"Troop":"ClockSpider","Pos":"121.67698669433594, 232.50799560546875, -4153.13623046875"},"41":{"Type":"UpgradeTroop","Time":377,"Pos":"102.73808288574219, 234.4342498779297, -4114.5322265625"},"91":{"Type":"UpgradeTroop","Time":683,"Pos":"126.75059509277344, 232.50799560546875, -4135.39892578125"},"81":{"Type":"UpgradeTroop","Time":633,"Pos":"133.560302734375, 232.5080108642578, -4158.544921875"},"59":{"Type":"UpgradeTroop","Time":511,"Pos":"111.51141357421875, 232.50799560546875, -4156.9287109375"},"49":{"Time":455,"Type":"VoteSkipWave"},"39":{"Time":357,"Type":"VoteSkipWave"},"29":{"Type":"UpgradeTroop","Time":273,"Pos":"90.21156311035156, 234.4342498779297, -4113.65234375"},"99":{"Type":"UpgradeTroop","Time":730,"Pos":"115.48273468017578, 232.50799560546875, -4133.22607421875"},"89":{"Type":"UpgradeTroop","Time":677,"Pos":"139.98526000976562, 232.5080108642578, -4145.44921875"},"79":{"Type":"UpgradeTroop","Time":624,"Pos":"133.560302734375, 232.5080108642578, -4158.544921875"},"69":{"Rotation":"1","Type":"PlaceTroop","Time":581,"Troop":"ClockSpider","Pos":"120.88764953613281, 232.50799560546875, -4142.7958984375"},"19":{"Type":"UpgradeTroop","Time":179,"Pos":"102.73808288574219, 234.4342498779297, -4114.5322265625"},"31":{"Type":"UpgradeTroop","Time":279,"Pos":"90.21156311035156, 234.4342498779297, -4113.65234375"},"21":{"Type":"UpgradeTroop","Time":200,"Pos":"112.09367370605469, 232.50799560546875, -4166.55078125"},"11":{"Time":138,"Type":"VoteSkipWave"},"60":{"Time":515,"Type":"VoteSkipWave"},"70":{"Type":"UpgradeTroop","Time":583,"Pos":"120.88764953613281, 232.50799560546875, -4142.7958984375"},"40":{"Type":"UpgradeTroop","Time":358,"Pos":"112.09367370605469, 232.50799560546875, -4166.55078125"},"50":{"Type":"UpgradeTroop","Time":459,"Pos":"90.21156311035156, 234.4342498779297, -4113.65234375"},"33":{"Type":"UpgradeTroop","Time":287,"Pos":"95.62960052490234, 234.4342498779297, -4105.93310546875"},"80":{"Time":632,"Type":"VoteSkipWave"},"90":{"Rotation":"1","Type":"PlaceTroop","Time":681,"Troop":"ClockSpider","Pos":"126.75059509277344, 232.50799560546875, -4135.39892578125"},"48":{"Type":"UpgradeTroop","Time":436,"Pos":"95.62960052490234, 234.4342498779297, -4105.93310546875"},"58":{"Type":"UpgradeTroop","Time":508,"Pos":"111.51141357421875, 232.50799560546875, -4156.9287109375"},"28":{"Type":"UpgradeTroop","Time":267,"Pos":"95.62960052490234, 234.4342498779297, -4105.93310546875"},"38":{"Time":337,"Type":"VoteSkipWave"},"88":{"Time":672,"Type":"VoteSkipWave"},"98":{"Type":"UpgradeTroop","Time":716,"Pos":"115.48273468017578, 232.50799560546875, -4133.22607421875"},"68":{"Type":"UpgradeTroop","Time":577,"Pos":"127.78238677978516, 232.5080108642578, -4147.56689453125"},"78":{"Rotation":"1","Type":"PlaceTroop","Time":622,"Troop":"ClockSpider","Pos":"133.560302734375, 232.5080108642578, -4158.544921875"},"15":{"Time":158,"Type":"VoteSkipWave"},"109":{"Time":789,"Type":"VoteSkipWave"},"105":{"Time":769,"Type":"VoteSkipWave"},"56":{"Type":"UpgradeTroop","Time":496,"Pos":"121.67698669433594, 232.50799560546875, -4153.13623046875"},"117":{"Time":829,"Type":"VoteSkipWave"},"18":{"Time":178,"Type":"VoteSkipWave"},"118":{"Type":"SellTroop","Time":830,"Pos":"90.21156311035156, 234.4342498779297, -4113.65234375"},"113":{"Type":"UpgradeTroop","Time":803,"Pos":"108.7072982788086, 232.50799560546875, -4132.17236328125"},"9":{"Time":118,"Type":"VoteSkipWave"},"123":{"Type":"SellTroop","Time":840,"Pos":"95.62960052490234, 234.4342498779297, -4105.93310546875"},"76":{"Type":"UpgradeTroop","Time":599,"Pos":"133.5793914794922, 232.5080108642578, -4140.6171875"},"104":{"Type":"UpgradeTroop","Time":754,"Pos":"118.45001983642578, 232.50799560546875, -4127.6484375"},"20":{"Time":198,"Type":"VoteSkipWave"},"30":{"Time":278,"Type":"VoteSkipWave"},"127":{"Type":"UpgradeTroop","Time":854,"Pos":"124.21028137207031, 232.50799560546875, -4158.453125"},"10":{"Rotation":"1","Type":"PlaceTroop","Time":119,"Troop":"SantaTVMan","Pos":"90.21156311035156, 234.4342498779297, -4113.65234375"}}'
+getgenv().macroTroops = {"SantaTVMan","LuckySpeakerman","ClockSpider"}
+local macro = '{"53":{"Type":"UpgradeTroop","Time":444,"Pos":"127.083740234375, 232.5080108642578, -4132.92236328125"},"43":{"Time":375,"Type":"VoteSkipWave"},"73":{"Type":"UpgradeTroop","Time":563,"Pos":"131.21749877929688, 232.5080108642578, -4145.23876953125"},"63":{"Rotation":"1","Type":"PlaceTroop","Time":497,"Troop":"ClockSpider","Pos":"145.77108764648438, 232.5080108642578, -4145.1435546875"},"93":{"Type":"UpgradeTroop","Time":665,"Pos":"143.8885498046875, 232.5080108642578, -4165.6884765625"},"83":{"Rotation":"1","Type":"PlaceTroop","Time":618,"Troop":"ClockSpider","Pos":"123.10147094726562, 232.50799560546875, -4159.3125"},"13":{"Type":"UpgradeTroop","Time":141,"Pos":"77.67683410644531, 234.43423461914062, -4126.05224609375"},"130":{"Time":976,"Type":"VoteSkipWave"},"23":{"Type":"UpgradeTroop","Time":204,"Pos":"77.67683410644531, 234.43423461914062, -4126.05224609375"},"42":{"Type":"UpgradeTroop","Time":363,"Pos":"94.01478576660156, 234.4342498779297, -4125.4619140625"},"52":{"Type":"UpgradeTroop","Time":442,"Pos":"127.083740234375, 232.5080108642578, -4132.92236328125"},"62":{"Type":"UpgradeTroop","Time":486,"Pos":"151.07757568359375, 232.5080108642578, -4135.8076171875"},"72":{"Time":563,"Type":"VoteSkipWave"},"82":{"Type":"UpgradeTroop","Time":610,"Pos":"131.8657989501953, 232.5080108642578, -4156.85205078125"},"92":{"Type":"UpgradeTroop","Time":665,"Pos":"143.8885498046875, 232.5080108642578, -4165.6884765625"},"122":{"Type":"UpgradeTroop","Time":851,"Pos":"154.50946044921875, 232.50802612304688, -4161.17822265625"},"129":{"Time":956,"Type":"VoteSkipWave"},"121":{"Rotation":"1","Type":"PlaceTroop","Time":849,"Troop":"ClockSpider","Pos":"154.50946044921875, 232.50802612304688, -4161.17822265625"},"12":{"Time":140,"Type":"VoteSkipWave"},"22":{"Time":201,"Type":"VoteSkipWave"},"32":{"Type":"UpgradeTroop","Time":264,"Pos":"94.01478576660156, 234.4342498779297, -4125.4619140625"},"95":{"Rotation":"1","Type":"PlaceTroop","Time":681,"Troop":"ClockSpider","Pos":"128.55316162109375, 232.5080108642578, -4165.47021484375"},"85":{"Type":"UpgradeTroop","Time":621,"Pos":"123.10147094726562, 232.50799560546875, -4159.3125"},"75":{"Rotation":"1","Type":"PlaceTroop","Time":592,"Troop":"ClockSpider","Pos":"144.75119018554688, 232.5080108642578, -4154.1884765625"},"65":{"Type":"UpgradeTroop","Time":506,"Pos":"145.77108764648438, 232.5080108642578, -4145.1435546875"},"55":{"Type":"UpgradeTroop","Time":450,"Pos":"127.083740234375, 232.5080108642578, -4132.92236328125"},"45":{"Rotation":"1","Type":"PlaceTroop","Time":382,"Troop":"ClockSpider","Pos":"136.9464111328125, 232.5080108642578, -4138.544921875"},"35":{"Type":"UpgradeTroop","Time":293,"Pos":"64.61773681640625, 234.43421936035156, -4125.65625"},"116":{"Rotation":"1","Type":"PlaceTroop","Time":827,"Troop":"ClockSpider","Pos":"115.73577880859375, 232.5079803466797, -4155.52490234375"},"1":{"Rotation":"1","Type":"PlaceTroop","Time":56,"Troop":"LuckySpeakerman","Pos":"85.16222381591797, 230.82907104492188, -4221.91064453125"},"3":{"Rotation":"1","Type":"PlaceTroop","Time":63,"Troop":"SantaTVMan","Pos":"94.01478576660156, 234.4342498779297, -4125.4619140625"},"2":{"Time":60,"Type":"VoteSkipWave"},"5":{"Rotation":"1","Type":"PlaceTroop","Time":84,"Troop":"LuckySpeakerman","Pos":"67.80104064941406, 230.8289794921875, -4175.3515625"},"4":{"Time":80,"Type":"VoteSkipWave"},"7":{"Rotation":"1","Type":"PlaceTroop","Time":100,"Troop":"SantaTVMan","Pos":"77.67683410644531, 234.43423461914062, -4126.05224609375"},"6":{"Time":100,"Type":"VoteSkipWave"},"25":{"Type":"UpgradeTroop","Time":211,"Pos":"64.61773681640625, 234.43421936035156, -4125.65625"},"8":{"Rotation":"1","Type":"PlaceTroop","Time":104,"Troop":"SantaTVMan","Pos":"64.61773681640625, 234.43421936035156, -4125.65625"},"110":{"Time":796,"Type":"VoteSkipWave"},"94":{"Time":680,"Type":"VoteSkipWave"},"74":{"Time":583,"Type":"VoteSkipWave"},"84":{"Time":619,"Type":"VoteSkipWave"},"54":{"Time":447,"Type":"VoteSkipWave"},"64":{"Type":"UpgradeTroop","Time":499,"Pos":"145.77108764648438, 232.5080108642578, -4145.1435546875"},"34":{"Type":"UpgradeTroop","Time":290,"Pos":"77.67683410644531, 234.43423461914062, -4126.05224609375"},"44":{"Type":"UpgradeTroop","Time":377,"Pos":"117.24662780761719, 232.50799560546875, -4145.09033203125"},"126":{"Time":896,"Type":"VoteSkipWave"},"102":{"Type":"UpgradeTroop","Time":718,"Pos":"115.0450439453125, 232.50799560546875, -4132.7529296875"},"101":{"Type":"UpgradeTroop","Time":717,"Pos":"115.0450439453125, 232.50799560546875, -4132.7529296875"},"14":{"Type":"UpgradeTroop","Time":145,"Pos":"77.67683410644531, 234.43423461914062, -4126.05224609375"},"24":{"Type":"UpgradeTroop","Time":205,"Pos":"77.67683410644531, 234.43423461914062, -4126.05224609375"},"128":{"Time":936,"Type":"VoteSkipWave"},"120":{"Time":836,"Type":"VoteSkipWave"},"87":{"Time":640,"Type":"VoteSkipWave"},"77":{"Type":"UpgradeTroop","Time":594,"Pos":"144.75119018554688, 232.5080108642578, -4154.1884765625"},"97":{"Type":"UpgradeTroop","Time":684,"Pos":"128.55316162109375, 232.5080108642578, -4165.47021484375"},"47":{"Type":"UpgradeTroop","Time":399,"Pos":"136.9464111328125, 232.5080108642578, -4138.544921875"},"37":{"Type":"UpgradeTroop","Time":310,"Pos":"64.61773681640625, 234.43421936035156, -4125.65625"},"67":{"Type":"UpgradeTroop","Time":524,"Pos":"145.77108764648438, 232.5080108642578, -4145.1435546875"},"57":{"Type":"SellTroop","Time":455,"Pos":"85.15907287597656, 230.82908630371094, -4221.91064453125"},"112":{"Type":"UpgradeTroop","Time":797,"Pos":"118.80587768554688, 232.50799560546875, -4169.4052734375"},"115":{"Time":816,"Type":"VoteSkipWave"},"111":{"Rotation":"1","Type":"PlaceTroop","Time":795,"Troop":"ClockSpider","Pos":"118.80587768554688, 232.50799560546875, -4169.4052734375"},"114":{"Type":"UpgradeTroop","Time":799,"Pos":"118.80587768554688, 232.50799560546875, -4169.4052734375"},"119":{"Type":"UpgradeTroop","Time":831,"Pos":"115.73577880859375, 232.5079803466797, -4155.52490234375"},"27":{"Type":"UpgradeTroop","Time":225,"Pos":"117.24662780761719, 232.50799560546875, -4145.09033203125"},"17":{"Type":"UpgradeTroop","Time":168,"Pos":"94.01478576660156, 234.4342498779297, -4125.4619140625"},"107":{"Type":"SellTroop","Time":786,"Pos":"94.01478576660156, 234.4342498779297, -4125.4619140625"},"86":{"Type":"UpgradeTroop","Time":622,"Pos":"123.10147094726562, 232.50799560546875, -4159.3125"},"96":{"Type":"UpgradeTroop","Time":683,"Pos":"128.55316162109375, 232.5080108642578, -4165.47021484375"},"36":{"Time":299,"Type":"VoteSkipWave"},"46":{"Type":"UpgradeTroop","Time":393,"Pos":"64.61773681640625, 234.43421936035156, -4125.65625"},"103":{"Type":"UpgradeTroop","Time":719,"Pos":"115.0450439453125, 232.50799560546875, -4132.7529296875"},"66":{"Time":523,"Type":"VoteSkipWave"},"106":{"Time":775,"Type":"VoteSkipWave"},"125":{"Time":876,"Type":"VoteSkipWave"},"108":{"Type":"SellTroop","Time":789,"Pos":"77.67683410644531, 234.43423461914062, -4126.05224609375"},"124":{"Time":856,"Type":"VoteSkipWave"},"16":{"Rotation":"1","Type":"PlaceTroop","Time":162,"Troop":"ClockSpider","Pos":"117.24662780761719, 232.50799560546875, -4145.09033203125"},"26":{"Time":221,"Type":"VoteSkipWave"},"100":{"Rotation":"1","Type":"PlaceTroop","Time":715,"Troop":"ClockSpider","Pos":"115.0450439453125, 232.50799560546875, -4132.7529296875"},"71":{"Type":"UpgradeTroop","Time":561,"Pos":"131.21749877929688, 232.5080108642578, -4145.23876953125"},"61":{"Time":484,"Type":"VoteSkipWave"},"51":{"Rotation":"1","Type":"PlaceTroop","Time":440,"Troop":"ClockSpider","Pos":"127.083740234375, 232.5080108642578, -4132.92236328125"},"41":{"Type":"UpgradeTroop","Time":342,"Pos":"77.67683410644531, 234.43423461914062, -4126.05224609375"},"91":{"Type":"UpgradeTroop","Time":664,"Pos":"143.8885498046875, 232.5080108642578, -4165.6884765625"},"81":{"Type":"UpgradeTroop","Time":603,"Pos":"131.8657989501953, 232.5080108642578, -4156.85205078125"},"59":{"Type":"UpgradeTroop","Time":478,"Pos":"151.07757568359375, 232.5080108642578, -4135.8076171875"},"49":{"Type":"UpgradeTroop","Time":414,"Pos":"136.9464111328125, 232.5080108642578, -4138.544921875"},"39":{"Type":"UpgradeTroop","Time":320,"Pos":"117.24662780761719, 232.50799560546875, -4145.09033203125"},"29":{"Time":241,"Type":"VoteSkipWave"},"99":{"Type":"UpgradeTroop","Time":702,"Pos":"128.55316162109375, 232.5080108642578, -4165.47021484375"},"89":{"Time":660,"Type":"VoteSkipWave"},"79":{"Rotation":"1","Type":"PlaceTroop","Time":600,"Troop":"ClockSpider","Pos":"131.8657989501953, 232.5080108642578, -4156.85205078125"},"69":{"Type":"UpgradeTroop","Time":537,"Pos":"131.21749877929688, 232.5080108642578, -4145.23876953125"},"19":{"Type":"UpgradeTroop","Time":176,"Pos":"64.61773681640625, 234.43421936035156, -4125.65625"},"31":{"Type":"UpgradeTroop","Time":256,"Pos":"77.67683410644531, 234.43423461914062, -4126.05224609375"},"21":{"Type":"UpgradeTroop","Time":185,"Pos":"94.01478576660156, 234.4342498779297, -4125.4619140625"},"11":{"Type":"UpgradeTroop","Time":124,"Pos":"94.01478576660156, 234.4342498779297, -4125.4619140625"},"60":{"Type":"UpgradeTroop","Time":479,"Pos":"151.07757568359375, 232.5080108642578, -4135.8076171875"},"70":{"Time":543,"Type":"VoteSkipWave"},"40":{"Time":339,"Type":"VoteSkipWave"},"50":{"Type":"UpgradeTroop","Time":433,"Pos":"136.9464111328125, 232.5080108642578, -4138.544921875"},"33":{"Time":279,"Type":"VoteSkipWave"},"80":{"Type":"UpgradeTroop","Time":602,"Pos":"131.8657989501953, 232.5080108642578, -4156.85205078125"},"90":{"Rotation":"1","Type":"PlaceTroop","Time":660,"Troop":"ClockSpider","Pos":"143.8885498046875, 232.5080108642578, -4165.6884765625"},"48":{"Time":412,"Type":"VoteSkipWave"},"58":{"Rotation":"1","Type":"PlaceTroop","Time":475,"Troop":"ClockSpider","Pos":"151.07757568359375, 232.5080108642578, -4135.8076171875"},"28":{"Type":"UpgradeTroop","Time":231,"Pos":"64.61773681640625, 234.43421936035156, -4125.65625"},"38":{"Time":319,"Type":"VoteSkipWave"},"88":{"Type":"UpgradeTroop","Time":642,"Pos":"123.10147094726562, 232.50799560546875, -4159.3125"},"98":{"Time":700,"Type":"VoteSkipWave"},"68":{"Rotation":"1","Type":"PlaceTroop","Time":535,"Troop":"ClockSpider","Pos":"131.21749877929688, 232.5080108642578, -4145.23876953125"},"78":{"Type":"UpgradeTroop","Time":595,"Pos":"144.75119018554688, 232.5080108642578, -4154.1884765625"},"15":{"Time":161,"Type":"VoteSkipWave"},"109":{"Type":"SellTroop","Time":792,"Pos":"64.61773681640625, 234.43421936035156, -4125.65625"},"105":{"Time":755,"Type":"VoteSkipWave"},"56":{"Type":"SellTroop","Time":453,"Pos":"67.79086303710938, 230.82901000976562, -4175.3515625"},"117":{"Type":"UpgradeTroop","Time":829,"Pos":"115.73577880859375, 232.5079803466797, -4155.52490234375"},"18":{"Type":"UpgradeTroop","Time":175,"Pos":"64.61773681640625, 234.43421936035156, -4125.65625"},"118":{"Type":"UpgradeTroop","Time":830,"Pos":"115.73577880859375, 232.5079803466797, -4155.52490234375"},"113":{"Type":"UpgradeTroop","Time":798,"Pos":"118.80587768554688, 232.50799560546875, -4169.4052734375"},"9":{"Type":"UpgradeTroop","Time":112,"Pos":"94.01478576660156, 234.4342498779297, -4125.4619140625"},"123":{"Type":"UpgradeTroop","Time":852,"Pos":"154.50946044921875, 232.50802612304688, -4161.17822265625"},"76":{"Type":"UpgradeTroop","Time":594,"Pos":"144.75119018554688, 232.5080108642578, -4154.1884765625"},"104":{"Time":735,"Type":"VoteSkipWave"},"20":{"Time":181,"Type":"VoteSkipWave"},"30":{"Type":"UpgradeTroop","Time":243,"Pos":"94.01478576660156, 234.4342498779297, -4125.4619140625"},"127":{"Time":916,"Type":"VoteSkipWave"},"10":{"Time":120,"Type":"VoteSkipWave"}}'
 local HttpService = game:GetService("HttpService")
 local decrpytMacro = HttpService:JSONDecode(macro)
 
@@ -89,7 +87,8 @@ function convertPosToInstance(pos)
     local vector = Vector3.new(tonumber(split[1]), tonumber(split[2]), tonumber(split[3]))
     warn(vector)
     for i, v in pairs(workspace.Troops:GetChildren()) do
-        local mag = (vector - v.HumanoidRootPart.CFrame.p).Magnitude
+        local prt = (v.Name == "ClockSpider" and v.CenterPart) or v.PrimaryPart or v.Hitbox
+        local mag = (vector - prt.CFrame.p).Magnitude
         if mag < closestDistance then
             closestTroop = v
             closestDistance = mag
@@ -274,11 +273,13 @@ function getInventoryTroops()
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
     for name, v in pairs(save._data.Inventory.Troops) do
         for i, v in pairs(v) do
-            invTroops[name] = i
+            invTroops[i] = name
         end
     end
     return invTroops
 end
+
+local troops = {}
 
 function webhook(url, data)
     pcall(function()
@@ -295,10 +296,9 @@ function webhook(url, data)
     end)
 end
 
-local troops = {}
-
 function findTroopIdByName(name)
-    return troops[name] or nil
+    for i, v in troops do if v == name then return i end end
+    return nil
 end
 
 local eggs
@@ -420,8 +420,7 @@ function tryClaimEasterPass()
         end
 
 
-        writefile(game.Players.LocalPlayer.Name.."level.txt",tostring(getMaxLevel()))
-
+        writefile(game.Players.LocalPlayer.Name .. "level.txt", tostring(getMaxLevel()))
     end
 end
 
@@ -451,25 +450,25 @@ end
 
 function trySendAllGems()
     if getGemAmt() >= getgenv().autoMail.sendGemsAfterReached and getgenv().autoMail.enabled and getCoinAmt() >= 100 then
-
         local oldGem = getGemAmt()
 
         Network.Invoke("PostOffice_SendGift", getgenv().autoMail.idToSendTo, nil, nil, getGemAmt(),
             tostring(math.random(1, 10000)))
-            webhook(
-                sendDiamondsWebhook,
-                {
-                    ["content"] = "",
-                    ["username"] = "ttd",
-                    ["embeds"] = {
-                        {
-                            ["title"] = game.Players.LocalPlayer.Name .. " sent mail\n\nSent" .. tostring(oldGem) .. " gems to " .. tostring(getgenv().autoMail.idToSendTo) ,
-                            ["type"] = "rich",
-                            ["color"] = 8388736,
-                        }
+        webhook(
+            sendDiamondsWebhook,
+            {
+                ["content"] = "",
+                ["username"] = "ttd",
+                ["embeds"] = {
+                    {
+                        ["title"] = game.Players.LocalPlayer.Name ..
+                            " sent mail\n\nSent" ..
+                            tostring(oldGem) .. " gems to " .. tostring(getgenv().autoMail.idToSendTo),
+                        ["type"] = "rich",
+                        ["color"] = 8388736,
                     }
-                })
-
+                }
+            })
     end
 end
 
@@ -480,6 +479,19 @@ local function ClickButton(btn)
             evnt:Fire()
         end
     end
+end
+
+local Gui = game:GetService("GuiService"); local Vim = game:GetService("VirtualInputManager")
+
+function clickGui(guiName)
+    Gui.SelectedObject = guiName
+    task.wait(.1)
+    Vim:SendKeyEvent(true, 13, false, game)
+    task.wait(.1)
+    Vim:SendKeyEvent(false, 13, false, game)
+    task.wait(.1)
+    Gui.SelectedObject = nil
+    task.wait(.1)
 end
 
 function trySummon()
@@ -536,10 +548,107 @@ function trySummon()
     end)
 end
 
+if not isfile("clockIndex.txt") then
+    writefile("clockIndex.txt", "1")
+end
+
 function gift10Clocks()
     local clocks = getEggAmt()
     if clocks >= 3000 then
-       Network.Fire("Gift10Crates","ClockCrate",clockGift.user) 
+        game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible = false
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(461, -60, -924)
+        task.wait(1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(449, -59, -916)
+        task.wait(1)
+        game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible = false
+
+        if clockGift.users[tonumber(readfile("clockIndex.txt"))] == nil then
+            writefile("clockIndex.txt", "1")
+        end
+        user = clockGift.users[tonumber(readfile("clockIndex.txt"))]
+
+        repeat
+            clocks = getEggAmt()
+
+
+            Network.Fire("Gift10Crates", "ClockCrate", user)
+
+            local st = tick()
+
+            repeat task.wait(1) until game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible or tick() - st >= 5
+
+            if tick() - st >= 5 then
+                print("Canceled")
+                return
+            end
+
+            task.wait(1)
+
+            ClickButton(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification
+                .Buttons.YesButton.Btn)
+        until clocks < 3000
+    end
+end
+
+function gift1Clock()
+    local clocks = getEggAmt()
+    if clocks >= 300 then
+        game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible = false
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(461, -60, -924)
+        task.wait(1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(449, -59, -916)
+        task.wait(1)
+        game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible = false
+
+        if clockGift.users[tonumber(readfile("clockIndex.txt"))] == nil then
+            writefile("clockIndex.txt", "1")
+        end
+        user = clockGift.users[tonumber(readfile("clockIndex.txt"))]
+
+        repeat
+            clocks = getEggAmt()
+
+
+            Network.Fire("Gift1Crate", "ClockCrate", user)
+
+            local st = tick()
+
+            repeat task.wait(1) until game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible or tick() - st >= 5
+
+            if tick() - st >= 5 then
+                print("Canceled")
+                return
+            end
+
+            task.wait(1)
+
+            ClickButton(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification
+                .Buttons.YesButton.Btn)
+        until clocks < 300
+    end
+end
+
+function claimQuests()
+    if not autoEasterPass.claimClockQuests then return end
+    local questHolder
+    for i, v in game:GetService("ReplicatedStorage").FrameworkDependencies:GetChildren() do
+        if v:FindFirstChild("ClockQuests") then
+            questHolder = v.ClockQuests
+        end
+    end
+
+    for i, quest in questHolder:GetChildren() do
+        Network.Fire("ClockEvent_ClaimEventQuestReward", quest.Name)
+    end
+end
+
+function tryClaimMail()
+    if #Invoke("PostOffice_GetInbox") > 0 then
+        local tab = {}
+        for i, v in pairs(Invoke("PostOffice_GetInbox")) do
+            table.insert(tab, v._id)
+        end
+        Invoke("PostOffice_BulkClaimPackages", tab)
     end
 end
 
@@ -567,15 +676,30 @@ function trySendAllTroopsAndCrates()
 
 
     local user = autoMail.idToSendTo2
-    for i, v in pairs(save:GetData().Inventory.Troops) do
-        if autoMail.sendOfRarity[troopDatas[i]] then
+    for troopName, v in pairs(save:GetData().Inventory.Troops) do
+        if autoMail.sendOfRarity[troopDatas[troopName]] then
             for i, v in pairs(v) do
                 if getCoinAmt() >= 100 then
                     print("Sending troop")
-                    task.spawn(function()
-                        Invoke("PostOffice_SendGift", user, "Troops", i, 0,
-                            tostring(math.random(1, 10000)))
-                    end)
+
+                    if autoMail.customSendTroops[troopName] then
+                        for i = 1, 2 do
+                            task.spawn(function()
+                                Invoke("PostOffice_SendGift", autoMail.customSendTroops[troopName], "Troops", i, 0,
+                                    tostring(math.random(1, 10000)))
+                            end)
+                            task.wait(2)
+                        end
+                    else
+                        for i = 1, 2 do
+                            task.spawn(function()
+                                Invoke("PostOffice_SendGift", user, "Troops", i, 0,
+                                    tostring(math.random(1, 10000)))
+                            end)
+                            task.wait(2)
+                        end
+                    end
+
                     task.wait(3)
                 else
                     return
@@ -584,16 +708,31 @@ function trySendAllTroopsAndCrates()
         end
     end
 
-    for i, v in pairs(save:GetData().Inventory.Crates) do
-        if autoMail.sendOfRarity[crateDatas[i]] then
+    for troopName, v in pairs(save:GetData().Inventory.Crates) do
+        if autoMail.sendOfRarity[crateDatas[troopName]] then
             for i, v in pairs(v) do
                 if getCoinAmt() >= 100 then
                     print("Sending crate")
-                    task.spawn(function()
-                        Invoke("PostOffice_SendGift", user, "Crates", i, 0,
-                            tostring(math.random(1, 10000)))
-                    end)
-                    task.wait(3)
+                    for i = 1, 2 do
+                        task.spawn(function()
+                            Invoke("PostOffice_SendGift", clockGift.users[math.random(1, #clockGift.users)], "Crates",
+                                i,
+                                0,
+                                tostring(math.random(1, 10000)))
+                        end)
+                        task.wait(2)
+                    end
+
+                    for i = 1, 2 do
+                        task.spawn(function()
+                            Invoke("PostOffice_SendGift", user, "Crates", i,
+                                0,
+                                tostring(math.random(1, 10000)))
+                        end)
+                    end
+                    task.wait(2)
+
+                    task.wait(4)
                 else
                     return
                 end
@@ -642,8 +781,9 @@ if game.PlaceId == 13775256536 then
 
     repeat
         pcall(function()
-    handler = game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.EventPassFrame.EventPassHandler
-    end)
+            handler = game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.EventPassFrame
+                .EventPassHandler
+        end)
         task.wait()
     until handler ~= nil
 
@@ -659,9 +799,12 @@ if game.PlaceId == 13775256536 then
         Fire("UnequipAllTroops")
     end)
 
-    for i, v in pairs(macroTroops) do
-        Fire("ToggleEquipTroop", findTroopIdByName(v))
-    end
+    task.wait(1)
+    task.spawn(function()
+        for i, v in pairs(macroTroops) do
+            Fire("ToggleEquipTroop", findTroopIdByName(v))
+        end
+    end)
 
     G2L["4"]["Text"] = [[Status: Using boosts (if found)]];
     importEvent("UseTimedBoost")
@@ -682,22 +825,41 @@ if game.PlaceId == 13775256536 then
 
     G2L["4"]["Text"] = [[Status: Claiming easter pass and converting gems]];
 
-    tryClaimEasterPass()
+    task.spawn(function()
+        tryClaimEasterPass()
+    end)
     task.wait(1)
     buyMaxGemsWithEggs()
     task.wait(1)
-    --gift10Clocks()
+
+    --[[task.spawn(function()
+        gift10Clocks()
+        gift1Clock()
+        writefile("clockIndex.txt", tostring(tonumber(readfile("clockIndex.txt") + 1)))
+    end)]]
+
     task.spawn(function()
+        claimQuests()
+    end)
+
+    task.spawn(function()
+        tryClaimMail()
+    end)
+
+    if readfile(game.Players.LocalPlayer.Name .. "level.txt") == "80" then
+        task.spawn(function()
             trySendAllGems()
         end)
-
-    if readfile(game.Players.LocalPlayer.Name.."level.txt") == "40" then
         task.wait(1)
         task.spawn(function()
             trySendAllTroopsAndCrates()
         end)
 
         task.wait(4)
+        writefile(game.Players.LocalPlayer.Name .. ".txt", "Yummytool")
+
+        --kill script
+        coroutine.yield()
     end
 
     G2L["4"]["Text"] = [[Status: trying to send mail]];
@@ -721,11 +883,12 @@ if game.PlaceId == 13775256536 then
 
     function startGame(areaName, maxPlayers)
         local QueueFrame = game.Players.LocalPlayer.PlayerGui.Lobby.QueueFrame
-        for _,Area in(workspace.Lifts:GetChildren()) do
+        for _, Area in (workspace.Lifts:GetChildren()) do
             if Area.Name == areaName then
                 local PlayersCount = string.split(Area.BasePart.StatusGui.PlayersCount.Text, "/")
                 if tonumber(PlayersCount[1]) <= maxPlayers then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Area.BasePart.CFrame + Vector3.new(0,5,0)
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Area.BasePart.CFrame +
+                        Vector3.new(0, 5, 0)
                     repeat task.wait() until QueueFrame.Visible
                     local PlayersAmount = string.split(QueueFrame.PlayerAmount.PlayerAmount.Text, "/")
                     repeat task.wait() until tonumber(PlayersAmount[1]) >= maxPlayers
@@ -739,7 +902,7 @@ if game.PlaceId == 13775256536 then
             end
             task.wait(.1)
         end
-    
+
         if not QueueFrame.Visible then
             startGame(areaName, maxPlayers)
         end
@@ -747,7 +910,9 @@ if game.PlaceId == 13775256536 then
 
     G2L["4"]["Text"] = [[Status: Joining map: ]] .. getgenv().autoPlay.map;
     print("Lobby | Joining map: " .. getgenv().autoPlay.map)
-    startGame(getgenv().autoPlay.map,1)
+    if readfile(game.Players.LocalPlayer.Name .. "level.txt") ~= "80" then
+        startGame(getgenv().autoPlay.map, 1)
+    end
 elseif game.PlaceId == 14082129854 then
     local startTick = tick()
     print "in game"
@@ -772,6 +937,9 @@ elseif game.PlaceId == 14082129854 then
         print("FARMING | Difficulty selected: " .. getgenv().autoPlay.difficulty)
     end)
 
+    if #game.Players:GetPlayers() > 1 then
+        game:GetService("TeleportService"):Teleport(13775256536, game:GetService("Players").LocalPlayer)
+    end
 
     -- turn on auto skip
     task.spawn(function()
@@ -810,6 +978,9 @@ elseif game.PlaceId == 14082129854 then
                     if v.Type == "PlaceTroop" then
                         G2L["4"]["Text"] = [[Status: Placing troop]];
                         local split = v.Pos:split(", ")
+
+                        local oldTroops = workspace.Troops:GetChildren()
+                        local troopName = v.Troop
                         print(tonumber(split[1]),
                             tonumber(split[2]),
                             tonumber(split[3]), v.Rotation)
@@ -823,6 +994,52 @@ elseif game.PlaceId == 14082129854 then
                             },
                             [2] = placeTroopId
                         })
+
+                        local placed = false
+                        local newTab = workspace.Troops:GetChildren()
+                        for i, v in newTab do
+                            if table.find(v, oldTroops) then
+                                newTab[i] = nil
+                            end
+                        end
+                        for i, v in newTab do
+                            if v.Name == troopName then
+                                placed = true
+                            end
+                        end
+
+                        task.spawn(function()
+                            if not placed then
+                                repeat
+                                    local oldTroops = workspace.Troops:GetChildren()
+
+                                    game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer({
+                                        [1] = {
+                                            [1] = v.Troop,
+                                            [2] = Vector3.new(tonumber(split[1]),
+                                                tonumber(split[2]),
+                                                tonumber(split[3])),
+                                            [3] = tonumber(v.Rotation)
+                                        },
+                                        [2] = placeTroopId
+                                    })
+
+                                    local newTab = workspace.Troops:GetChildren()
+                                    for i, v in newTab do
+                                        if table.find(v, oldTroops) then
+                                            newTab[i] = nil
+                                        end
+                                    end
+                                    for i, v in newTab do
+                                        if v.Name == troopName then
+                                            placed = true
+                                        end
+                                    end
+
+                                    task.wait(4)
+                                until placed
+                            end
+                        end)
                     elseif v.Type == "SellTroop" and v.Pos then
                         G2L["4"]["Text"] = [[Status: Selling troop]];
 
@@ -836,12 +1053,31 @@ elseif game.PlaceId == 14082129854 then
                     elseif v.Type == "UpgradeTroop" and v.Pos then
                         G2L["4"]["Text"] = [[Status: Upgrading troop]];
                         print("upgrade")
+                        local inst = convertPosToInstance(v.Pos)
+                        local oldLvl
+                        pcall(function()
+                            oldLvl = inst.TroopLevel.Value
+                        end)
                         game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer({
                             [1] = {
-                                [1] = convertPosToInstance(v.Pos)
+                                [1] = inst
                             },
                             [2] = upgradeId
                         })
+                        task.spawn(function()
+                            task.wait(0.5)
+                            if oldLvl and inst.TroopLevel.Value == oldLvl then
+                                repeat
+                                    game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer({
+                                        [1] = {
+                                            [1] = inst
+                                        },
+                                        [2] = upgradeId
+                                    })
+                                    task.wait(5)
+                                until inst.TroopLevel.Value > oldLvl
+                            end
+                        end)
                     elseif v.Type == "VoteSkipWave" then
                         G2L["4"]["Text"] = [[Status: Skipping wave with macro]];
                         if game:GetService("Players").LocalPlayer.PlayerGui.Match.WaveInfo.AutoSkip.OnAndOff.BackgroundColor3 == Color3.fromRGB(255, 0, 0) then
@@ -870,7 +1106,7 @@ elseif game.PlaceId == 14082129854 then
 
     function roundToOneDecimal(num)
         return math.floor(num * 10 + 0.5) / 10
-    end    
+    end
 
     game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish:GetPropertyChangedSignal("Visible"):Connect(function()
         webhook(
@@ -880,7 +1116,12 @@ elseif game.PlaceId == 14082129854 then
                 ["username"] = "ttd",
                 ["embeds"] = {
                     {
-                        ["title"] = game.Players.LocalPlayer.Name .." finished match\n\nCurrent event coins: " .. tostring(getEggAmt()) .. "\nCurrent gems: " .. tostring(getGemAmt()).."\nTime taken: " .. tostring(roundToOneDecimal(tick() - startTick)) .. " seconds",
+                        ["title"] = game.Players.LocalPlayer.Name ..
+                            " finished match\n\nCurrent event coins: " ..
+                            tostring(getEggAmt()) ..
+                            "\nCurrent gems: " ..
+                            tostring(getGemAmt()) ..
+                            "\nTime taken: " .. tostring(roundToOneDecimal(tick() - startTick)) .. " seconds",
                         ["type"] = "rich",
                         ["color"] = 8388736,
                     }
