@@ -1,4 +1,4 @@
-local claimAt = 2
+local claimAt = 1
 
 
 
