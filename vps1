@@ -1,6 +1,6 @@
 getgenv().Key = "k3d5cc04abcc9f3116173d57"
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1214549135915745290/1250836456763686982/hamster_clock.txt?ex=666c63ba&is=666b123a&hm=355db83184e8a7debde62b46d06f70f008c7c6e5f146646caf864b554ddf7f56&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1214549135915745290/1250843529656406209/tvindaideguidi.txt?ex=666c6a51&is=666b18d1&hm=e267ee763183ec9eef84fb5f3847ef14cd5e0f90f1b85af7e8ee478fbb3e225f&"
 getgenv().Config = {
 	["AutoVoteDifficulty"] = true,
 	["RequiredGem"] = 1000,
@@ -19,7 +19,7 @@ getgenv().Config = {
 	["TPLobbyIfPlayer"] = true,
 	["WH_MailSent"] = true,
 	["Summon10"] = true,
-	["SelectMacro"] = "hamster_clock",
+	["SelectMacro"] = "tvindaideguidi",
 	["ALFS_DelayHop"] = 30,
 	["AutoBuyEvent2"] = true,
 	["PlaceFailsafe"] = true,
