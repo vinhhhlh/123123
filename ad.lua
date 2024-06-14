@@ -1,9 +1,9 @@
 local webhooks = {
     ["Rare"] = "",
-    ["Epic"] = "https://discord.com/api/webhooks/1247745918132817940/3iz-dKpd8hcJWS6SDqtBZjzADbf80QPnrCaeVM9ZL17ZiQiL2BP6hXeTaYKCaFyk5yus",
-    ["Legendary"] = "https://discord.com/api/webhooks/1247746014849269811/rJoQkIFhQowY0nTh-S7Lfxte-oBibj5YSrW_k6CyHgSgO9f6jpWG90hqI56EPJ0xlWLq",
-    ["Mythic"] = "https://discord.com/api/webhooks/1247746549921087509/03K6KobirF9kHjohQrHbZjYsWCHJ3VvEi_0kUfy-W4KJ6cPfT_cLoIjUXUVuZFhVmQ4w",
-    ["Secret"] = "https://discord.com/api/webhooks/1247746617780731914/8ue96sjIFmHFnan0Hh2bIW_J-TQvP5MXLR5y_RrJ14Y43_LiFke9VgnCofsY-aukjHoP",
+    ["Epic"] = "https://discord.com/api/webhooks/1250431885356830753/zH9MW0OQ7x53wDTMBMYNWiRCxIdpDO6qnnDj7NsYcWVxc8Nk5aAkldtjOv0Qopd1zvuQ",
+    ["Legendary"] = "https://discord.com/api/webhooks/1250431885356830753/zH9MW0OQ7x53wDTMBMYNWiRCxIdpDO6qnnDj7NsYcWVxc8Nk5aAkldtjOv0Qopd1zvuQ",
+    ["Mythic"] = "https://discord.com/api/webhooks/1250431885356830753/zH9MW0OQ7x53wDTMBMYNWiRCxIdpDO6qnnDj7NsYcWVxc8Nk5aAkldtjOv0Qopd1zvuQ",
+    ["Secret"] = "https://discord.com/api/webhooks/1250431885356830753/zH9MW0OQ7x53wDTMBMYNWiRCxIdpDO6qnnDj7NsYcWVxc8Nk5aAkldtjOv0Qopd1zvuQ",
 }
 
 local notifyIfRarity = {
@@ -51,7 +51,7 @@ end
 
 -- summon till you cant afford
 repeat
-game:GetService("ReplicatedStorage").Remotes.Summon:InvokeServer("Update1", 1) --Standard. Update1
+game:GetService("ReplicatedStorage").Remotes.Summon:InvokeServer("Standard", 1) --Standard. Update1
 task.wait(1)
 until getGems() < 50
 
@@ -63,7 +63,7 @@ function webhook(url, data)
             ["content-type"] = "application/json"
         }
 
-        request = http_request or request or HttpPost or syn.request
+        request = http.request or request or HttpPost or syn.request
         local a = { Url = url, Body = newdata, Method = "POST", Headers = headers }
 
         request(a)
