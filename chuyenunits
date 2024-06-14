@@ -5,9 +5,7 @@ local users = {
 }
 
 local troopsToSend = {
-    "SantaTVMan",
-    "LuckySpeakerman",
-    "ClockSpider",
+    "GuardianClockman",
 }
 
 local TTD
