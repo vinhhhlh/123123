@@ -1,6 +1,20 @@
 local users = {
-    "ashleyriley820",
-    "colejorge22"
+    "francisco68841",
+    "vicki6808",
+    "bennettjoanne1",
+    "robertscarol",
+    "joshua57173",
+    "kingshannon48",
+    "fevans0",
+    "qgonzalez902",
+    "justinsanford651",
+    "kevincoleman_8",
+    "lgray951",
+    "greeneandrew7",
+    "allenkeith7",
+    "smithangela184",
+    "cynthia72290",
+    "murrayshannon"
 }
 
 local troopsToSend = {
