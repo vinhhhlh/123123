@@ -7,21 +7,20 @@ local troopsToSend = {
     "LuckySpeakerman",
     "ClockSpider",
     "GuardianClockman",
+    "ScietistClockman",
 }
 
+
 local TTD
+local save
+local handler
 local Network
 local Invoke
 local Fire
-
--- Use task.spawn for asynchronous initialization
 task.spawn(function()
-    -- Assuming MultiboxFramework is correctly imported and initialized
     TTD = require(game:GetService("ReplicatedStorage").MultiboxFramework)
-    -- Wait for player data replica
     save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
 
-    -- Wait until Network operations are available
     repeat
         pcall(function()
             Network = TTD.Network
@@ -32,33 +31,53 @@ task.spawn(function()
     until Network ~= nil and Invoke ~= nil and Fire ~= nil
 end)
 
--- Define functions to retrieve player data
-local function getInventoryTroops()
-    local invTroops = {}
+Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
+Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
+
+coroutine.wrap(function()
+    setidentity(2)
+    hookfunc(getupvalue(GetFunc, 1), function()
+        return true
+    end)
+    setidentity(8)
+end)()
+
+coroutine.wrap(function()
+    setidentity(2)
+    hookfunc(getupvalue(GetEvent, 1), function()
+        return true
+    end)
+    setidentity(8)
+end)()
+
+
+local invTroops = {}
+function getInventoryTroops()
+    invTroops = {}
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
     for name, v in pairs(save._data.Inventory.Troops) do
-        for i, _ in pairs(v) do
+        for i, v in pairs(v) do
             invTroops[i] = name
         end
     end
     return invTroops
 end
 
-local function getCoinAmt()
-    local coins = 0
+local coins
+function getCoinAmt()
+    coins = 0
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
     for i, v in pairs(save._data) do
         if i == "Currencies" then
             coins = v.Coins
-            break
         end
     end
     return coins
 end
 
-local function hasTroop(id)
-    local troops = getInventoryTroops()
-    for i, v in pairs(troops) do
+function hasTroop(id)
+    troops = getInventoryTroops()
+    for i, v in troops do
         if i == id then
             return true
         end
@@ -66,25 +85,26 @@ local function hasTroop(id)
     return false
 end
 
--- Main logic to send troops to users
-for _, user in pairs(users) do
+startAmt = getCoinAmt()
+
+local amt = 0
+
+for i, user in users do
     local sent = {}
-    for i, troop in pairs(getInventoryTroops()) do
-        if table.find(troopsToSend, troop) and not table.find(sent, troop) then
-            table.insert(sent, troop)
-            local oldCoins = getCoinAmt()
+    for i, v in getInventoryTroops() do
+        if table.find(troopsToSend, v) and not table.find(sent, v) then
+            table.insert(sent, v)
+            local oldC = getCoinAmt()
             local st = tick()
             repeat
-                -- Invoke the "PostOffice_SendGift" function with parameters
                 Invoke("PostOffice_SendGift", game.Players:GetUserIdFromNameAsync(user), "Troops", i, 0,
                     tostring(math.random(1, 10000)))
                 task.wait(0.1)
-            -- Wait until coin amount decreases and troop is no longer in inventory
-            until getCoinAmt() < oldCoins and not hasTroop(i)
-            print("Sent to user:", user, "Time taken:", tick() - st)
+            until getCoinAmt() < oldC and not hasTroop(i)
+            print("sent","time taken:",tick()-st)
         end
     end
-    print('Finished user:', user)
+    print('finished user:',user)
 end
 
-print('Should have sent:', amt) -- Make sure amt is correctly calculated
+print('Should have sent:', amt)
