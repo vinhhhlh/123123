@@ -24,7 +24,7 @@ repeat
 until plr.Character:FindFirstChild("Humanoid")
 repeat wait()
     ClickMiddle()
-until game:GetService("Players").LocalPlayer.PlayerGui.Loading.Enabled == true
+until game:GetService("tutulklh1").LocalPlayer.PlayerGui.Loading.Enabled == true
 _G.farm = true
 local vu = game:GetService("VirtualUser")
 game:GetService("Players").LocalPlayer.Idled:connect(function()
