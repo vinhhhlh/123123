@@ -1,0 +1,95 @@
+getgenv().Key = "k3d5cc04abcc9f3116173d57"
+getgenv().Config = {
+	["SelectChapter"] = "Infinite",
+	["AutoSave"] = false,
+	["WH_MatchComplete"] = false,
+	["AutoSummon"] = true,
+	["AutoClaimQuest"] = false,
+	["TPLobbyIfPlayer"] = false,
+	["SelectChallengeWorld"] = {
+		["Mob City"] = false,
+		["Cursed Academy"] = false,
+		["Windmill Village"] = false
+	},
+	["WaitForJoiner"] = false,
+	["JoinerList"] = {
+		[1] = "No joiner in the list"
+	},
+	["SummonUnit"] = {
+		["The Beast"] = false,
+		["Shinobi Form 3"] = false,
+		["The Gamer"] = false,
+		["Strongest Swordsman"] = false,
+		["Admiral Of Lava"] = true,
+		["Dragon Slayer"] = false,
+		["Esper"] = false,
+		["Admiral Of Light"] = false,
+		["Curse Prince"] = false,
+		["Cursed Fighter"] = false,
+		["Vengeful Shinobi"] = false,
+		["Flame Dragon King"] = false,
+		["Fire Leg Master"] = false,
+		["Bloomer"] = false,
+		["Maxed Qi Master"] = false,
+		["Thunder Shinobi"] = false,
+		["Ascended Qi Master"] = false,
+		["Spirit Hybrid"] = false,
+		["Soulforce Reaper"] = false,
+		["Admiral Of Ice"] = false,
+		["Inferno Commander"] = false,
+		["Pink Rockstar"] = false,
+		["Ant King"] = false,
+		["Sharpshooter"] = false,
+		["Skull Warrior"] = false,
+		["Carp"] = false,
+		["Chance Taker"] = false,
+		["Elf Wizardess"] = false,
+		["Master Swordsman"] = false
+	},
+	["SelectReward"] = {
+		["Trait Crystal"] = false,
+		["Gold"] = false,
+		["Star Rift (Rainbow)"] = false,
+		["Gems"] = false,
+		["Risky Dice"] = false,
+		["Star Rift "] = false
+	},
+	["BoostFPS"] = true,
+	["SelectDifficulty"] = {
+		["All units lowered range"] = false,
+		["All enemies regen health"] = false,
+		["All enemies +1 shield"] = false,
+		["All units increased cost"] = false,
+		["All enemies 2x health"] = false,
+		["All enemies 2x speed"] = false
+	},
+	["JoinerCooldown"] = 0,
+	["UnselectIfSummoned"] = false,
+	["AutoReplay"] = false,
+	["AutoReturnLobby"] = false,
+	["HardMode"] = false,
+	["WH_BannerSummoned"] = false,
+	["SelectChallengeMacro"] = {
+
+	},
+	["AutoLeave"] = true,
+	["AutoJoinChallenge"] = false,
+	["AutoJoinWorld"] = false,
+	["PlayMacro"] = false,
+	["IgnoreMacroTiming"] = false,
+	["LeaveSellWave"] = 31,
+	["AutoSell"] = false,
+	["AutoRejoin"] = true,
+	["WebhookURL"] = "https://discord.com/api/webhooks/1023310058383224913/JWJzps9rUp-Y0rAWoKqZM2bKUVyTR0iC5D1RpNFuwY5s1nNTjtKl6Lw2EKbWzsz1ZbTu",
+	["BlackScreen"] = false,
+	["AutoJoinHoster"] = false,
+	["DeleteRarity"] = {
+		["Epic"] = false,
+		["Legendary"] = false,
+		["Rare"] = false
+	},
+	["AutoSkip"] = false,
+	["SelectWorld"] = "Windmill Village",
+	["JoinHighest"] = false
+}
+loadstring(game:HttpGet("https://nousigi.com/loader.lua"))() 
