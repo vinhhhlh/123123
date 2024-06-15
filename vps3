@@ -1,6 +1,6 @@
 getgenv().Key = "k3fc534a39770c343634c6b4"
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1214549135915745290/1250843529656406209/tvindaideguidi.txt?ex=666c6a51&is=666b18d1&hm=e267ee763183ec9eef84fb5f3847ef14cd5e0f90f1b85af7e8ee478fbb3e225f&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1214549135915745290/1250843529656406209/tvindaideguidi.txt?ex=666e6491&is=666d1311&hm=4d8ea24b6c77343e8ae55b579b36abf722b9b546d4d567f4ff96e8730a5f6ab0&"
 getgenv().Config = {
 	["AutoVoteDifficulty"] = true,
 	["RequiredGem"] = 1000,
@@ -67,6 +67,6 @@ getgenv().Config = {
 		["Weekend_2xCoinsBoost"] = true,
 		["2xClocksBoost"] = true
 	},
-	["DelayJoin"] = 180
+	["DelayJoin"] = 30
 }
 loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
