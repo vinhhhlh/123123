@@ -67,6 +67,6 @@ getgenv().Config = {
 		["Weekend_2xCoinsBoost"] = true,
 		["2xClocksBoost"] = true
 	},
-	["DelayJoin"] = 180
+	["DelayJoin"] = 30
 }
 loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
