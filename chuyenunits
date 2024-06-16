@@ -1,22 +1,16 @@
 local users = {
-    "erika05373",
-    "calhounmargaret",
-    "geraldhughes193",
-    "patrickwatkins292",
-    "sonya49578",
-    "cynthia58983",
-    "amanda47279",
-    "elizabeth40402",
-    "nunezkristi",
-    "kenneth29837",
-    "salasstephanie",
-    "ejackson774"
+    "ocooper70",
+    "peggystephens7"
 }
 
 local troopsToSend = {
     "SantaTVMan",
+    "SantaTVMan",
     "LuckySpeakerman",
     "ClockSpider",
+    "LuckySpeakerman",
+    "ClockSpider",
+    "GuardianClockman",
     "GuardianClockman",
 }
 
