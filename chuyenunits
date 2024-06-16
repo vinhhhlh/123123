@@ -23,12 +23,8 @@ local users = {
 
 local troopsToSend = {
     "SantaTVMan",
-    "SantaTVMan",
     "LuckySpeakerman",
     "ClockSpider",
-    "LuckySpeakerman",
-    "ClockSpider",
-    "GuardianClockman",
     "GuardianClockman",
 }
 
