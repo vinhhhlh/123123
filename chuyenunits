@@ -1,4 +1,5 @@
 local users = {
+    "ejackson774",
     "maryarnold359",
     "stewartthomas6",
     "laurageorge876",
@@ -18,7 +19,7 @@ local users = {
     "scott79308",
     "zmiller458",
     "hollandmitchell",
-    "williammcintosh791"
+    "williammcintosh791",
 }
 
 local troopsToSend = {
