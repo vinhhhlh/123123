@@ -1,4 +1,4 @@
-getgenv().Key = "k3fc534a39770c343634c6b4"
+getgenv().Key = "kceceabd61c823ab136cc1ee"
 getgenv().Config = {
 	["AutoVoteDifficulty"] = false,
 	["RequiredGem"] = 100,
