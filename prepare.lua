@@ -1,4 +1,4 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/vinhhhlh/123123/main/prepare.lua2"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/vinhhhlh/123123/main/prepare2.lua"))()
 getgenv().Key = "kceceabd61c823ab136cc1ee"
 getgenv().Config = {
 	["AutoVoteDifficulty"] = false,
