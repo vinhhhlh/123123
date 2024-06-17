@@ -1,110 +1,70 @@
-local users = {
-    "FsJf5rlmpw",
+getgenv().Config = {
+	["AutoVoteDifficulty"] = false,
+	["RequiredGem"] = 100,
+	["SellRarities"] = {
+		["Legendary"] = false,
+		["Basic"] = false,
+		["Epic"] = false,
+		["Uncommon"] = false,
+		["Rare"] = false
+	},
+	["DelayReplay"] = 5,
+	["ExchangeTier"] = 4,
+	["WH_MatchComplete"] = true,
+	["AutoSkip"] = true,
+	["AutoClaimQuest"] = true,
+	["AutoExchangeEvent"] = false,
+	["WH_MailSent"] = true,
+	["Summon10"] = true,
+	["SelectMacro"] = "tvindaideguidi",
+	["ALFS_DelayHop"] = 30,
+	["AutoBuyEvent"] = true,
+	["PlaceFailsafe"] = true,
+	["AutoJoinEndless"] = false,
+	["PlayMacro"] = true,
+	["AutoMail"] = true,
+	["MailName"] = "KRoD9pJJH",
+	["SelectDifficulty"] = "Nightmare",
+	["AutoUseBoost"] = true,
+	["AutoSummonTroop"] = false,
+	["AutoReplay"] = true,
+	["DelayJoin"] = 120,
+	["SellWave"] = 1,
+	["AutoClaimEventPass"] = true,
+	["TPLobbyIfPlayer"] = true,
+	["BuyEventName"] = "KRoD9pJJH",
+	["UseAll"] = true,
+	["AutoJoinMatch"] = false,
+	["ALFS_HopServer"] = false,
+	["RequireRoll"] = 0,
+	["BlackScreen"] = true,
+	["AutoSellOW"] = false,
+	["SelectMap"] = "TimeFactory (Rewind)",
+	["SelectCase"] = "BasicCrate",
+	["BoostFPS"] = true,
+	["AutoClaimVIP"] = false,
+	["AutoBuyEvent"] = false,
+	["AutoListForSale"] = false,
+	["DeleteMap"] = true,
+	["AutoClaimEventQuest"] = true,
+	["AutoRejoin"] = true,
+	["WebhookURL"] = "https://discord.com/api/webhooks/1251043676948402186/Zq9x7T2os9ekJRN8wZgBthYKz7kjnlOJS4ef-O6GrdXcXDdcoWc2lOrKJnfcTrwvuH7t",
+	["SummonDelay"] = 0.3,
+	["ABE_Gift"] = true,
+	["JoinFailsafe"] = true,
+	["AutoSave"] = true,
+	["UseBoosts"] = {
+		["2xEggsBoost"] = true,
+		["2xXPBoost_Easter2024"] = true,
+		["2xCloversBoost"] = true,
+		["2xEventXPBoost"] = true,
+		["Weekend_2xEndlessXPBoost"] = true,
+		["2xLuckBoost"] = true,
+		["2xXPBoost"] = true,
+		["2xClocksBoost"] = true,
+		["Weekend_2xCoinsBoost"] = true,
+		["2xCoinsBoost"] = true
+	},
+	["IgnoreMacroTiming"] = true
 }
-
-local troopsToSend = {
-    "SantaTVMan",
-    "LuckySpeakerman",
-    "ClockSpider",
-    "ScientistClockman",
-    "GuardianClockman",
-}
-
-
-local TTD
-local save
-local handler
-local Network
-local Invoke
-local Fire
-task.spawn(function()
-    TTD = require(game:GetService("ReplicatedStorage").MultiboxFramework)
-    save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
-
-    repeat
-        pcall(function()
-            Network = TTD.Network
-            Invoke = Network.Invoke
-            Fire = Network.Fire
-        end)
-        task.wait(0.1)
-    until Network ~= nil and Invoke ~= nil and Fire ~= nil
-end)
-
-Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
-Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
-
-coroutine.wrap(function()
-    setidentity(2)
-    hookfunc(getupvalue(GetFunc, 1), function()
-        return true
-    end)
-    setidentity(8)
-end)()
-
-coroutine.wrap(function()
-    setidentity(2)
-    hookfunc(getupvalue(GetEvent, 1), function()
-        return true
-    end)
-    setidentity(8)
-end)()
-
-
-local invTroops = {}
-function getInventoryTroops()
-    invTroops = {}
-    local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
-    for name, v in pairs(save._data.Inventory.Troops) do
-        for i, v in pairs(v) do
-            invTroops[i] = name
-        end
-    end
-    return invTroops
-end
-
-local coins
-function getCoinAmt()
-    coins = 0
-    local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
-    for i, v in pairs(save._data) do
-        if i == "Currencies" then
-            coins = v.Coins
-        end
-    end
-    return coins
-end
-
-function hasTroop(id)
-    troops = getInventoryTroops()
-    for i, v in troops do
-        if i == id then
-            return true
-        end
-    end
-    return false
-end
-
-startAmt = getCoinAmt()
-
-local amt = 0
-
-for i, user in users do
-    local sent = {}
-    for i, v in getInventoryTroops() do
-        if table.find(troopsToSend, v) and not table.find(sent, v) then
-            table.insert(sent, v)
-            local oldC = getCoinAmt()
-            local st = tick()
-            repeat
-                Invoke("PostOffice_SendGift", game.Players:GetUserIdFromNameAsync(user), "Troops", i, 0,
-                    tostring(math.random(1, 10000)))
-                task.wait(0.1)
-            until getCoinAmt() < oldC and not hasTroop(i)
-            print("sent","time taken:",tick()-st)
-        end
-    end
-    print('finished user:',user)
-end
-
-print('Should have sent:', amt)
+loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
