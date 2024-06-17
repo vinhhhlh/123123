@@ -29,6 +29,8 @@ local troopsToSend = {
     "ClockSpider",
     "ScientistClockman",
     "GuardianClockman",
+    "CuckooClockman",
+    "PendulumClockman",
 }
 
 local cratesToSend = {
