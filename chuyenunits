@@ -1,23 +1,7 @@
 local users = {
     "smithkimberly533",
     "cristianmunoz6",
-    "kevinjohnson192",
-    "xwhite323",
-    "amanda88580",
-    "aleon450",
-    "webbaaron1",
-    "nancygordon94",
-    "saragonzales488",
-    "steven27693",
-    "kendra51342",
-    "william43269",
-    "ricardo52233",
-    "rebecca23826",
-    "kellylori5",
-    "edwardwoods716",
-    "petersonmia",
-    "ifox498",
-    "kylecooley8"
+    "kevinjohnson192"
 }
 
 local troopsToSend = {
