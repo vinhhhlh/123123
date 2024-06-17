@@ -24,11 +24,7 @@ end)()
 
 local amt = 999
 local troopsToSend = {
-    "SantaTVMan",
-    "LuckySpeakerman",
-    "ClockSpider",
     "ScientistClockman",
-    "GuardianClockman",
     "CuckooClockman",
     "PendulumClockman",
 }
