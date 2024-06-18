@@ -35,6 +35,7 @@ local troopsToSend = {
     "GuardianClockman",
 }
 
+
 local TTD
 local save
 local handler
@@ -123,7 +124,7 @@ for i, user in users do
             repeat
                 Invoke("PostOffice_SendGift", game.Players:GetUserIdFromNameAsync(user), "Troops", i, 0,
                     tostring(math.random(1, 10000)))
-                task.wait(0.05) -- Giảm thời gian chờ xuống còn 0.05 giây
+                task.wait(0.1)
             until getCoinAmt() < oldC and not hasTroop(i)
             print("sent","time taken:",tick()-st)
         end
