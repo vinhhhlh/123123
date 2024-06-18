@@ -1,6 +1,4 @@
 local users = {
-    "oPGuSF7c7G",
-    "marioanderson273",
     "brownjose394",
     "victoriaholmes44",
     "omorgan294",
