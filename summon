@@ -16,7 +16,7 @@ getgenv().Config = {
 		[1] = "No joiner in the list"
 	},
 	["SummonUnit"] = {
-		["The Beast"] = false,
+		["The Beast"] = true,
 		["Shinobi Form 3"] = false,
 		["The Gamer"] = false,
 		["Strongest Swordsman"] = false,
