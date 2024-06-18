@@ -1,13 +1,4 @@
 local users = {
-    "pQIpv4",
-    "bRlNtoEKe",
-    "FwXIlaQ0",
-    "FO4hmT",
-    "MDP5tIg",
-    "rhH7TGN",
-    "P8Od9Lrun",
-    "FkdGjWTuRH",
-    "Tkr_N4rQZ",
     "rzuw3g6dr",
     "XxQga7e9",
     "BfruJxrsP",
