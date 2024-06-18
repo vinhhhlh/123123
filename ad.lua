@@ -1,83 +1,110 @@
-repeat
-    wait()
-until game:IsLoaded()
-function ClickMiddle()
-    game:GetService("VirtualInputManager"):SendMouseButtonEvent(workspace.CurrentCamera.ViewportSize.X/2,workspace.CurrentCamera.ViewportSize.Y/2,0,true,a,1)
-    game:GetService("VirtualInputManager"):SendMouseButtonEvent(workspace.CurrentCamera.ViewportSize.X/2,workspace.CurrentCamera.ViewportSize.Y/2,0,false,a,1)    
-end 
-repeat
-    wait()
-until game.Players.LocalPlayer
+local users = {
+"marioanderson273",
 
-local plr = game.Players.LocalPlayer
+}
 
-repeat
-    wait()
-until plr.Character
+local troopsToSend = {
+    "SantaTVMan",
+    "LuckySpeakerman",
+    "ClockSpider",
+    "GuardianClockman",
+}
 
-repeat
-    wait()
-until plr.Character:FindFirstChild("HumanoidRootPart")
 
-repeat
-    wait()
-until plr.Character:FindFirstChild("Humanoid")
-repeat wait()
-    ClickMiddle()
-until game:GetService("tutulklh1").LocalPlayer.PlayerGui.Loading.Enabled == true
-_G.farm = true
-local vu = game:GetService("VirtualUser")
-game:GetService("Players").LocalPlayer.Idled:connect(function()
-vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-wait(1)
-vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+local TTD
+local save
+local handler
+local Network
+local Invoke
+local Fire
+task.spawn(function()
+    TTD = require(game:GetService("ReplicatedStorage").MultiboxFramework)
+    save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
+
+    repeat
+        pcall(function()
+            Network = TTD.Network
+            Invoke = Network.Invoke
+            Fire = Network.Fire
+        end)
+        task.wait(0.1)
+    until Network ~= nil and Invoke ~= nil and Fire ~= nil
 end)
-function ClickButton(a)
-    game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+50,0,true,a,1)
-    game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+50,0,false,a,1)
-end
+
+Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
+Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
+
+coroutine.wrap(function()
+    setidentity(2)
+    hookfunc(getupvalue(GetFunc, 1), function()
+        return true
+    end)
+    setidentity(8)
+end)()
+
+coroutine.wrap(function()
+    setidentity(2)
+    hookfunc(getupvalue(GetEvent, 1), function()
+        return true
+    end)
+    setidentity(8)
+end)()
 
 
-
-game:GetService("RunService").RenderStepped:Connect(function()
-    if _G.farm  then
-        if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
-            for i,v in next,game.Players.LocalPlayer.Character:GetDescendants() do 
-                if (v:IsA("Part") or v:IsA("MeshPart")) and  v.CanCollide then 
-                    v.CanCollide = false 
-                end
-            end
+local invTroops = {}
+function getInventoryTroops()
+    invTroops = {}
+    local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
+    for name, v in pairs(save._data.Inventory.Troops) do
+        for i, v in pairs(v) do
+            invTroops[i] = name
         end
     end
-end)    
-print(1)
-while _G.farm do wait()
-pcall(function()
-    if string.find(tostring(game.Players.LocalPlayer.Team),"Giao") then
-        if game.Players.LocalPlayer.Character:FindFirstChild("Cardboard_Box") then 
-            
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.DeliveryBeam.Attachment1.WorldCFrame
-            wait(.5)
-            fireproximityprompt(game.Players.LocalPlayer.Character.DeliveryBeam.Attachment1.ProximityPrompt)
-            wait(15)
-        else 
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =  workspace.Map.Delivery.Cardboard_Box.Box.CFrame
-            wait(.5)
-            fireproximityprompt(workspace.Map.Delivery.Cardboard_Box.Box.ProximityPrompt)
-            wait(.5)
-        end
-    else
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Map.Delivery["Giao H\195\160ng"].HumanoidRootPart.CFrame*CFrame.new(0,0,-1)
-        wait(.25)
-        if game:GetService("Players").LocalPlayer.PlayerGui.Interact.Option.Visible then
-            ClickButton(game:GetService("Players").LocalPlayer.PlayerGui.Interact.Option.Yes.Button)
-            wait(.5)
-        else 
-            ClickMiddle()
-            wait(.5)
-        end 
-        
-            
-    end
-end)
+    return invTroops
 end
+
+local coins
+function getCoinAmt()
+    coins = 0
+    local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
+    for i, v in pairs(save._data) do
+        if i == "Currencies" then
+            coins = v.Coins
+        end
+    end
+    return coins
+end
+
+function hasTroop(id)
+    troops = getInventoryTroops()
+    for i, v in troops do
+        if i == id then
+            return true
+        end
+    end
+    return false
+end
+
+startAmt = getCoinAmt()
+
+local amt = 0
+
+for i, user in users do
+    local sent = {}
+    for i, v in getInventoryTroops() do
+        if table.find(troopsToSend, v) and not table.find(sent, v) then
+            table.insert(sent, v)
+            local oldC = getCoinAmt()
+            local st = tick()
+            repeat
+                Invoke("PostOffice_SendGift", game.Players:GetUserIdFromNameAsync(user), "Troops", i, 0,
+                    tostring(math.random(1, 10000)))
+                task.wait(0.1)
+            until getCoinAmt() < oldC and not hasTroop(i)
+            print("sent","time taken:",tick()-st)
+        end
+    end
+    print('finished user:',user)
+end
+
+print('Should have sent:', amt)
