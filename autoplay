@@ -14,7 +14,7 @@ getgenv().autoPlay = {
 
 getgenv().clockGift = { -- randomly selected from list
     users = {
-        "HYM2ySHa",
+        "KRoD9pJJH",
 
     }
 }
@@ -38,8 +38,8 @@ getgenv().autoBoost = { -- this will use boosts when it runs out
 getgenv().autoMail = {
     enabled = true,          -- for gems
     sendTroopsEnabled = false,
-    idToSendTo = 5456148550,  -- for gems
-    idToSendTo2 = 5456140552, -- this is for troops
+    idToSendTo = 6079769333,  -- for gems
+    idToSendTo2 = 6079769333, -- this is for troops
     sendGemsAfterReached = 1600,
     sendOfRarity = {
         ["Legendary"] = true,
@@ -53,8 +53,8 @@ getgenv().autoMail = {
     },
     customSendTroops = {
         ["ClockSpider"] = 0, -- troop nameid, userid to send to
-		--["LuckySpeakerman"] = 5456140552,
-		--["SantaTVMan"] = 5456140552,
+		--["LuckySpeakerman"] = 6079769333,
+		--["SantaTVMan"] = 6079769333,
     }
 }
 
