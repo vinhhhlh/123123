@@ -1,6 +1,6 @@
 getgenv().Key = "kb0ead1d709dff85b479a22e"
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1214549135915745290/1250843529656406209/tvindaideguidi.txt?ex=667a4211&is=6678f091&hm=10b93596716dc9a0feb627395ddeab824ad94c43135af37e2ff1bc31634ef872&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1214549135915745290/1250843529656406209/tvindaideguidi.txt?ex=667ce511&is=667b9391&hm=93ee0e391ca6f3b5cf78f448a7c89c1228716ab8545fa93364b7834d87f5b7c7&"
 getgenv().Config = {
 	["AutoVoteDifficulty"] = false,
 	["RequiredGem"] = 100,
