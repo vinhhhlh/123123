@@ -1,0 +1,56 @@
+getgenv().Key = "ke76f7406dd050242aeaa6c7"
+getgenv().Setup = {
+    ["Melee"]  = "Electric Claw",
+    ["Sword"] = "Cursed Dual Katana",
+    ["Gun"] = "Soul Guitar",
+    ["Accessory"] = "Warrior Helmet",
+    ["Stat"] = {
+        ["Melee"] = 2550,
+        ["Defense"] = 2550,
+        ["Sword"] = 2550,
+        ["Gun"] = 0,
+        ["Blox Fruit"] = 0,
+    }
+}
+getgenv().BountyFarm = {
+    ["Script"] = {
+        ["Black Screen"] = true,
+        ["Team"] = "Pirates", -- Pirates/Marines
+        ["Panic % Health"] = 40, -- Teleport to Safe Zone if player below x % HP
+        ["Skip Timer"] = 60, -- Skip if took more than x seconds to kill
+        ["M1 Health"] = 90, -- Attack M1 if target health above x % HP
+        ["Ignore User"] = {"Portal-Portal", "Kitsune-Kitsune", "Mammoth-Mammoth"}, -- Ignore user with the ate Blox Fruit
+        ["Ignore Bounty"] = 5000000, -- Ignore user with higher than x bounty than you
+    },
+    ["Hop Server"] = {
+        ["Delay"] = 10, -- Delay before Hop Server
+        ["Below Ping"] = 100, -- Hop to Server below x ping
+        ["Hop Ping"] = 1000, -- Hop if current server ping is higher than x 
+    },
+    ["Skill"] = {
+        ["Cycle"] = true, -- Use in a Cycle (making use used all skill) instead of use prioritize the first order
+        ["Prioritize"] = {"Melee", "Blox Fruit", "Sword", "Gun"}, -- Use skill Left to right (first to last)
+        -- ["Skill"] = {Enable, Predict, Hold, Delay Next Skill}
+        ["Melee"] = {
+            ["Z"] = {true, true, 0, 1},
+            ["X"] = {true, true, 0, 1},
+            ["C"] = {true, true, 0, 1},
+        },
+        ["Blox Fruit"] = {
+            ["Z"] = {true, true, 0, 1},
+            ["X"] = {true, true, 0, 1},
+            ["C"] = {true, true, 0, 1},
+            ["V"] = {true, true, 0, 1},
+            ["F"] = {true, true, 0, 1},
+        },
+        ["Sword"] = {
+            ["Z"] = {true, true, 0, 1},
+            ["X"] = {true, true, 0, 1},
+        },
+        ["Gun"] = {
+            ["Z"] = {true, true, 0, 1},
+            ["X"] = {true, true, 0, 1},
+        },
+    },
+}
+loadstring(game:HttpGet("https://nousigi.com/loader.lua"))() 
