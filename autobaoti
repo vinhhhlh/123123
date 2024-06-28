@@ -1,56 +1,113 @@
-getgenv().Key = "ke76f7406dd050242aeaa6c7"
-getgenv().Setup = {
-    ["Melee"]  = "Electric Claw",
-    ["Sword"] = "Cursed Dual Katana",
-    ["Gun"] = "Soul Guitar",
-    ["Accessory"] = "Warrior Helmet",
-    ["Stat"] = {
-        ["Melee"] = 2550,
-        ["Defense"] = 2550,
-        ["Sword"] = 2550,
-        ["Gun"] = 0,
-        ["Blox Fruit"] = 0,
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer:FindFirstChild("DataLoaded") and game.Players.LocalPlayer.Team ~= nil
+
+getgenv().link = "http://192.168.1.4:2908/mirage"
+getgenv().execute = true
+print("Passed",execute)
+if game.Players.LocalPlayer.Name ~= "Phamtram0rfqU" and game.Players.LocalPlayer.Name ~= "PhapSuTrungQuoc175" and game.Players.LocalPlayer.Name ~= "bocanhet164" then
+      local args = {
+        [1] = "redeemRefundPoints",
+        [2] = "Refund Points"
     }
-}
-getgenv().BountyFarm = {
-    ["Script"] = {
-        ["Black Screen"] = true,
-        ["Team"] = "Pirates", -- Pirates/Marines
-        ["Panic % Health"] = 40, -- Teleport to Safe Zone if player below x % HP
-        ["Skip Timer"] = 60, -- Skip if took more than x seconds to kill
-        ["M1 Health"] = 90, -- Attack M1 if target health above x % HP
-        ["Ignore User"] = {"Portal-Portal", "Kitsune-Kitsune", "Mammoth-Mammoth"}, -- Ignore user with the ate Blox Fruit
-        ["Ignore Bounty"] = 5000000, -- Ignore user with higher than x bounty than you
-    },
-    ["Hop Server"] = {
-        ["Delay"] = 10, -- Delay before Hop Server
-        ["Below Ping"] = 100, -- Hop to Server below x ping
-        ["Hop Ping"] = 1000, -- Hop if current server ping is higher than x 
-    },
-    ["Skill"] = {
-        ["Cycle"] = true, -- Use in a Cycle (making use used all skill) instead of use prioritize the first order
-        ["Prioritize"] = {"Melee", "Blox Fruit", "Sword", "Gun"}, -- Use skill Left to right (first to last)
-        -- ["Skill"] = {Enable, Predict, Hold, Delay Next Skill}
-        ["Melee"] = {
-            ["Z"] = {true, true, 0, 1},
-            ["X"] = {true, true, 0, 1},
-            ["C"] = {true, true, 0, 1},
-        },
-        ["Blox Fruit"] = {
-            ["Z"] = {true, true, 0, 1},
-            ["X"] = {true, true, 0, 1},
-            ["C"] = {true, true, 0, 1},
-            ["V"] = {true, true, 0, 1},
-            ["F"] = {true, true, 0, 1},
-        },
-        ["Sword"] = {
-            ["Z"] = {true, true, 0, 1},
-            ["X"] = {true, true, 0, 1},
-        },
-        ["Gun"] = {
-            ["Z"] = {true, true, 0, 1},
-            ["X"] = {true, true, 0, 1},
-        },
-    },
-}
-loadstring(game:HttpGet("https://nousigi.com/loader.lua"))() 
+
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+
+    local string_1 = "BuySharkmanKarate";
+    local Target = game:GetService("ReplicatedStorage").Remotes["CommF_"];
+    Target:InvokeServer(string_1);
+    local args = {
+        [1] = "AddPoint",
+        [2] = "Sword",
+        [3] = 2550
+    }
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    local args = {
+        [1] = "AddPoint",
+        [2] = "Defense",
+        [3] = 2550
+    }
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    local args = {
+        [1] = "AddPoint",
+        [2] = "Melee",
+        [3] = 2550
+    }
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    local args = {
+        [1] = "LoadItem",
+        [2] = "Tushita"
+    }
+
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+    function getinfoall()
+        local res = request({
+            Url = link,
+            Method = "GET",
+        })
+        local data = game:GetService("HttpService"):JSONDecode(res.Body)
+        return data
+    end
+
+    function IsMirageIsland2()
+        if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+            return true
+        else
+            return false
+        end
+    end
+
+    function checkgatcan()
+        if game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(
+                "CheckTempleDoor") then
+            return true
+        else
+            return false
+        end
+    end
+
+    local l__LocalPlayer__3 = game.Players.LocalPlayer;
+    local l__Character__4 = l__LocalPlayer__3.Character;
+
+    local function CheckRace()
+        local bf = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Wenlocktoad", "1")
+        local c4 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Alchemist", "1")
+        if game.Players.LocalPlayer.Character:FindFirstChild("RaceTransformed") then
+            return game:GetService("Players").LocalPlayer.Data.Race.Value .. " V4"
+        end
+        if bf == -2 then
+            return game:GetService("Players").LocalPlayer.Data.Race.Value .. " V3"
+        end
+        if c4 == -2 then
+            return game:GetService("Players").LocalPlayer.Data.Race.Value .. " V2"
+        end
+        return game:GetService("Players").LocalPlayer.Data.Race.Value .. " V1"
+    end;
+    local checkpoint = false
+
+    while wait() do
+
+        Race = CheckRace()
+        if string.find(Race,"V3") or string.find(Race,"V4") and game.PlaceId ~= 7449423635 then
+                local args = { [1] = "TravelZou" }
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+        end
+        if not checkgatcan() and string.find(Race,"V3") and not string.find(Race,"V4") and game.PlaceId == 7449423635 then
+         
+            if not IsMirageIsland2() then
+                local allData = getinfoall()
+
+                if #allData > 1 then
+                    local player = string.split(allData[#allData].Players, "/")
+                    local time = string.split(allData[#allData].Time, ":")
+                    print(allData[#allData].JobId, allData[#allData].Players, allData[#allData].Time)
+                    if tonumber(player[1]) <= 11 and (tonumber(time[1]) >= 12 or tonumber(time[1]) <= 0) then
+                        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,
+                            allData[#allData].JobId,
+                            game.Players.LocalPlayer)
+                    end
+                else
+                    print("Dont Have Server")
+                end
+            end
+        end
+    end
+end
