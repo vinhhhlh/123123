@@ -58,25 +58,8 @@ task.spawn(function()
     until Network ~= nil and Invoke ~= nil and Fire ~= nil
 end)
 
-repeat
-    task.wait(0.1)
-until Network and Invoke and Fire
-
-if TTD.debug then
-    print('Found Invoke/Fire')
-end
-
--- Hàm bypass
-local function bypassFunction(func)
-    local success, funcUpvalue = pcall(debug.getupvalue, func, 1)
-    if success and funcUpvalue then
-        setidentity(2) -- Giả sử setidentity đã được định nghĩa ở đâu đó
-        hookfunc(funcUpvalue, function(...)
-            return true
-        end)
-        setidentity(8)
-    end
-end
+Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
+Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
 
 coroutine.wrap(function()
     setidentity(2)
