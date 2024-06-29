@@ -58,7 +58,8 @@ task.spawn(function()
     until Network ~= nil and Invoke ~= nil and Fire ~= nil
 end)
 
-local Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
+local Invoke = Network.Invoke
+local GetFunc = debug.getupvalue(Invoke, 1)
 local Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
 if TTD.debug then print('Found Invoke/Fire') end
 
