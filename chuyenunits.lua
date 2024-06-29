@@ -31,10 +31,8 @@ task.spawn(function()
     until Network ~= nil and Invoke ~= nil and Fire ~= nil
 end)
 
-   -- Move Invoke and Fire assignments here after Network is initialized
-    Invoke = Network.Invoke
-    Fire = Network.Fire
-end)
+Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
+Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
 
 coroutine.wrap(function()
     setidentity(2)
