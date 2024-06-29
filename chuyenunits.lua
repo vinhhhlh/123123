@@ -37,16 +37,14 @@ local troopsToSend = {
     "GuardianClockman",
 }
 
-
 local TTD
-local save
-local handler
 local Network
 local Invoke
 local Fire
+
 task.spawn(function()
     TTD = require(game:GetService("ReplicatedStorage").MultiboxFramework)
-    save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
+    local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
 
     repeat
         pcall(function()
@@ -58,34 +56,45 @@ task.spawn(function()
     until Network ~= nil and Invoke ~= nil and Fire ~= nil
 end)
 
-local Invoke = Network.Invoke
-local GetFunc = debug.getupvalue(Invoke, 1)
-local Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
-if TTD.debug then print('Found Invoke/Fire') end
+-- Wait for TTD and Network initialization
+repeat
+    task.wait(0.1)
+until Network and Invoke and Fire
 
+if TTD.debug then
+    print('Found Invoke/Fire')
+end
+
+-- Bypass
 coroutine.wrap(function()
-    setidentity(2)
-    hookfunc(getupvalue(GetFunc, 1), function()
-        return true
-    end)
-    setidentity(8)
+    local GetFunc = debug.getupvalue(Invoke, 1)
+    if GetFunc then
+        setidentity(2) -- Assuming setidentity is defined elsewhere
+        hookfunc(debug.getupvalue(GetFunc, 1), function()
+            return true
+        end)
+        setidentity(8)
+    end
 end)()
 
 coroutine.wrap(function()
-    setidentity(2)
-    hookfunc(getupvalue(GetEvent, 1), function()
-        return true
-    end)
-    setidentity(8)
+    local GetEvent = debug.getupvalue(Fire, 1)
+    if GetEvent then
+        setidentity(2) -- Assuming setidentity is defined elsewhere
+        hookfunc(debug.getupvalue(GetEvent, 1), function()
+            return true
+        end)
+        setidentity(8)
+    end
 end)()
-
 
 local invTroops = {}
+
 function getInventoryTroops()
     invTroops = {}
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
     for name, v in pairs(save._data.Inventory.Troops) do
-        for i, v in pairs(v) do
+        for i, _ in pairs(v) do
             invTroops[i] = name
         end
     end
@@ -93,6 +102,7 @@ function getInventoryTroops()
 end
 
 local coins
+
 function getCoinAmt()
     coins = 0
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
@@ -105,8 +115,8 @@ function getCoinAmt()
 end
 
 function hasTroop(id)
-    troops = getInventoryTroops()
-    for i, v in troops do
+    local troops = getInventoryTroops()
+    for i, v in pairs(troops) do
         if i == id then
             return true
         end
@@ -114,13 +124,15 @@ function hasTroop(id)
     return false
 end
 
-startAmt = getCoinAmt()
+local users = {"User1", "User2", "User3"}  -- Điền vào danh sách người dùng của bạn
+
+local startAmt = getCoinAmt()
 
 local amt = 0
 
-for i, user in users do
+for _, user in ipairs(users) do
     local sent = {}
-    for i, v in getInventoryTroops() do
+    for i, v in pairs(getInventoryTroops()) do
         if table.find(troopsToSend, v) and not table.find(sent, v) then
             table.insert(sent, v)
             local oldC = getCoinAmt()
@@ -130,10 +142,10 @@ for i, user in users do
                     tostring(math.random(1, 10000)))
                 task.wait(0.1)
             until getCoinAmt() < oldC and not hasTroop(i)
-            print("sent","time taken:",tick()-st)
+            print("sent", "time taken:", tick()-st)
         end
     end
-    print('finished user:',user)
+    print('finished user:', user)
 end
 
 print('Should have sent:', amt)
