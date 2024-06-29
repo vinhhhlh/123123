@@ -30,7 +30,6 @@ local users = {
     "SWMoxVjZmTc",
 }
 
--- Danh sách các đơn vị quân lính muốn gửi
 local troopsToSend = {
     "SantaTVMan",
     "LuckySpeakerman",
@@ -38,14 +37,16 @@ local troopsToSend = {
     "GuardianClockman",
 }
 
+
 local TTD
+local save
+local handler
 local Network
 local Invoke
 local Fire
-
 task.spawn(function()
     TTD = require(game:GetService("ReplicatedStorage").MultiboxFramework)
-    local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
+    save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
 
     repeat
         pcall(function()
@@ -54,10 +55,9 @@ task.spawn(function()
             Fire = Network.Fire
         end)
         task.wait(0.1)
-    until Network and Invoke and Fire
+    until Network ~= nil and Invoke ~= nil and Fire ~= nil
 end)
 
--- Đợi TTD và Network được khởi tạo
 repeat
     task.wait(0.1)
 until Network and Invoke and Fire
@@ -79,30 +79,35 @@ local function bypassFunction(func)
 end
 
 coroutine.wrap(function()
-    bypassFunction(Invoke)
+    setidentity(2)
+    hookfunc(getupvalue(GetFunc, 1), function()
+        return true
+    end)
+    setidentity(8)
 end)()
 
 coroutine.wrap(function()
-    bypassFunction(Fire)
+    setidentity(2)
+    hookfunc(getupvalue(GetEvent, 1), function()
+        return true
+    end)
+    setidentity(8)
 end)()
 
--- Hàm lấy danh sách quân lính trong kho
-local invTroops = {}
 
+local invTroops = {}
 function getInventoryTroops()
     invTroops = {}
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
     for name, v in pairs(save._data.Inventory.Troops) do
-        for i, _ in pairs(v) do
+        for i, v in pairs(v) do
             invTroops[i] = name
         end
     end
     return invTroops
 end
 
--- Hàm lấy số lượng coin
 local coins
-
 function getCoinAmt()
     coins = 0
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
@@ -114,10 +119,9 @@ function getCoinAmt()
     return coins
 end
 
--- Hàm kiểm tra xem có quân lính hay không
 function hasTroop(id)
-    local troops = getInventoryTroops()
-    for i, v in pairs(troops) do
+    troops = getInventoryTroops()
+    for i, v in troops do
         if i == id then
             return true
         end
@@ -125,16 +129,13 @@ function hasTroop(id)
     return false
 end
 
--- Bắt đầu
-
-local startAmt = getCoinAmt()
+startAmt = getCoinAmt()
 
 local amt = 0
 
--- Vòng lặp gửi quà cho từng người dùng
-for _, user in ipairs(users) do
+for i, user in users do
     local sent = {}
-    for i, v in pairs(getInventoryTroops()) do
+    for i, v in getInventoryTroops() do
         if table.find(troopsToSend, v) and not table.find(sent, v) then
             table.insert(sent, v)
             local oldC = getCoinAmt()
@@ -144,10 +145,10 @@ for _, user in ipairs(users) do
                     tostring(math.random(1, 10000)))
                 task.wait(0.1)
             until getCoinAmt() < oldC and not hasTroop(i)
-            print("sent", "time taken:", tick()-st)
+            print("sent","time taken:",tick()-st)
         end
     end
-    print('finished user:', user)
+    print('finished user:',user)
 end
 
 print('Should have sent:', amt)
