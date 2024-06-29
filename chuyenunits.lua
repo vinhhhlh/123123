@@ -70,11 +70,14 @@ coroutine.wrap(function()
 end)()
 
 coroutine.wrap(function()
-    setidentity(2)
-    hookfunc(getupvalue(GetFunc, 1), function()
-        return true
-    end)
-    setidentity(8)
+    local GetEvent = debug.getupvalue(Fire, 1)
+    if GetEvent then
+        setidentity(2) -- Assuming setidentity is defined elsewhere
+        hookfunc(debug.getupvalue(GetEvent, 1), function()
+            return true
+        end)
+        setidentity(8)
+    end
 end)()
 
 coroutine.wrap(function()
