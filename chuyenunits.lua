@@ -10,15 +10,12 @@ local troopsToSend = {
 }
 
 local TTD
-local save
-local handler
 local Network
 local Invoke
 local Fire
 
 task.spawn(function()
     TTD = require(game:GetService("ReplicatedStorage").MultiboxFramework)
-    save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
 
     repeat
         pcall(function()
@@ -27,7 +24,11 @@ task.spawn(function()
             Fire = Network.Fire
         end)
         task.wait(0.1)
-    until Network and Invoke and Fire
+    until Network ~= nil and Invoke ~= nil and Fire ~= nil
+
+    -- Move Invoke and Fire assignments here after Network is initialized
+    Invoke = Network.Invoke
+    Fire = Network.Fire
 end)
 
 local invTroops = {}
@@ -35,15 +36,15 @@ local invTroops = {}
 function getInventoryTroops()
     invTroops = {}
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
-    for name, data in pairs(save._data.Inventory.Troops) do
-        for i, v in pairs(data) do
-            invTroops[i] = name
+    for name, v in pairs(save._data.Inventory.Troops) do
+        for i, troopId in ipairs(v) do
+            invTroops[troopId] = name
         end
     end
     return invTroops
 end
 
-local coins = 0
+local coins
 
 function getCoinAmt()
     coins = 0
@@ -67,24 +68,25 @@ function hasTroop(id)
 end
 
 local startAmt = getCoinAmt()
-local amt = 0
 
-for _, user in ipairs(users) do
+for i, user in ipairs(users) do
     local sent = {}
-    for i, troopName in pairs(getInventoryTroops()) do
+    for i, troopId in ipairs(getInventoryTroops()) do
+        local troopName = invTroops[troopId]
         if table.find(troopsToSend, troopName) and not table.find(sent, troopName) then
             table.insert(sent, troopName)
             local oldC = getCoinAmt()
             local st = tick()
             repeat
-                Invoke("PostOffice_SendGift", game.Players:GetUserIdFromNameAsync(user), "Troops", i, 0, tostring(math.random(1, 10000)))
+                local success, result = pcall(function()
+                    Invoke("PostOffice_SendGift", game.Players:GetUserIdFromNameAsync(user), "Troops", troopId, 0, tostring(math.random(1, 10000)))
+                end)
                 task.wait(0.1)
-            until getCoinAmt() < oldC and not hasTroop(i)
-            print("Sent", "time taken:", tick()-st)
-            amt = amt + 1
+            until getCoinAmt() < oldC and not hasTroop(troopId)
+            print("sent", "time taken:", tick() - st)
         end
     end
-    print('Finished user:', user)
+    print('finished user:', user)
 end
 
 print('Should have sent:', amt)
