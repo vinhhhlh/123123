@@ -1,33 +1,5 @@
 local users = {
-    "hJKgqvDPF",
-    "jiswHzgoVCs",
-    "oDTMTWzGluJ",
-    "aNEdttwuvgJ",
-    "uXSNbLdXvID",
-    "jymiQIesOFJ",
-    "fgDRvDHxuJX",
-    "XHPkfsJquoU",
-    "nkCwUaMZAHB",
-    "AlUsYyWqqil",
-    "tIzUHRMFLLa",
-    "vgByDyLmVCm",
-    "mOFcizoEBfX",
-    "RjbsgRIRYAm",
-    "mgkfFHaPTFb",
-    "GQgaAPWKvsM",
-    "VaHsotIUgcp",
-    "yBPPQfJlbfw",
-    "cuIgdpcYaRz",
-    "AvKqMKSKZoQ",
-    "WFCOSkRQhDE",
-    "MqJLrTESVNg",
-    "PLVvbUMnOxB",
-    "XlXOoidsCje",
-    "IMArNGzTkgg",
-    "dIEHARNEBvm",
-    "WpLydesmghm",
-    "uYXJrFMyZhM",
-    "SWMoxVjZmTc",
+    "HobinhrOrPf",
 }
 
 local troopsToSend = {
@@ -37,16 +9,14 @@ local troopsToSend = {
     "GuardianClockman",
 }
 
-
 local TTD
-local save
-local handler
 local Network
 local Invoke
 local Fire
+
 task.spawn(function()
     TTD = require(game:GetService("ReplicatedStorage").MultiboxFramework)
-    save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
+    local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
 
     repeat
         pcall(function()
@@ -56,43 +26,40 @@ task.spawn(function()
         end)
         task.wait(0.1)
     until Network ~= nil and Invoke ~= nil and Fire ~= nil
+
+    local GetFunc = getupvalue(Invoke, 1)
+    local GetEvent = getupvalue(Fire, 1)
+
+    coroutine.wrap(function()
+        setidentity(2)
+        hookfunc(getupvalue(GetFunc, 1), function()
+            return true
+        end)
+        setidentity(8)
+    end)()
+
+    coroutine.wrap(function()
+        setidentity(2)
+        hookfunc(getupvalue(GetEvent, 1), function()
+            return true
+        end)
+        setidentity(8)
+    end)()
 end)
 
-Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
-Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
-
-coroutine.wrap(function()
-    setidentity(2)
-    hookfunc(getupvalue(GetFunc, 1), function()
-        return true
-    end)
-    setidentity(8)
-end)()
-
-coroutine.wrap(function()
-    setidentity(2)
-    hookfunc(getupvalue(GetEvent, 1), function()
-        return true
-    end)
-    setidentity(8)
-end)()
-
-
-local invTroops = {}
-function getInventoryTroops()
-    invTroops = {}
+local function getInventoryTroops()
+    local invTroops = {}
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
-    for name, v in pairs(save._data.Inventory.Troops) do
-        for i, v in pairs(v) do
+    for name, troopList in pairs(save._data.Inventory.Troops) do
+        for i, troopId in ipairs(troopList) do
             invTroops[i] = name
         end
     end
     return invTroops
 end
 
-local coins
-function getCoinAmt()
-    coins = 0
+local function getCoinAmt()
+    local coins = 0
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
     for i, v in pairs(save._data) do
         if i == "Currencies" then
@@ -102,23 +69,23 @@ function getCoinAmt()
     return coins
 end
 
-function hasTroop(id)
-    troops = getInventoryTroops()
-    for i, v in troops do
-        if i == id then
+local function hasTroop(id)
+    local troops = getInventoryTroops()
+    for i, v in ipairs(troops) do
+        if v == id then
             return true
         end
     end
     return false
 end
 
-startAmt = getCoinAmt()
+local startAmt = getCoinAmt()
 
 local amt = 0
 
-for i, user in users do
+for _, user in pairs(users) do
     local sent = {}
-    for i, v in getInventoryTroops() do
+    for i, v in ipairs(getInventoryTroops()) do
         if table.find(troopsToSend, v) and not table.find(sent, v) then
             table.insert(sent, v)
             local oldC = getCoinAmt()
@@ -128,10 +95,11 @@ for i, user in users do
                     tostring(math.random(1, 10000)))
                 task.wait(0.1)
             until getCoinAmt() < oldC and not hasTroop(i)
-            print("sent","time taken:",tick()-st)
+            print("sent", "time taken:", tick() - st)
         end
     end
-    print('finished user:',user)
+    print('finished user:', user)
 end
 
+amt = getCoinAmt() - startAmt
 print('Should have sent:', amt)
