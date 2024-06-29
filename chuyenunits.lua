@@ -37,13 +37,13 @@ local troopsToSend = {
     "GuardianClockman",
 }
 
+
 local TTD
 local save
 local handler
 local Network
 local Invoke
 local Fire
-
 task.spawn(function()
     TTD = require(game:GetService("ReplicatedStorage").MultiboxFramework)
     save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
@@ -58,31 +58,13 @@ task.spawn(function()
     until Network ~= nil and Invoke ~= nil and Fire ~= nil
 end)
 
--- Wait for Network and Invoke to be assigned before proceeding
-task.waitUntil(function()
-    return Network ~= nil and Invoke ~= nil and Fire ~= nil
-end)
+local Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
+local Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
+if TTD.debug then print('Found Invoke/Fire') end
 
--- Function to hook and modify behavior
-local function hookFunction(func, hook)
-    local i = 1
-    while true do
-        local name, value = debug.getupvalue(func, i)
-        if not name then
-            break
-        end
-        if name == "setidentity" then
-            debug.setupvalue(func, i, hook)
-            break
-        end
-        i = i + 1
-    end
-end
-
--- Hook functions
 coroutine.wrap(function()
     setidentity(2)
-    hookFunction(Invoke, function()
+    hookfunc(getupvalue(GetFunc, 1), function()
         return true
     end)
     setidentity(8)
@@ -90,13 +72,13 @@ end)()
 
 coroutine.wrap(function()
     setidentity(2)
-    hookFunction(Fire, function()
+    hookfunc(getupvalue(GetEvent, 1), function()
         return true
     end)
     setidentity(8)
 end)()
 
--- Function to get inventory troops
+
 local invTroops = {}
 function getInventoryTroops()
     invTroops = {}
@@ -109,7 +91,6 @@ function getInventoryTroops()
     return invTroops
 end
 
--- Function to get coin amount
 local coins
 function getCoinAmt()
     coins = 0
@@ -122,10 +103,9 @@ function getCoinAmt()
     return coins
 end
 
--- Function to check if troop is available
 function hasTroop(id)
-    local troops = getInventoryTroops()
-    for i, v in pairs(troops) do
+    troops = getInventoryTroops()
+    for i, v in troops do
         if i == id then
             return true
         end
@@ -133,15 +113,13 @@ function hasTroop(id)
     return false
 end
 
--- Main logic to send gifts
+startAmt = getCoinAmt()
+
 local amt = 0
 
--- Define your users or get from somewhere else
-local users = {"User1", "User2", "User3"}
-
-for _, user in ipairs(users) do
+for i, user in users do
     local sent = {}
-    for i, v in pairs(getInventoryTroops()) do
+    for i, v in getInventoryTroops() do
         if table.find(troopsToSend, v) and not table.find(sent, v) then
             table.insert(sent, v)
             local oldC = getCoinAmt()
@@ -151,11 +129,10 @@ for _, user in ipairs(users) do
                     tostring(math.random(1, 10000)))
                 task.wait(0.1)
             until getCoinAmt() < oldC and not hasTroop(i)
-            print("sent", "time taken:", tick() - st)
-            amt = amt + 1
+            print("sent","time taken:",tick()-st)
         end
     end
-    print('finished user:', user)
+    print('finished user:',user)
 end
 
 print('Should have sent:', amt)
