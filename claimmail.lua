@@ -1,4 +1,5 @@
-local claimAt = 1
+local claimAt = 2
+
 
 local e
 repeat
