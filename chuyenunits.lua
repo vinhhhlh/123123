@@ -126,7 +126,6 @@ function hasTroop(id)
 end
 
 -- Bắt đầu
-local users = {"User1", "User2", "User3"}  -- Thay bằng danh sách người dùng của bạn
 
 local startAmt = getCoinAmt()
 
