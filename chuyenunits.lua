@@ -58,26 +58,15 @@ task.spawn(function()
     until Network ~= nil and Invoke ~= nil and Fire ~= nil
 end)
 
-coroutine.wrap(function()
-    local GetFunc = debug.getupvalue(Invoke, 1)
-    if GetFunc then
-        setidentity(2) -- Assuming setidentity is defined elsewhere
-        hookfunc(debug.getupvalue(GetFunc, 1), function()
-            return true
-        end)
-        setidentity(8)
-    end
-end)()
+Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
+Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
 
 coroutine.wrap(function()
-    local GetEvent = debug.getupvalue(Fire, 1)
-    if GetEvent then
-        setidentity(2) -- Assuming setidentity is defined elsewhere
-        hookfunc(debug.getupvalue(GetEvent, 1), function()
-            return true
-        end)
-        setidentity(8)
-    end
+    setidentity(2)
+    hookfunc(getupvalue(GetFunc, 1), function()
+        return true
+    end)
+    setidentity(8)
 end)()
 
 coroutine.wrap(function()
@@ -87,6 +76,7 @@ coroutine.wrap(function()
     end)
     setidentity(8)
 end)()
+
 
 local invTroops = {}
 function getInventoryTroops()
