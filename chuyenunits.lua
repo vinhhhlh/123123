@@ -88,7 +88,6 @@ coroutine.wrap(function()
     setidentity(8)
 end)()
 
-
 local invTroops = {}
 function getInventoryTroops()
     invTroops = {}
