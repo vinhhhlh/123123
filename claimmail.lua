@@ -1,7 +1,5 @@
 local claimAt = 1
 
-
-
 local e
 repeat
     task.wait(0.1)
