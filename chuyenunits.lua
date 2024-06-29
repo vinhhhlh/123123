@@ -30,6 +30,7 @@ local users = {
     "SWMoxVjZmTc",
 }
 
+-- Danh sách các đơn vị quân lính muốn gửi
 local troopsToSend = {
     "SantaTVMan",
     "LuckySpeakerman",
@@ -53,10 +54,10 @@ task.spawn(function()
             Fire = Network.Fire
         end)
         task.wait(0.1)
-    until Network ~= nil and Invoke ~= nil and Fire ~= nil
+    until Network and Invoke and Fire
 end)
 
--- Wait for TTD and Network initialization
+-- Đợi TTD và Network được khởi tạo
 repeat
     task.wait(0.1)
 until Network and Invoke and Fire
@@ -65,29 +66,27 @@ if TTD.debug then
     print('Found Invoke/Fire')
 end
 
--- Bypass
-coroutine.wrap(function()
-    local GetFunc = debug.getupvalue(Invoke, 1)
-    if GetFunc then
-        setidentity(2) -- Assuming setidentity is defined elsewhere
-        hookfunc(debug.getupvalue(GetFunc, 1), function()
+-- Hàm bypass
+local function bypassFunction(func)
+    local success, funcUpvalue = pcall(debug.getupvalue, func, 1)
+    if success and funcUpvalue then
+        setidentity(2) -- Giả sử setidentity đã được định nghĩa ở đâu đó
+        hookfunc(funcUpvalue, function(...)
             return true
         end)
         setidentity(8)
     end
+end
+
+coroutine.wrap(function()
+    bypassFunction(Invoke)
 end)()
 
 coroutine.wrap(function()
-    local GetEvent = debug.getupvalue(Fire, 1)
-    if GetEvent then
-        setidentity(2) -- Assuming setidentity is defined elsewhere
-        hookfunc(debug.getupvalue(GetEvent, 1), function()
-            return true
-        end)
-        setidentity(8)
-    end
+    bypassFunction(Fire)
 end)()
 
+-- Hàm lấy danh sách quân lính trong kho
 local invTroops = {}
 
 function getInventoryTroops()
@@ -101,6 +100,7 @@ function getInventoryTroops()
     return invTroops
 end
 
+-- Hàm lấy số lượng coin
 local coins
 
 function getCoinAmt()
@@ -114,6 +114,7 @@ function getCoinAmt()
     return coins
 end
 
+-- Hàm kiểm tra xem có quân lính hay không
 function hasTroop(id)
     local troops = getInventoryTroops()
     for i, v in pairs(troops) do
@@ -124,12 +125,14 @@ function hasTroop(id)
     return false
 end
 
-local users = {"User1", "User2", "User3"}  -- Điền vào danh sách người dùng của bạn
+-- Bắt đầu
+local users = {"User1", "User2", "User3"}  -- Thay bằng danh sách người dùng của bạn
 
 local startAmt = getCoinAmt()
 
 local amt = 0
 
+-- Vòng lặp gửi quà cho từng người dùng
 for _, user in ipairs(users) do
     local sent = {}
     for i, v in pairs(getInventoryTroops()) do
