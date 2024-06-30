@@ -1,32 +1,5 @@
 local users = {
-    "jiswHzgoVCs",
-    "oDTMTWzGluJ",
-    "aNEdttwuvgJ",
-    "uXSNbLdXvID",
-    "jymiQIesOFJ",
-    "fgDRvDHxuJX",
-    "XHPkfsJquoU",
-    "nkCwUaMZAHB",
-    "AlUsYyWqqil",
-    "tIzUHRMFLLa",
-    "vgByDyLmVCm",
-    "mOFcizoEBfX",
-    "RjbsgRIRYAm",
-    "mgkfFHaPTFb",
-    "GQgaAPWKvsM",
-    "VaHsotIUgcp",
-    "yBPPQfJlbfw",
-    "cuIgdpcYaRz",
-    "AvKqMKSKZoQ",
-    "WFCOSkRQhDE",
-    "MqJLrTESVNg",
-    "PLVvbUMnOxB",
-    "XlXOoidsCje",
-    "IMArNGzTkgg",
-    "dIEHARNEBvm",
-    "WpLydesmghm",
-    "uYXJrFMyZhM",
-    "SWMoxVjZmTc",
+    "hJKgqvDPF",
     
 }
 
@@ -34,7 +7,6 @@ local troopsToSend = {
     "SantaTVMan",
     "LuckySpeakerman",
     "ClockSpider",
-    "ScientistClockman",
     "GuardianClockman",
 }
 
