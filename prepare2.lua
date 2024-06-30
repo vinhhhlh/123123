@@ -31,9 +31,6 @@ task.spawn(function()
     until Network ~= nil and Invoke ~= nil and Fire ~= nil
 end)
 
-Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
-Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
-
 coroutine.wrap(function()
     setidentity(2)
     hookfunc(getupvalue(GetFunc, 1), function()
