@@ -1,4 +1,4 @@
-
+if not getupvalue then getupvalue = debug.getupvalue end
 local users = {
 "hvQgNgrd",
 
