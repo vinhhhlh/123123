@@ -1,5 +1,5 @@
 local users = {
-"hJKgqvDPF",
+"HobinhrOrPf",
 
 }
 
@@ -30,6 +30,9 @@ task.spawn(function()
         task.wait(0.1)
     until Network ~= nil and Invoke ~= nil and Fire ~= nil
 end)
+
+Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
+Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
 
 coroutine.wrap(function()
     setidentity(2)
