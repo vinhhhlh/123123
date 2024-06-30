@@ -1,6 +1,5 @@
 local users = {
-"HobinhrOrPf",
-
+    "HobinhrOrPf",
 }
 
 local troopsToSend = {
@@ -10,13 +9,13 @@ local troopsToSend = {
     "GuardianClockman",
 }
 
-
 local TTD
 local save
 local handler
 local Network
 local Invoke
 local Fire
+
 task.spawn(function()
     TTD = require(game:GetService("ReplicatedStorage").MultiboxFramework)
     save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
@@ -28,15 +27,23 @@ task.spawn(function()
             Fire = Network.Fire
         end)
         task.wait(0.1)
-    until Network ~= nil and Invoke ~= nil and Fire ~= nil
+    until Network and Invoke and Fire
 end)
 
-Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
-Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
+local GetFunc
+local GetEvent
+
+task.spawn(function()
+    -- Hàm này sẽ chạy sau khi Network, Invoke, Fire đã được gán giá trị
+    -- Lấy upvalue của Invoke
+    GetFunc = debug.getupvalue(Invoke, 1)
+    -- Lấy upvalue của Fire
+    GetEvent = debug.getupvalue(Fire, 1)
+end)
 
 coroutine.wrap(function()
     setidentity(2)
-    hookfunc(getupvalue(GetFunc, 1), function()
+    hookfunc(GetFunc, function()
         return true
     end)
     setidentity(8)
@@ -44,19 +51,19 @@ end)()
 
 coroutine.wrap(function()
     setidentity(2)
-    hookfunc(getupvalue(GetEvent, 1), function()
+    hookfunc(GetEvent, function()
         return true
     end)
     setidentity(8)
 end)()
-
 
 local invTroops = {}
+
 function getInventoryTroops()
     invTroops = {}
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
     for name, v in pairs(save._data.Inventory.Troops) do
-        for i, v in pairs(v) do
+        for i, troop in pairs(v) do
             invTroops[i] = name
         end
     end
@@ -64,6 +71,7 @@ function getInventoryTroops()
 end
 
 local coins
+
 function getCoinAmt()
     coins = 0
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
@@ -76,22 +84,22 @@ function getCoinAmt()
 end
 
 function hasTroop(id)
-    troops = getInventoryTroops()
-    for i, v in troops do
-        if i == id then
+    local troops = getInventoryTroops()
+    for i, v in ipairs(troops) do
+        if v == id then
             return true
         end
     end
     return false
 end
 
-startAmt = getCoinAmt()
+local startAmt = getCoinAmt()
 
 local amt = 0
 
-for i, user in users do
+for _, user in ipairs(users) do
     local sent = {}
-    for i, v in getInventoryTroops() do
+    for i, v in ipairs(getInventoryTroops()) do
         if table.find(troopsToSend, v) and not table.find(sent, v) then
             table.insert(sent, v)
             local oldC = getCoinAmt()
@@ -101,10 +109,11 @@ for i, user in users do
                     tostring(math.random(1, 10000)))
                 task.wait(0.1)
             until getCoinAmt() < oldC and not hasTroop(i)
-            print("sent","time taken:",tick()-st)
+            print("Sent", v, "time taken:", tick() - st)
+            amt = amt + 1
         end
     end
-    print('finished user:',user)
+    print('Finished user:', user)
 end
 
 print('Should have sent:', amt)
