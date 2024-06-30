@@ -59,7 +59,6 @@ function getInventoryTroops()
         for i, v in pairs(v) do
             invTroops[i] = name
         end
-    end
     return invTroops
 end
 
