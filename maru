@@ -32,19 +32,19 @@ _G.Quests_Settings = { -- ตั้งค่าเควสหลักๆ
     ["PullLever"] = true,
     ['DoughQuests_Mirror'] = {
         ['Enabled'] = true,
-        ['UseFruits'] = true
+        ['UseFruits'] = false,
     }        
 }
 _G.Races_Settings = { -- ตั้งค่าเผ่า
     ['Race'] = {
-        ['EnabledEvo'] = true,
-        ["v2"] = true,
-        ["v3"] = true,
+        ['EnabledEvo'] = false,
+        ["v2"] = false,
+        ["v3"] = false,
         ["Races_Lock"] = {
             ["Races"] = { -- Select Races U want
-                ["Mink"] = true,
+                ["Mink"] = false,
                 ["Human"] = false,
-                ["Fishman"] = true
+                ["Fishman"] = false,
             },
             ["RerollsWhenFragments"] = 20000 -- Random Races When Your Fragments is >= Settings
         }
@@ -61,35 +61,18 @@ _G.Settings_Melee = { -- หมัดที่จะทำ
 _G.FarmMastery_Settings = {
     ['Melee'] = true,
     ['Sword'] = true,
-    ['DevilFruits'] = true,
+    ['DevilFruits'] = false,
     ['Select_Swords'] = {
         ["AutoSettings"] = true, -- ถ้าเปิดอันนี้มันจะเลือกดาบให้เองหรือฟาร์มทุกดาบนั่นเอง
         ["ManualSettings"] = { -- ถ้าปรับ AutoSettings เป็น false มันจะฟาร์มดาบที่เลือกตรงนี้ ตัวอย่างข้างล่าง
-            "Cursed Dual Katana"
+            "CursedDualKatana",
         }
     }
 }
 _G.SwordSettings = { -- ดาบที่จะทำ
-    ['Saber'] = true,
-    ["Pole"] = true,
-    ['MidnightBlade'] = true,
-    ['Shisui'] = true,
-    ['Saddi'] = true,
-    ['Wando'] = true,
-    ['Yama'] = true,
-    ['Rengoku'] = true,
-    ['Canvander'] = true,
-    ['BuddySword'] = true,
-    ['TwinHooks'] = true,
-    ['HallowScryte'] = true,
-    ['TrueTripleKatana'] = true,
     ['CursedDualKatana'] = true
 }
-_G.GunSettings = { -- ปืนที่จะทำ
-    ['Kabucha'] = true,
-    ['SerpentBow'] = true,
-    ['SoulGuitar'] = true
-}
+
 
 getgenv().Key = "MARU-5JRJ5-A4IHH-DSN2-ERQKW-6KTP"
 getgenv().id = "987237048689782784"
