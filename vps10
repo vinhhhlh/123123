@@ -1,6 +1,6 @@
 getgenv().Key = "kb0ead1d709dff85b479a22e"
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1214549135915745290/1250843529656406209/tvindaideguidi.txt?ex=66837c91&is=66822b11&hm=73155dc8bad87d6cab2ca0b18cc67db486d49f516b440c3e1f799abd945e91e3&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1214549135915745290/1250843529656406209/tvindaideguidi.txt?ex=668d5fd1&is=668c0e51&hm=46cb51faaec2fe57d83abccf1ecbbda639ad2ce0df7921c7cedfd154839d1f63&"
 getgenv().Config = {
 	["AutoVoteDifficulty"] = false,
 	["RequiredGem"] = 100,
@@ -51,7 +51,7 @@ getgenv().Config = {
 	["DeleteMap"] = true,
 	["AutoClaimEventQuest"] = true,
 	["AutoRejoin"] = true,
-	["WebhookURL"] = "https://discord.com/api/webhooks/1251043676948402186/Zq9x7T2os9ekJRN8wZgBthYKz7kjnlOJS4ef-O6GrdXcXDdcoWc2lOrKJnfcTrwvuH7t",
+	["WebhookURL"] = "https://discordapp.com/api/webhooks/1250104979675545711/nkCrXiyZ-C18XBOUJhpdpe29wfsuOdELatLsTUqVnq8xfm99dCxDpHEyxBohduopJJZQ",
 	["SummonDelay"] = 0.3,
 	["ABE_Gift"] = true,
 	["JoinFailsafe"] = true,
