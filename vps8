@@ -1,3 +1,4 @@
+getgenv().Key = "ke76f7406dd050242aeaa6c7"
 getgenv().EquipMacroUnit = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1246441458022748222/1247070354447269968/haha.txt?ex=668b8345&is=668a31c5&hm=ebbb972b8869ac37ebd6dc30a1bc6767803ed7161d2ba9d3d52c7d67bbb79569&"
 getgenv().Config = {
@@ -26,5 +27,4 @@ getgenv().Config = {
     ["AutoReturnLobby"] = true,
     ["JoinHighest"] = false,
 }
-getgenv().Key = "ke76f7406dd050242aeaa6c7"
 repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(20)until Joebiden
