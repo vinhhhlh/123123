@@ -1,6 +1,6 @@
 local toBuy = {
-["Santa TV Man"] = { 600, 200 }, -- max price to buy for, max amt of troop in inventory
-['Lucky Speakerman'] = { 100, 200 },
+["Santa TV Man"] = { 600, 100 }, -- max price to buy for, max amt of troop in inventory
+['Lucky Speakerman'] = { 100, 100 },
 }
 local items = 0
 local e
