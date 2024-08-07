@@ -96,11 +96,11 @@ _G.SwordSettings = { -- ดาบที่จะทำ
     ['CursedDualKatana'] = true
 }
 _G.SharkAnchor_Settings = {
-    ["Enabled_Farm"] = true,
+    ["Enabled_Farm"] = false,
 }
 _G.GunSettings = { -- ปืนที่จะทำ
-    ['Kabucha'] = true,
-    ['SerpentBow'] = true,
+    ['Kabucha'] = false,
+    ['SerpentBow'] = false,
     ['SoulGuitar'] = false
 }
 getgenv().Key = "MARU-5JRJ5-A4IHH-DSN2-ERQKW-6KTP"
