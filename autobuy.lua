@@ -1,75 +1,56 @@
-repeat task.wait() until game:IsLoaded()
-repeat task.wait() until game.Players
-repeat task.wait() until game.Players.LocalPlayer
-repeat task.wait() until game.Players.LocalPlayer:FindFirstChild("PlayerGui")
-repeat task.wait() until game.Players.LocalPlayer.PlayerGui:FindFirstChild("Main");
--- Quest / เควส
-_G.Quest = { 
-    ['RGB Aura Haki'] = true,
-    ['Pull Lever'] = true,
-    ['Quest Dough Awaken'] = true
+getgenv().Key = "k3d5cc04abcc9f3116173d57"
+getgenv().BountyFarm = {
+    ["Script"] = {
+        ["Black Screen"] = true,
+        ["Team"] = "Pirates", -- Pirates/Marines
+        ["Panic % Health"] = 40, -- Teleport to Safe Zone if player below x % HP
+        ["Skip Timer"] = 60, -- Skip if took more than x seconds to kill
+        ["M1 Health"] = 90, -- Attack M1 if target health above x % HP
+        ["Ignore User"] = {"Portal-Portal", "Kitsune-Kitsune", "Mammoth-Mammoth"}, -- Ignore user with the ate Blox Fruit
+        ["Ignore Bounty"] = 5000000, -- Ignore user with higher than x bounty than you
+    },
+    ["Hop Server"] = {
+        ["Delay"] = 10, -- Delay before Hop Server
+        ["Below Ping"] = 100, -- Hop to Server below x ping
+        ["Hop Ping"] = 1000, -- Hop if current server ping is higher than x 
+    },
+    ["Skill"] = {
+        ["Cycle"] = true, -- Use in a Cycle (making use used all skill) instead of use prioritize the first order
+        ["Prioritize"] = {"Melee", "Blox Fruit", "Sword", "Gun"}, -- Use skill Left to right (first to last)
+        -- ["Skill"] = {Enable, Predict, Hold, Delay Next Skill}
+        ["Melee"] = {
+            ["Z"] = {true, true, 0.2, 0.1},
+            ["X"] = {true, true, 0.2, 0.1},
+            ["C"] = {true, true, 0.5, 0.1},
+        },
+        ["Blox Fruit"] = {
+            ["Z"] = {false, true, 0, 1},
+            ["X"] = {false, true, 0, 1},
+            ["C"] = {false, true, 0, 1},
+            ["V"] = {false, true, 0, 1},
+            ["F"] = {false, true, 0, 1},
+        },
+        ["Sword"] = {
+            ["Z"] = {true, true, 0.8, 0},
+            ["X"] = {true, true, 0.2, 0},
+        },
+        ["Gun"] = {
+            ["Z"] = {false, true, 0, 1},
+            ["X"] = {false, true, 0, 1},
+        },
+    },
 }
-
--- Race / เผ่า
-_G.Race = { 
-    ['Select Race'] = {'Human','Fishman','Skypiea','Mink'},
-    ['Lock Race'] = true,
-    ['Evo Race V3'] = true
+getgenv().Setup = {
+    ["Melee"]  = "Dragon Talon",
+    ["Sword"] = "Cursed Dual Katana",
+    ["Gun"] = "Soul Guitar",
+    ["Accessory"] = "Warrior Helmet",
+    ["Stat"] = {
+        ["Melee"] = 2550,
+        ["Defense"] = 2550,
+        ["Sword"] = 2550,
+        ["Gun"] = 0,
+        ["Blox Fruit"] = 0,
+    }
 }
-
--- Melee / หมัด
-_G.Melee = { 
-    ['Godhuman'] = true
-}
-
--- Sword / ดาบ
-_G.Sword = { 
-    ['Saber'] = true,
-    ['Midnight Blade'] = true,
-    ['Shisui'] = true,
-    ['Saddi'] = true,
-    ['Wando'] = true,
-    ['Yama'] = true,
-    ['Koko'] = false,
-    ['Rengoku'] = true,
-    ['Canvander'] = true,
-    ['Buddy Sword'] = true,
-    ['Twin Hooks'] = true,
-    ['SpikeyTrident'] = true,
-    ['Hallow Scryte'] = true,
-    ['Dark Dagger'] = true,
-    ['Tushita'] = true,
-    ['True Triple Katana'] = true,
-    ['Cursed Dual Katana'] = true,
-    ['Shark Anchor'] = true
-}
-
--- Farm Gun / ฟามปืน
-_G.Gun = {  
-    ['Kabucha'] = true,
-    ['Acidum Rifle'] = true,
-    ['Soul Guitar'] = true, 
-    ['Serpent Bow'] = true
-}
-
--- Devil Fruit / ผลปีศาจ
-_G.Fruit = { 
-    ['Main Fruit'] = {'Kitsune-Kitsune','T-Rex-T-Rex','Mammoth-Mammoth'},
-    ['Select Fruit'] = {'Dark-Dark','Magma-Magma'}
-}
-
--- Mastery / มาสเตอรี่
-_G.Mastery = { 
-    ['Melee'] = true,
-    ['Sword'] = true,
-    ['Fruit'] = true
-}
-
--- Setting / ตั้งค่าหลัก
-_G.Setting = {
-    ['FPS Booster'] = true,
-    ['Auto Close Ui'] = false 
-}
-
-script_key="oiAFCCiclfQKXiihOcPBatlxOCUpmieD";
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/58876769bc015b00b9a3008484e99085.lua"))()
+repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(20)until Joebiden
