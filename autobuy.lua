@@ -64,7 +64,7 @@ _G.Mastery = {
 _G.Setting = {
     ['White Screen'] = true,
     ['FPS Booster'] = true,
-    ['Auto Close Ui'] = false
+    ['Auto Close Ui'] = true
 }
 
 script_key="oiAFCCiclfQKXiihOcPBatlxOCUpmieD";
