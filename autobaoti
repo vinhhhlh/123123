@@ -61,7 +61,7 @@ getgenv().Config = {
         ["Weekend_2xCoinsBoost"] = false,
         ["2xCoinsBoost"] = false
     },
-    ["AutoSave"] = true
+    ["AutoSave"] = false
 }
 
 loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
