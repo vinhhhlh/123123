@@ -1,0 +1,16 @@
+print("FPS CAP")
+local RunService = game:GetService("RunService")
+
+local TARGET_FRAME_RATE = 5
+
+local frameStart = os.clock()
+
+RunService.RenderStepped:Connect(function()
+    while os.clock() - frameStart < 1 / TARGET_FRAME_RATE do
+        -- We do nothing until the target time has elapsed
+        RunService.Heartbeat:Wait()  -- Yield to avoid freezing the game
+    end
+
+    -- Mark the start of the next frame right before this one is rendered
+    frameStart = os.clock()
+end)
