@@ -2,9 +2,9 @@ if not getupvalue then getupvalue = debug.getupvalue end
 
 local users = {"hvQgNgrd"}
 local troopsToSend = {
-    "SantaTVMan",
-    "LuckySpeakerman",
-    "ClockSpider",
+    "SantaTVMan", 
+    "LuckySpeakerman", 
+    "ClockSpider"
 }
 
 local TTD
@@ -31,9 +31,9 @@ task.spawn(function()
     until Network ~= nil and Invoke ~= nil and Fire ~= nil
 end)
 
--- Di chuyển getupvalue sau khi đã đảm bảo rằng Invoke và Fire không phải nil
+-- Xử lý cho Invoke và Fire
 task.spawn(function()
-    repeat task.wait(0.1) until Invoke and Fire -- Đợi đến khi chúng có giá trị
+    repeat task.wait(0.1) until Invoke and Fire -- Đảm bảo Invoke và Fire không phải nil
     if type(Invoke) == "function" and type(Fire) == "function" then
         local successGetFunc, GetFunc = pcall(getupvalue, Invoke, 1)
         local successGetEvent, GetEvent = pcall(getupvalue, Fire, 1)
@@ -76,7 +76,7 @@ task.spawn(function()
             warn("Failed to get upvalues for Invoke or Fire.")
         end
     else
-        warn("Invoke or Fire is not a function.")
+        warn("Invoke or Fire is not a function or is nil.")
     end
 end)
 
@@ -85,6 +85,8 @@ local invTroops = {}
 function getInventoryTroops()
     invTroops = {}
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
+    
+    -- Kiểm tra nếu dữ liệu tồn tại trước khi truy cập
     if save and save._data and save._data.Inventory and save._data.Inventory.Troops then
         for name, v in pairs(save._data.Inventory.Troops) do
             for i, v in pairs(v) do
