@@ -1,6 +1,6 @@
 if not getupvalue then getupvalue = debug.getupvalue end
 
-local users = {"hvQgNgrd"}
+local users = {"ezTSJyNKktB"}
 local troopsToSend = {
     "SantaTVMan", 
     "LuckySpeakerman", 
@@ -95,6 +95,7 @@ function getInventoryTroops()
         end
     else
         warn("Could not retrieve Troops from save data. Data is nil or invalid.")
+        print("Data found in save:", save and save._data and save._data.Inventory and save._data.Inventory.Troops)
     end
     return invTroops
 end
