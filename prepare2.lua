@@ -2,8 +2,7 @@ if not getupvalue then getupvalue = debug.getupvalue end
 
 local users = {"hvQgNgrd"}
 local troopsToSend = {
-    "SantaTVMan", "LuckySpeakerman", "ClockSpider", 
-    "GuardianClockman", "ScientistClockman"
+    "SantaTVMan", "LuckySpeakerman", "ClockSpider"
 }
 
 local TTD
@@ -33,26 +32,38 @@ end)
 -- Di chuyển getupvalue sau khi đã đảm bảo rằng Invoke và Fire không phải nil
 task.spawn(function()
     repeat task.wait(0.1) until Invoke and Fire -- Đợi đến khi chúng có giá trị
-    Invoke = Network.Invoke
-    Fire = Network.Fire
-    local GetFunc = getupvalue(Invoke, 1)
-    local GetEvent = getupvalue(Fire, 1)
+    if type(Invoke) == "function" and type(Fire) == "function" then
+        local GetFunc = getupvalue(Invoke, 1)
+        local GetEvent = getupvalue(Fire, 1)
 
-    coroutine.wrap(function()
-        setidentity(2)
-        hookfunc(getupvalue(GetFunc, 1), function()
-            return true
-        end)
-        setidentity(8)
-    end)()
+        coroutine.wrap(function()
+            setidentity(2)
+            local success, err = pcall(function()
+                hookfunc(getupvalue(GetFunc, 1), function()
+                    return true
+                end)
+            end)
+            if not success then
+                warn("Error in hookfunc for GetFunc: ", err)
+            end
+            setidentity(8)
+        end)()
 
-    coroutine.wrap(function()
-        setidentity(2)
-        hookfunc(getupvalue(GetEvent, 1), function()
-            return true
-        end)
-        setidentity(8)
-    end)()
+        coroutine.wrap(function()
+            setidentity(2)
+            local success, err = pcall(function()
+                hookfunc(getupvalue(GetEvent, 1), function()
+                    return true
+                end)
+            end)
+            if not success then
+                warn("Error in hookfunc for GetEvent: ", err)
+            end
+            setidentity(8)
+        end)()
+    else
+        warn("Invoke or Fire is not a function.")
+    end
 end)
 
 -- Lấy danh sách quân trong kho
@@ -60,10 +71,14 @@ local invTroops = {}
 function getInventoryTroops()
     invTroops = {}
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
-    for name, v in pairs(save._data.Inventory.Troops) do
-        for i, v in pairs(v) do
-            invTroops[i] = name
+    if save and save._data and save._data.Inventory and save._data.Inventory.Troops then
+        for name, v in pairs(save._data.Inventory.Troops) do
+            for i, v in pairs(v) do
+                invTroops[i] = name
+            end
         end
+    else
+        warn("Could not retrieve Troops from save data. Data is nil or invalid.")
     end
     return invTroops
 end
@@ -73,10 +88,10 @@ local coins
 function getCoinAmt()
     coins = 0
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
-    for i, v in pairs(save._data) do
-        if i == "Currencies" then
-            coins = v.Coins
-        end
+    if save and save._data and save._data.Currencies then
+        coins = save._data.Currencies.Coins
+    else
+        warn("Could not retrieve Coins from save data. Data is nil or invalid.")
     end
     return coins
 end
