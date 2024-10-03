@@ -64,5 +64,4 @@ getgenv().Config = {
 }
 getgenv().Key = "kb0ead1d709dff85b479a22e"
 repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(10)until Joebiden
-wait(5)
-https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP
+
