@@ -4,7 +4,7 @@ local users = {"hvQgNgrd"}
 local troopsToSend = {
     "SantaTVMan",
     "LuckySpeakerman",
-    "ClockSpider"
+    "ClockSpider",
 }
 
 local TTD
@@ -35,34 +35,46 @@ end)
 task.spawn(function()
     repeat task.wait(0.1) until Invoke and Fire -- Đợi đến khi chúng có giá trị
     if type(Invoke) == "function" and type(Fire) == "function" then
-        local GetFunc = getupvalue(Invoke, 1)
-        local GetEvent = getupvalue(Fire, 1)
+        local successGetFunc, GetFunc = pcall(getupvalue, Invoke, 1)
+        local successGetEvent, GetEvent = pcall(getupvalue, Fire, 1)
 
-        coroutine.wrap(function()
-            setidentity(2)
-            local success, err = pcall(function()
-                hookfunc(getupvalue(GetFunc, 1), function()
-                    return true
+        if successGetFunc and successGetEvent then
+            coroutine.wrap(function()
+                setidentity(2)
+                local successHookFunc, errHookFunc = pcall(function()
+                    if type(GetFunc) == "function" then
+                        hookfunc(GetFunc, function()
+                            return true
+                        end)
+                    else
+                        warn("GetFunc is not a function, it's a:", typeof(GetFunc))
+                    end
                 end)
-            end)
-            if not success then
-                warn("Error in hookfunc for GetFunc: ", err)
-            end
-            setidentity(8)
-        end)()
+                if not successHookFunc then
+                    warn("Error in hookfunc for GetFunc: ", errHookFunc)
+                end
+                setidentity(8)
+            end)()
 
-        coroutine.wrap(function()
-            setidentity(2)
-            local success, err = pcall(function()
-                hookfunc(getupvalue(GetEvent, 1), function()
-                    return true
+            coroutine.wrap(function()
+                setidentity(2)
+                local successHookEvent, errHookEvent = pcall(function()
+                    if type(GetEvent) == "function" then
+                        hookfunc(GetEvent, function()
+                            return true
+                        end)
+                    else
+                        warn("GetEvent is not a function, it's a:", typeof(GetEvent))
+                    end
                 end)
-            end)
-            if not success then
-                warn("Error in hookfunc for GetEvent: ", err)
-            end
-            setidentity(8)
-        end)()
+                if not successHookEvent then
+                    warn("Error in hookfunc for GetEvent: ", errHookEvent)
+                end
+                setidentity(8)
+            end)()
+        else
+            warn("Failed to get upvalues for Invoke or Fire.")
+        end
     else
         warn("Invoke or Fire is not a function.")
     end
