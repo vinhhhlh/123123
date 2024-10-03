@@ -1,4 +1,4 @@
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1252574910803480587/1289847629936853002/drill.txt?ex=66fd9b77&is=66fc49f7&hm=b9af89413cf7b1d8b19d9faa41a6db0ad964c012cbe64fa49ad02bc2cf6ade71&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1252574910803480587/1289847629936853002/drill.txt?ex=66ff95b7&is=66fe4437&hm=f07cc249c799a4460269a7bdc53da06a9bf9d4dd873b8f2fdb84f0eec98b3389&"
 getgenv().EquipMacroTroop = true
 getgenv().Config = {
     ["AutoReplay"] = true,
