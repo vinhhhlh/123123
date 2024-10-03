@@ -2,7 +2,9 @@ if not getupvalue then getupvalue = debug.getupvalue end
 
 local users = {"hvQgNgrd"}
 local troopsToSend = {
-    "SantaTVMan", "LuckySpeakerman", "ClockSpider"
+    "SantaTVMan",
+    "LuckySpeakerman",
+    "ClockSpider"
 }
 
 local TTD
