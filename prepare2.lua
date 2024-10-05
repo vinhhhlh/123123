@@ -1,11 +1,44 @@
 if not getupvalue then getupvalue = debug.getupvalue end
+local users = {
+    "OFGJtLB",
+    "cua4gBBJ",
+    "TsHhsfY",
+    "UorfF7G4d",
+    "VSI8a4n",
+    "TmU5SY4w",
+    "oHeHxN8j",
+    "vt7sle2B",
+    "Fgdgw7dGu",
+    "m6RSG3hMP",
+    "MciwHvJ",
+    "UDVzDqX7",
+    "bGWOb0OLg",
+    "WgOL6S",
+    "qOiGgvPq",
+    "dbzDZ5D1g",
+    "PJsol3t47",
+    "bZNvrBH",
+    "Usfh6rbeH",
+    "EKJhHJV",
+    "uAIoWKQ",
+    "LP4DMK7I1P",
+    "jpAhB5V",
+    "yGVdiFH9h",
+    "sY78w6q",
+    "eeOgTOL",
+    "xdYsFjc7",
+    "Cv48rKs",
+    "thV33VS1T",
+    "xJU8Rysx"
 
-local users = {"ezTSJyNKktB"}
+}
+
 local troopsToSend = {
-    "SantaTVMan", 
-    "LuckySpeakerman", 
+    "SantaTVMan",
+    "LuckySpeakerman",
     "ClockSpider"
 }
+
 
 local TTD
 local save
@@ -13,110 +46,88 @@ local handler
 local Network
 local Invoke
 local Fire
-
 task.spawn(function()
     TTD = require(game:GetService("ReplicatedStorage").MultiboxFramework)
     save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
 
     repeat
-        local success, err = pcall(function()
+        pcall(function()
             Network = TTD.Network
             Invoke = Network.Invoke
             Fire = Network.Fire
         end)
-        if not success then
-            warn("Error in getting Network functions: ", err)
-        end
         task.wait(0.1)
     until Network ~= nil and Invoke ~= nil and Fire ~= nil
 end)
+repeat wait() until Invoke and Network and Fire
 
--- Xử lý cho Invoke và Fire
-task.spawn(function()
-    repeat task.wait(0.1) until Invoke and Fire -- Đảm bảo Invoke và Fire không phải nil
-    if type(Invoke) == "function" and type(Fire) == "function" then
-        local successGetFunc, GetFunc = pcall(getupvalue, Invoke, 1)
-        local successGetEvent, GetEvent = pcall(getupvalue, Fire, 1)
+local SInd = debug.info(Invoke,"s")
+local old =  getrenv().debug.info
+setreadonly(getrenv().debug,false)
 
-        if successGetFunc and successGetEvent then
-            coroutine.wrap(function()
-                setidentity(2)
-                local successHookFunc, errHookFunc = pcall(function()
-                    if type(GetFunc) == "function" then
-                        hookfunc(GetFunc, function()
-                            return true
-                        end)
-                    else
-                        warn("GetFunc is not a function, it's a:", typeof(GetFunc))
-                    end
-                end)
-                if not successHookFunc then
-                    warn("Error in hookfunc for GetFunc: ", errHookFunc)
-                end
-                setidentity(8)
-            end)()
-
-            coroutine.wrap(function()
-                setidentity(2)
-                local successHookEvent, errHookEvent = pcall(function()
-                    if type(GetEvent) == "function" then
-                        hookfunc(GetEvent, function()
-                            return true
-                        end)
-                    else
-                        warn("GetEvent is not a function, it's a:", typeof(GetEvent))
-                    end
-                end)
-                if not successHookEvent then
-                    warn("Error in hookfunc for GetEvent: ", errHookEvent)
-                end
-                setidentity(8)
-            end)()
-        else
-            warn("Failed to get upvalues for Invoke or Fire.")
-        end
-    else
-        warn("Invoke or Fire is not a function or is nil.")
+getrenv().debug.info = function(...) 
+    local lv,st = ...
+    if lv == 2 and st == "s" then 
+        return SInd
     end
-end)
+    error("hi")
+    return nil
+end
+setreadonly(getrenv().debug,true)
 
--- Lấy danh sách quân trong kho
+local old = getrenv().getfenv
+getrenv().getfenv = function(...) 
+    error("hi")
+    return nil
+end
+-- Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
+-- Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
+
+-- coroutine.wrap(function()
+--     setidentity(2)
+--     hookfunc(getupvalue(GetFunc, 1), function()
+--         return true
+--     end)
+--     setidentity(8)
+-- end)()
+
+-- coroutine.wrap(function()
+--     setidentity(2)
+--     hookfunc(getupvalue(GetEvent, 1), function()
+--         return true
+--     end)
+--     setidentity(8)
+-- end)()
+
+
 local invTroops = {}
 function getInventoryTroops()
     invTroops = {}
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
-    
-    -- Kiểm tra nếu dữ liệu tồn tại trước khi truy cập
-    if save and save._data and save._data.Inventory and save._data.Inventory.Troops then
-        for name, v in pairs(save._data.Inventory.Troops) do
-            for i, v in pairs(v) do
-                invTroops[i] = name
-            end
+   -- for k,v in save._data.InventoryItems.Troops do print(k,v) end
+    for name, v in pairs(save._data.InventoryItems.Troops) do
+        for i, v in pairs(v) do
+            invTroops[i] = name
         end
-    else
-        warn("Could not retrieve Troops from save data. Data is nil or invalid.")
-        print("Data found in save:", save and save._data and save._data.Inventory and save._data.Inventory.Troops)
     end
     return invTroops
 end
 
--- Lấy số lượng coins
 local coins
 function getCoinAmt()
     coins = 0
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
-    if save and save._data and save._data.Currencies then
-        coins = save._data.Currencies.Coins
-    else
-        warn("Could not retrieve Coins from save data. Data is nil or invalid.")
+    for i, v in pairs(save._data) do
+        if i == "Currencies" then
+            coins = v.Coins
+        end
     end
     return coins
 end
 
--- Kiểm tra xem người chơi có quân cụ thể không
 function hasTroop(id)
-    local troops = getInventoryTroops()
-    for i, v in pairs(troops) do
+    troops = getInventoryTroops()
+    for i, v in troops do
         if i == id then
             return true
         end
@@ -124,25 +135,26 @@ function hasTroop(id)
     return false
 end
 
--- Bắt đầu xử lý gửi quà
-local startAmt = getCoinAmt()
+startAmt = getCoinAmt()
+
 local amt = 0
 
-for i, user in pairs(users) do
+for i, user in users do
     local sent = {}
-    for i, v in pairs(getInventoryTroops()) do
+    for i, v in getInventoryTroops() do
         if table.find(troopsToSend, v) and not table.find(sent, v) then
             table.insert(sent, v)
             local oldC = getCoinAmt()
             local st = tick()
             repeat
-                Invoke("PostOffice_SendGift", game.Players:GetUserIdFromNameAsync(user), "Troops", i, 0, tostring(math.random(1, 10000)))
+                Invoke("PostOffice_SendGift", game.Players:GetUserIdFromNameAsync(user), "Troops", i, 0,
+                    tostring(math.random(1, 10000)))
                 task.wait(0.1)
             until getCoinAmt() < oldC and not hasTroop(i)
-            print("sent", "time taken:", tick() - st)
+            print("sent","time taken:",tick()-st)
         end
     end
-    print('finished user:', user)
+    print('finished user:',user)
 end
 
 print('Should have sent:', amt)
