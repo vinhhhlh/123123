@@ -17,26 +17,36 @@ local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Play
 local handler
 local Network = TTD.Network
 
-local Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
-local Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
-if TTD.debug then print('Found Invoke/Fire') end
--- $ -- Bypass
-coroutine.wrap(function()
-    setidentity(2)
-    hookfunc(getupvalue(GetFunc, 1), function()
-        return true
-    end)
-    setidentity(8)
-end)()
+    repeat
+        pcall(function()
+            Network = TTD.Network
+            Invoke = Network.Invoke
+            Fire = Network.Fire
+        end)
+        task.wait(0.1)
+    until Network ~= nil and Invoke ~= nil and Fire ~= nil
+end)
+repeat wait() until Invoke and Network and Fire
 
-coroutine.wrap(function()
-    setidentity(2)
-    hookfunc(getupvalue(GetEvent, 1), function()
-        return true
-    end)
-    setidentity(8)
-end)()
+local SInd = debug.info(Invoke,"s")
+local old =  getrenv().debug.info
+setreadonly(getrenv().debug,false)
 
+getrenv().debug.info = function(...) 
+    local lv,st = ...
+    if lv == 2 and st == "s" then 
+        return SInd
+    end
+    error("hi")
+    return nil
+end
+setreadonly(getrenv().debug,true)
+
+local old = getrenv().getfenv
+getrenv().getfenv = function(...) 
+    error("hi")
+    return nil
+end
 function convertStringToNumber(str)
     local suffixes = {["k"] = 10^3, ["m"] = 10^6}
     local num, suffix = str:match("(%d+)([km]?)")
