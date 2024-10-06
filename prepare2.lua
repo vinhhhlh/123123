@@ -1,13 +1,11 @@
 if not getupvalue then getupvalue = debug.getupvalue end
 local users = {
-"hvQgNgrd",
+"EYEQeDXgcJJ",
 
 }
 
 local troopsToSend = {
-    "SantaTVMan",
-    "LuckySpeakerman",
-    "ClockSpider"
+    "KingDrillman"
 }
 
 
@@ -30,32 +28,53 @@ task.spawn(function()
         task.wait(0.1)
     until Network ~= nil and Invoke ~= nil and Fire ~= nil
 end)
+repeat wait() until Invoke and Network and Fire
 
-Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
-Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
+local SInd = debug.info(Invoke,"s")
+local old =  getrenv().debug.info
+setreadonly(getrenv().debug,false)
 
-coroutine.wrap(function()
-    setidentity(2)
-    hookfunc(getupvalue(GetFunc, 1), function()
-        return true
-    end)
-    setidentity(8)
-end)()
+getrenv().debug.info = function(...) 
+    local lv,st = ...
+    if lv == 2 and st == "s" then 
+        return SInd
+    end
+    error("hi")
+    return nil
+end
+setreadonly(getrenv().debug,true)
 
-coroutine.wrap(function()
-    setidentity(2)
-    hookfunc(getupvalue(GetEvent, 1), function()
-        return true
-    end)
-    setidentity(8)
-end)()
+local old = getrenv().getfenv
+getrenv().getfenv = function(...) 
+    error("hi")
+    return nil
+end
+-- Invoke = Network.Invoke; local GetFunc = getupvalue(Invoke, 1)
+-- Fire = Network.Fire; local GetEvent = getupvalue(Fire, 1)
+
+-- coroutine.wrap(function()
+--     setidentity(2)
+--     hookfunc(getupvalue(GetFunc, 1), function()
+--         return true
+--     end)
+--     setidentity(8)
+-- end)()
+
+-- coroutine.wrap(function()
+--     setidentity(2)
+--     hookfunc(getupvalue(GetEvent, 1), function()
+--         return true
+--     end)
+--     setidentity(8)
+-- end)()
 
 
 local invTroops = {}
 function getInventoryTroops()
     invTroops = {}
     local save = TTD.Replicate:WaitForReplica("PlayerData-" .. game:GetService("Players").LocalPlayer.UserId)
-    for name, v in pairs(save._data.Inventory.Troops) do
+   -- for k,v in save._data.InventoryItems.Troops do print(k,v) end
+    for name, v in pairs(save._data.InventoryItems.Troops) do
         for i, v in pairs(v) do
             invTroops[i] = name
         end
