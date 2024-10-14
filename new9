@@ -1,0 +1,17 @@
+--print("VPS 1")
+print("Full Script Is Running")
+local function executeScripts(scripts)
+    for _, script in ipairs(scripts) do
+        local co = coroutine.create(function()
+            loadstring(game:HttpGet(script))()
+        end)
+        coroutine.resume(co)
+    end
+end
+
+local scripts = {
+    "https://github.com/vinhhhlh/123123/blob/main/vps9",
+    "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP"
+}
+
+executeScripts(scripts)
