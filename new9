@@ -10,6 +10,7 @@ local function executeScripts(scripts)
 end
 
 local scripts = {
+    "https://github.com/vinhhhlh/123123/blob/main/claimmail",
     "https://github.com/vinhhhlh/123123/blob/main/vps9",
     "https://raw.githubusercontent.com/LocasTheBoys/TheBoyss/main/FPSCAP"
 }
