@@ -1,9 +1,7 @@
 getgenv().Config = {
-	["Webhook"] = {
-		["Pet Rolled"] = true,
-		["Minimum Chance"] = 4000000,
-		["Mail Sent"] = true,
-		["URL"] = "https://discord.com/api/webhooks/1296711589587718205/FBjghQkj2rgtmKwWBfuvOiZnUqoMfGXL4RByol25Y6adxZqRkz3sE7HB_-Bi-eiWUM68"
+	["Resource"] = {
+		["Auto Farm"] = true,
+		["Auto Hidden Gift"] = true
 	},
 	["Consumer"] = {
 		["Potion"] = {
@@ -21,35 +19,65 @@ getgenv().Config = {
 			}
 		}
 	},
+	["Interface"] = {
+		["Auto Upgrade"] = true,
+		["Auto Roll"] = true,
+		["Fast Roll"] = true
+	},
 	["Upgrader"] = {
-		["Enable"] = true,
+		["Rainbow"] = true,
 		["Keep Amount"] = 100
 	},
-	["Crafter"] = {
-		["Enable"] = true
-	},
-	["Resource"] = {
-		["Auto Farm"] = true,
-		["Auto Hidden Gift"] = true
-	},
-	["Performance"] = {
-		["Boost FPS"] = true
-	},
 	["Sender"] = {
-		["Auto Send Mail"] = true,
 		["Minimum Chance"] = 4000000,
 		["Receiver Name"] = "tutulklh"
 	},
+	["Webhook"] = {
+		["Pet Rolled"] = true,
+		["Minimum Chance"] = 4000000,
+		["Mail Sent"] = true,
+		["URL"] = "https://discord.com/api/webhooks/1296711589587718205/FBjghQkj2rgtmKwWBfuvOiZnUqoMfGXL4RByol25Y6adxZqRkz3sE7HB_-Bi-eiWUM68"
+	},
+	["Performance"] = {
+		["Disable LocalScript"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true
+	},
 	["Buyer"] = {
+		["Merchant"] = {
+			["Item"] = {
+				["Coins Potion II"] = true,
+				["The Cocktail"] = true,
+				["Rainbow Dice Potion"] = true,
+				["Faster Rolls Potion I"] = true,
+				["Faster Rolls Potion II"] = true,
+				["Instant Luck Potion I"] = true,
+				["Coins Potion I"] = true,
+				["Breakables Potion I"] = true,
+				["Golden Dice Potion"] = true,
+				["Items Potion II"] = true,
+				["Coins Potion III"] = true,
+				["Lucky Potion II"] = true,
+				["Coins Potion V"] = true,
+				["Instant Luck Potion II"] = true,
+				["Lucky Potion I"] = true,
+				["Breakables Potion II"] = true,
+				["Lucky Potion III"] = true,
+				["Blazing Dice Potion"] = true,
+				["Coins Potion IV"] = true,
+				["Instant Luck Potion III"] = true,
+				["Lucky Potion IV"] = true,
+				["Items Potion I"] = true,
+				["Lucky Potion V"] = true
+			}
+		},
 		["Potion Vending"] = true,
 		["Index Shop"] = {
 			["Enable"] = true
 		}
 	},
-	["Interface"] = {
-		["Auto Upgrade"] = true,
-		["Auto Roll"] = true,
-		["Fast Roll"] = true
+	["Crafter"] = {
+		["Enable"] = true
 	}
 }
 getgenv().Key = "kb0ead1d709dff85b479a22e"
