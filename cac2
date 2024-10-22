@@ -36,7 +36,7 @@ getgenv().Config = {
 		["Pet Rolled"] = true,
 		["Minimum Chance"] = 4000000,
 		["Mail Sent"] = true,
-		["URL"] = "https://discord.com/api/webhooks/1296711589587718205/FBjghQkj2rgtmKwWBfuvOiZnUqoMfGXL4RByol25Y6adxZqRkz3sE7HB_-Bi-eiWUM68"
+		["URL"] = "https://discordapp.com/api/webhooks/1295579089226174464/ShsCrzRQGd7NWT51dfOmopaOOVMF45SxLAEJ-knKfyRrwXQfrwKCsw0ch6HQfX9CG6CW"
 	},
 	["Performance"] = {
 		["Disable LocalScript"] = true,
